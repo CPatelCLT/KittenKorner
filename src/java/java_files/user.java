@@ -27,5 +27,86 @@ public class user implements Serializable {
         
     }
     
+    public void setFirstName(String fn){
+        
+    }    
+    
+    public String getFirstName(){
+        
+        return firstName;
+    }
+    
+    public void setLastName(String ln){
+        
+    } 
+    
+    public String getLastName(){
+        
+        return lastName;
+    }
+    
+    public void setEmailAddress(String ea){
+        
+    }
+    
+    public String getEmailAddress(){
+        
+        return emailAddress;
+    }
+    
+    public void setAddress1(String a1){
+        
+    }
+    
+    public String getAddress1(){
+        
+        return address1;
+    }
+    
+    public void setAddress2(String a2){
+        
+    }
+    
+    public String getAddress2(){
+        
+        return address2;
+    }
+    
+    public void setCity(String c){
+        
+    }
+    
+    public String getCity(){
+        
+        return city;
+    }
+    
+    public void setState(String s){
+        
+    }
+    
+    public String getState(){
+        
+        return state;
+    }
+    
+    public void setPostCode(int pc){
+        
+    }
+    
+    public int getPostCode(){
+        
+        return postCode;
+    }
+    
+    public void setCountry(String co){
+        
+    }
+    
+    public String getCountry(){
+        
+        return country;
+    }
+    
     
 }

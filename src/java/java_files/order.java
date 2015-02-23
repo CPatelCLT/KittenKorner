@@ -25,4 +25,69 @@ public class order implements Serializable {
     public order(){
         
     }
+    
+    public void setOrderNumber(int on){
+        
+    }
+    
+    public int getOrderNumber(){
+        
+        return orderNumber;
+    }
+    
+    public void setDate(String d){
+        
+    }
+    
+    public String getDate(){
+        
+        return date;
+    }
+    
+    public void setUser(String u){
+        
+    }
+    
+    public String getUser(){
+        
+        return user;
+    }
+    
+    public void setItems(String i){
+        
+    }
+    
+    public ArrayList<orderitem> getItems(){
+        
+        return items;
+    }
+    
+    public void setTaxRate(double tr){
+        
+    }
+    
+    public double getTaxRate(){
+        
+        return taxRate;
+    }
+    
+    public void setTotalCost(double tc){
+        
+    }
+    
+    public double getTotalCost(){
+        
+        return totalCost;
+    }
+    
+    public void setPaid(boolean p){
+        
+    }
+    
+    public boolean getPaid(){
+        
+        return paid;
+    }
+    
+    
 }

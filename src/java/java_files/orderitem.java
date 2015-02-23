@@ -19,4 +19,23 @@ public class orderitem implements Serializable {
     public orderitem(){
         
     }
+    
+    public void setProduct(String p){
+        
+    }
+    
+    public String getProduct(){
+        
+        return product;
+    }
+    
+    public void setQuantity(int q){
+        
+    }
+    
+    public int getQuantity(){
+        
+        return quantity;
+    }
+    
 }

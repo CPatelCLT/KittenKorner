@@ -22,4 +22,51 @@ public class product implements Serializable {
     public product(){
         
     }
+    
+    public void setProductCode(){
+        
+    }
+    
+    public int getProductCode(){
+        
+        return productCode;
+    }
+    
+    public void setProductName(){
+        
+    }
+    
+    public String getProductName(){
+        
+        return productName;
+    }
+    
+    public void setCatalogCategory(){
+        
+    }
+    
+    public String getCatalogCategory(){
+        
+        return catalogCategory;
+    }
+    
+    public void setDescription(String d){
+        
+    }
+    
+    public String getDescription(){
+        
+        return description;
+    }
+    
+    public void setPrice(double p){
+        
+    }
+    
+    public double getPrice(){
+        
+        return price;
+    }
+    
+    
 }

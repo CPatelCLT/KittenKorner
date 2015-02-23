@@ -19,4 +19,14 @@ public class cart implements Serializable {
     public cart(){
         
     }
+    
+    public void setItems(ArrayList<orderitem> i){
+    
+    }
+    
+    public ArrayList<orderitem> getItems(){
+        
+        return items;
+    }
+    
 }
