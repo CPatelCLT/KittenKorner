@@ -15,6 +15,11 @@ import java_files.*;
 public class UserDB {
     
     private ArrayList<User> userList;
-    
-    
+    private void populateDB () {
+        User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "", "Anytown", "WH", 12345, "USA");
+        userList.add(usr);
+    }
+    public ArrayList<User> getUserList () {
+        return userList;
+    }
 }
