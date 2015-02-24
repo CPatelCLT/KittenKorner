@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;*/
  *
  * @author Eric
  */
+
 public class CatalogController extends HttpServlet {
     
     @Override

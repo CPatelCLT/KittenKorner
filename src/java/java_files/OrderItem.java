@@ -11,21 +11,26 @@ import java.io.Serializable;
  *
  * @author Eric
  */
-public class orderitem implements Serializable {
+public class OrderItem implements Serializable {
     
-    private String product;
+    private Product product;
     private int quantity;
     
-    public orderitem(){
+    public OrderItem(){
+        product=null;
+        quantity=0;
+    }
+    
+    public OrderItem(Product P, int Q){
+        product=P;
+        quantity=Q;
+    }
+    
+    public void setProduct(Product p){
         
     }
     
-    public void setProduct(String p){
-        
-    }
-    
-    public String getProduct(){
-        
+    public Product getProduct(){
         return product;
     }
     
@@ -36,6 +41,10 @@ public class orderitem implements Serializable {
     public int getQuantity(){
         
         return quantity;
+    }
+    
+    public double getTotal(){
+        return product.getPrice()*quantity;
     }
     
 }

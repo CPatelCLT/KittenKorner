@@ -14,7 +14,7 @@ import java_files.*;
  */
 public class UserDB {
     
-    private ArrayList<user> userList;
+    private ArrayList<User> userList;
     
     
 }

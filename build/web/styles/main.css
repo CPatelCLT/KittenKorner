@@ -67,6 +67,7 @@ a:active {
     min-height: 75px;
     background-color: grey;
     color:white;
+    padding-top: 5px;
     /*border-style: solid;*/
     font-style: italic;
     /*background-image: url("../pictures/texturedbgrnd.jpg");
@@ -80,6 +81,7 @@ a:active {
     top:0;
     bottom:0;
     max-height:100%;
+    padding-top: 5px;
     /* max-width:100%; */
     /*width: 10%;*/
     /* height: 100%; */
@@ -116,6 +118,7 @@ a:active {
     right: 0;
     margin: 0;
     width: 20%;
+    padding-top: 5px;
     /*height: 100%;*/
     top:0;
     bottom:0;

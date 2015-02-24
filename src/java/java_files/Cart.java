@@ -12,21 +12,36 @@ import java.util.ArrayList;
  *
  * @author Eric
  */
-public class cart implements Serializable {
+public class Cart implements Serializable {
     
-    private ArrayList<orderitem> items;
+    private ArrayList<OrderItem> items;
     
-    public cart(){
-        
+    public Cart(){
+        items=null;
     }
     
-    public void setItems(ArrayList<orderitem> i){
-    
+    public void setItems(ArrayList<OrderItem> i){
+        items=i;
     }
     
-    public ArrayList<orderitem> getItems(){
-        
+    public ArrayList<OrderItem> getItems(){
         return items;
+    }
+    
+    public void addItem(Product p, int q){
+        this.items.add(new OrderItem(p,q));
+    }
+    
+    public void removeItem(Product p){
+        for(OrderItem item : items){
+            if(item.getProduct().equals(p)){
+                items.remove(item);
+            }
+        }
+    }
+    
+    public void emptyCart(){
+        this.items.clear();
     }
     
 }
