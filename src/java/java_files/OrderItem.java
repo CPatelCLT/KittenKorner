@@ -27,7 +27,7 @@ public class OrderItem implements Serializable {
     }
     
     public void setProduct(Product p){
-        
+        product=p;
     }
     
     public Product getProduct(){
@@ -35,11 +35,10 @@ public class OrderItem implements Serializable {
     }
     
     public void setQuantity(int q){
-        
+        quantity=q;
     }
     
     public int getQuantity(){
-        
         return quantity;
     }
     
