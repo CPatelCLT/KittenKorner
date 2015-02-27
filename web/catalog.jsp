@@ -33,17 +33,41 @@
                     </form>
                 </div>
                 <div id="itemHolder">
-                    <div id="row1">
-                        <div id="item1" class="items">
-
-                        </div>  
-                        <div id="item2" class="items">
-
+                    <!-- not working yet -->
+                    <c:set var="count" value="0" scope="page" />
+                    <c:forEach items=“${prodResponse}” var=“prod”>
+                        <c:if ${count % 3 == 0}>
+                            <div class=“row”>
+                        </c:if>
+                        <div class="itemContainer">
+                            <div class="itemPreviewPic">
+                                <img class="previewPicFormat" src="${prod.ImageUrl}" alt="product photo">
+                            </div>
+                            <div class="itemDescription">
+                                <h2>
+                                    ${prod.Name}
+                                </h2>
+                                <p>
+                                    ${prod.Description}
+                                </p>
+                            </div>
+                            <div class="itemPreviewButtons">
+                                <form method="GET" action="item.jsp">
+                                    <button class="moreInfoButton" type="submit">More Info</button>
+                                    <input type="hidden" name="prodCode" value="${prod.Productcode}">
+                                </form>
+                                <form method="POST" action="cart.jsp">
+                                    <button class="addToCart" type="submit">Add To Cart</button>
+                                    <input type="hidden" name="prodCode" value="${prod.Productcode}">
+                                </form>
+                            </div>
                         </div>
-                        <div id="item3" class="items">
-
-                        </div>
-                    </div>
+                        <c:if ${count % 3 == 0}>
+                            </div>
+                        </c:if>
+                        <c:set var="count" value="${count + 1}" scope="page"/>
+                    </c:forEach>
+                    <!-- end not working yet-->
                     <div id="row2">
                         <div id="item4" class="items">
 
