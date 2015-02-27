@@ -10,11 +10,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CatalogController</servlet-name>
-        <url-pattern>/servlet_packages</url-pattern>
+        <url-pattern>/catalog/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
-        <url-pattern>/servlet_packages</url-pattern>
+        <url-pattern>/order/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

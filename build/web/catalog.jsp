@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,9 +36,9 @@
                 <div id="itemHolder">
                     <!-- not working yet -->
                     <c:set var="count" value="0" scope="page" />
-                    <c:forEach items=“${prodResponse}” var=“prod”>
-                        <c:if ${count % 3 == 0}>
-                            <div class=“row”>
+                    <c:forEach items="${prodResponse}" var="prod">
+                        <c:if test="${count % 3 == 0}">
+                            <div class="row">
                         </c:if>
                         <div class="itemContainer">
                             <div class="itemPreviewPic">
@@ -62,23 +63,12 @@
                                 </form>
                             </div>
                         </div>
-                        <c:if ${count % 3 == 0}>
+                        <c:if test="${count % 3 == 0}">
                             </div>
                         </c:if>
                         <c:set var="count" value="${count + 1}" scope="page"/>
                     </c:forEach>
                     <!-- end not working yet-->
-                    <div id="row2">
-                        <div id="item4" class="items">
-
-                        </div>
-                        <div id="item5" class="items">
-
-                        </div>
-                        <div id="item6" class="items">
-
-                        </div>
-                    </div>
                 </div>
             </div>
         <%@ include file="include/footer.jsp" %>
