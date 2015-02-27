@@ -18,7 +18,6 @@ public class Product implements Serializable {
     private String catalogCategory;
     private String description;
     private double price;
-    private String imageUrl;
     
     public Product(){
         productCode = 0;
@@ -77,7 +76,6 @@ public class Product implements Serializable {
     }
     
     public String getImageUrl(){
-        imageUrl = "pictures/pic"+productCode+".jpg";
-        return imageUrl;
+        return ("pictures/pic"+productCode+".jpg");
     }
 }
