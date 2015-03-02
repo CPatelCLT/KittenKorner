@@ -14,8 +14,9 @@ import java_files.Product;
  */
 public class ProductDB {
     private ArrayList<Product> productList;
-    void populateDB (){
     
+    public ProductDB (){
+        productList = new ArrayList<Product>();
         int[] pCodes = {0,1,2,3,4,5};
         String[] pNames = {"cat1","cat2","cat3","cat4","cat5","cat6"};
         String[] category = {"cute","evil"};

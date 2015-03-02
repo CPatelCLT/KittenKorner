@@ -36,34 +36,35 @@
                 <div id="itemHolder">
                     <!-- not working yet -->
                     <c:set var="count" value="0" scope="page" />
-                    <c:forEach items="${prodResponse}" var="prod">
+                    
+                    <c:forEach items="${items}" var="prod">
                         <c:if test="${count % 3 == 0}">
                             <div class="row">
                         </c:if>
                         <div class="itemContainer">
                             <div class="itemPreviewPic">
-                                <img class="previewPicFormat" src="${prod.ImageUrl}" alt="product photo">
+                                <img class="previewPicFormat" src="${prod.getImageUrl()}" alt="product photo">
                             </div>
                             <div class="itemDescription">
                                 <h2>
-                                    ${prod.Name}
+                                    ${prod.getProductName()}
                                 </h2>
                                 <p>
-                                    ${prod.Description}
+                                    ${prod.getDescription()}
                                 </p>
                             </div>
                             <div class="itemPreviewButtons">
                                 <form method="GET" action="item.jsp">
                                     <button class="moreInfoButton" type="submit">More Info</button>
-                                    <input type="hidden" name="prodCode" value="${prod.Productcode}">
+                                    <input type="hidden" name="prodCode" value="${prod.getProductCode()}">
                                 </form>
                                 <form method="POST" action="cart.jsp">
                                     <button class="addToCart" type="submit">Add To Cart</button>
-                                    <input type="hidden" name="prodCode" value="${prod.Productcode}">
+                                    <input type="hidden" name="prodCode" value="${prod.getProductCode()}">
                                 </form>
                             </div>
                         </div>
-                        <c:if test="${count % 3 == 0}">
+                        <c:if test="${count % 3 == 2}">
                             </div>
                         </c:if>
                         <c:set var="count" value="${count + 1}" scope="page"/>
@@ -72,153 +73,8 @@
                 </div>
             </div>
         <%@ include file="include/footer.jsp" %>
-        <div id="hiddenItems">
-
-            <div class="itemContainer" id="product1">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic1.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #1
-                    </h2>
-                    <p>
-                        This furry cutie can't wait to come home with you!<br>Category: Cute, Crazy
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product1')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input cl <inpass="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-            <div class="itemContainer" id="product2">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic2.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #2
-                    </h2>
-                    <p>
-                        Watch out, this one is a fighter!<br>Category: Ferocious, Cute
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product2')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input class="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-            <div class="itemContainer" id="product3">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic3.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #3
-                    </h2>
-                    <p>
-                        Such a beautiful creature!<br>Category: Crazy, Ferocious
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product3')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input class="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-            <div class="itemContainer" id="product4">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic4.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #4
-                    </h2>
-                    <p>
-                        She just wants a good home!<br>Category: Crazy, Cute
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product4')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input class="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-            <div class="itemContainer" id="product5">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic5.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #5
-                    </h2>
-                    <p>
-                        Warning, do not buy if you are allergic to cuteness!<br>Category: Ferocious, Crazy
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product5')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input class="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-            <div class="itemContainer" id="product6">
-                <div class="itemPreviewPic">
-                    <img class="previewPicFormat" src="pictures/pic1.jpg" alt="picture of kitten">
-                </div>
-                <div class="itemDescription">
-                    <h2>
-                        Kitten #6
-                    </h2>
-                    <p>
-                        How can you say no to a face like this?<br>Category: Cute, Ferocious
-                    </p>
-                </div>
-                <div class="itemPreviewButtons">
-                    <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
-                    <button class="addToCart" onclick="addToCart('product6')">Add To Cart</button>
-                    <!--<form action="item.html">
-                        <input class="moreInfoButton" type="submit" value="More Info">
-                    </form>
-                    <form action="cart.html">
-                        <input class="addToCart" type="submit" value="Add To Cart">
-                    </form>-->
-                </div>
-            </div>
-
-        </div>
     </body>
 </html>
+
+
 
