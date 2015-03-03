@@ -6,7 +6,6 @@
 package servlet_package;
 
 import java.io.*;
-import static java.lang.System.console;
 import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;

@@ -554,6 +554,7 @@ form{
     width: 100%;
     margin:0;
     //background: blue;
+    clear: both;
 }
 #yourCart{
     position:relative;
@@ -571,7 +572,7 @@ form{
     position:relative;
     margin:0;
     width:100%;
-    height:10%;
+    height: 10%;
     min-height: 25px;
     border-bottom-style:solid;
     //text-align: center;
@@ -600,7 +601,7 @@ form{
     float:left;
     width:17%;
 }
-#itemsInCart{
+.itemsInCart{
     position:relative;
     margin:0;
     width: 100%;
@@ -698,7 +699,87 @@ form{
 #checkOut:hover{
     background-color:lightgray;
 }
+.orderTab{
+  display:table;         
+  width: 100%;         
+  background-color:#eee;         
+  border-top: 1px solid  #666666;         
+  border-spacing:5px;
+  margin: 0;
+  /*cellspacing:poor IE support for  this*/
+}
 
+div#itemsInCart {}
+.orderRow{
+  display:table-row;
+  width: 100%;
+  clear:both;
+}
+.orderCol {
+  float:left;/*fix for  buggy browsers*/
+  display:table-column;         
+  width: 17%;         
+  background-color:#ccc;  
+}
+h4{
+    clear:both;
+}
+h1{
+    clear:both;
+}
+.orderItemPrice{
+    width: 17%;
+}
+.orderItemSubtotal{
+    width: 17%;
+}
+.orderItemName{
+    width: 49%;
+}
+.orderItemQuantity{
+    width: 17%;
+}
+.orderTax{
+    width: 17%;
+    float:left;
+    margin:0;
+}
+.orderTotal{
+    width: 17%;
+    float:left;
+    margin:0;
+    
+}
+.orderSubtotal{
+    width: 17%;
+    float:left;
+    margin:0;
+    
+}
+.total{
+    width:100%;
+}
+.subtotal{
+    width:100%;
+}
+.tax{
+    width:100%;
+}
+.totalLabel{
+    float:left;
+    width:83%;
+    text-align: right;
+}
+.subtotalLabel{
+    float:left;
+    width:83%;
+    text-align: right;
+}
+.taxLabel{
+    float:left;
+    width:83%;
+    text-align: right;
+}
 /*
 Mobile Devices
 */

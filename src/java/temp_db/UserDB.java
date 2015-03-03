@@ -22,4 +22,12 @@ public class UserDB {
     public ArrayList<User> getUserList () {
         return userList;
     }
+    public User getUser(String emailAddress) {
+        for(int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getEmailAddress().equals(emailAddress)) {
+                return userList.get(i);
+            }
+        }
+        return null;
+    }
 }
