@@ -40,4 +40,14 @@ public class ProductDB {
     public ArrayList<Product> getProdList () {
         return productList;
     }
+    
+    public Product getProduct(String PrdCde){
+        for(int x=0; x<productList.size(); x++){
+            if((productList.get(x).getProductCode()+"").equals(PrdCde)){
+                return productList.get(x);
+            }
+        }
+        return null;
+    }
+
 }

@@ -54,14 +54,15 @@
                                 </p>
                             </div>
                             <div class="itemPreviewButtons">
-                                <form method="GET" action="item.jsp">
+<!--                                <div class="moreInfoButton">
+                                    <a href="catalog?productCode=  el for product code here  ">Add To Cart</a>
+                                </div>-->
+                                <form method="GET" action="catalog">
                                     <button class="moreInfoButton" type="submit">More Info</button>
-                                    <input type="hidden" name="prodCode" value="${prod.getProductCode()}">
+                                    <input type="hidden" name="buttonClicked" value="itemInfoButton">
+                                    <input type="hidden" name="productCode" value="${prod.getProductCode()}">
                                 </form>
-                                <form method="POST" action="cart.jsp">
-                                    <button class="addToCart" type="submit">Add To Cart</button>
-                                    <input type="hidden" name="prodCode" value="${prod.getProductCode()}">
-                                </form>
+<!--                                where dd to cart button was-->
                             </div>
                         </div>
                         <c:if test="${count % 3 == 2}">

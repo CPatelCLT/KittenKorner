@@ -23,26 +23,26 @@
             <div id="main">
                 <div id="itemWrapper">
                     <div class="itemPictureDiv">
-                        <img class="itemPicture" src="pictures/pic1.jpg" alt="item 1 picture">
+                        <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">
                     </div>
                     <div class="itemInfoDiv">
                         <h1>
-                            Lucy
+                            ${item.getProductName()}
                         </h1>
                         <p>
-                            Categories: Ferocious, Cute, and Crazy!
+                            ${item.getCatalogCategory()}
                         </p>
                         <p>
-                            Price: Priceless
+                            Price: ${item.getPrice()} 
                         </p>
                     </div>
                     <div class="itemButtonHolderDiv">
-                        <button class="addItemToCart" onclick="addToCart('product1')">Add To Cart</button>
-                        <button class="addItemToCart" onclick="parent.location = 'catalog.jsp'">Back</button>
+                        <button class="addItemToCart" onclick="addToCart('${item.getProductCode()}')">Add To Cart</button>
+                        <button class="addItemToCart" onclick="parent.location = 'catalog'">Back</button>
                     </div>
                     <div class="itemDetailsDiv">
                         <p>
-                            This crazy little monster's favorite past times are sleeping, eating, and terrorizing the local mousie, fishie, and birdie population!  She has mastered the art of being a cutie and her beauty is unmatched.  Be careful though, while she looks innocent her ferociousness is renown!
+                            ${item.getDescription()}
                         </p>
                     </div>
                 </div>  

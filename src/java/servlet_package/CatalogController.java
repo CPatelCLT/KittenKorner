@@ -6,49 +6,67 @@
 package servlet_package;
 
 import java.io.*;
+import static java.lang.System.console;
 import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java_files.*;
 import temp_db.*;
 /*import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;*/
+ import javax.servlet.http.HttpServletRequest;
+ import javax.servlet.http.HttpServletResponse;*/
 
 /**
  *
- * looks at url, 
+ * looks at url,
  */
-
 public class CatalogController extends HttpServlet {
-    ArrayList<Product> items = new ProductDB().getProdList();
-    
+
+    ProductDB pdb = new ProductDB();
+    ArrayList<Product> items = pdb.getProdList();
+    Cart crt = new Cart();
+    String requestedProduct, buttonClicked;
+
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        String requestedProduct = request.getParameter("requestProduct"); //getting the value (from the url or post) that the user submits
-        
-        
-        
-        if(false)//this will be used for specific item if requestedProduct is not null;
-        {
-            String nada=null;
-        }
-        else
-        {
-            request.setAttribute("alert", "I got here");
-            request.setAttribute("items", items); //must use this to set the attribute for el to be able to use it
+        requestedProduct = request.getParameter("productCode"); //getting the value (from the url or post) that the user submits
+        //request.setAttribute("alert", "I got here");
+        request.getSession().setAttribute("items", items); //must use this to set the attribute for el to be able to use it
+        //request.getSession().setAttribute("itemList", items);
+        if (requestedProduct == null) { //load catalog page
+
             RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
             dispatch.forward(request, response);
-            
+        } else { //find which item and load item page
+            //request.setAttribute("alert", "I got here");
+
         }
     }
-    
+
     @Override
-    protected void doGet(HttpServletRequest request, 
-                          HttpServletResponse response) 
-                          throws ServletException, IOException {
-        doPost(request, response);
-    }  
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+
+        buttonClicked = request.getParameter("buttonClicked");
+
+        if (buttonClicked != null) {
+            if (buttonClicked.equals("itemInfoButton")) {
+                requestedProduct = request.getParameter("productCode");
+                Product p = pdb.getProduct(requestedProduct);
+                request.setAttribute("item", p);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/item.jsp");
+                dispatch.forward(request, response);
+            } else {
+                doPost(request, response);
+            }
+            //request.setAttribute("items", items);
+
+        } else {
+            doPost(request, response);
+        }
+
+    }
 }
