@@ -23,14 +23,13 @@
         <%@ include file="include/site-navigation.jsp" %>
             <div id="main">
                 <div id="sorter">
-                    <form action="updateCatalog" method="get">
-                    Category: <select id="categorySelector" name="categorySelect" size="1">
+                    <form method="GET" action="catalog">
+                    Category: <select id="categorySelector" selected="${curCategory}" name="categorySelect" size="1">
                         <option value="all">All</option>
-                        <option value="ferocious">Ferocious</option>
                         <option value="cute">Cute</option>
-                        <option value="crazy">Crazy</option>
+                        <option value="evil">Evil</option>
                     </select>
-                    <button class="updateCatalog" onclick="updateCatalog()">Update</button>
+                    <button class="updateCatalog" onclick="parent.location = 'catalog'">Update</button>
                     </form>
                 </div>
                 <div id="itemHolder">

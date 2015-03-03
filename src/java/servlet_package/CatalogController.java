@@ -23,9 +23,11 @@ import temp_db.*;
 public class CatalogController extends HttpServlet {
 
     ProductDB pdb = new ProductDB();
-    ArrayList<Product> items = pdb.getProdList();
+    ArrayList<Product> unSortedItems = pdb.getProdList();
+    ArrayList<Product> items = new ArrayList();
     Cart crt = new Cart();
-    String requestedProduct, buttonClicked;
+    String requestedProduct, buttonClicked, sort;
+    
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -36,7 +38,6 @@ public class CatalogController extends HttpServlet {
         request.getSession().setAttribute("items", items); //must use this to set the attribute for el to be able to use it
         //request.getSession().setAttribute("itemList", items);
         if (requestedProduct == null) { //load catalog page
-
             RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
             dispatch.forward(request, response);
         } else { //find which item and load item page
@@ -51,7 +52,13 @@ public class CatalogController extends HttpServlet {
             throws ServletException, IOException {
 
         buttonClicked = request.getParameter("buttonClicked");
-
+        sort = request.getParameter("categorySelect");
+        request.setAttribute("curCategory", sort);
+        if (sort != null) {
+            items = pdb.getProducts(sort);
+        } else {
+            items = pdb.getProdList();
+        }
         if (buttonClicked != null) {
             if (buttonClicked.equals("itemInfoButton")) {
                 requestedProduct = request.getParameter("productCode");

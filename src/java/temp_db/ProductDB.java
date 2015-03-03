@@ -49,5 +49,15 @@ public class ProductDB {
         }
         return null;
     }
+    public ArrayList<Product> getProducts(String prodCat) {
+        ArrayList<Product> tmp = new ArrayList<Product>();
+        if (prodCat.equals("all")) { return productList; }
+        for(int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getCatalogCategory().equals(prodCat)) {
+                tmp.add(productList.get(i));
+            }
+        }
+        return tmp;
+    }
 
 }
