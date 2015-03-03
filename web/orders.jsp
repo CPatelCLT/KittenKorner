@@ -4,6 +4,7 @@
     Author     : Eric
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,9 +51,27 @@
                         </div>
                     </div>
                     <!-- Each item will have an orderItem div -->
-                   
-                        <div id="itemsInCart" class="orderTab">
-                            <div class="orderItem orderRow">
+                    <div id="itemsInCart" class="orderTab">
+                        <c:set var="totals" value="${0}"/>
+                    <c:forEach items="${cart}" var="cartItem">
+                        <c:set var="totals" value="${totals+cartItem.getTotal()}"/>
+                        <div class="orderItem orderRow">
+                                <div class="orderItemName orderCol">
+                                    ${cartItem.getProduct().getProductName()}
+                                </div>
+                                <div class="orderItemPrice orderCol">
+                                    ${cartItem.getProduct().getPrice()}
+                                </div>
+                                <div class="orderItemQty orderCol">
+                                    ${cartItem.getQuantity()}
+                                </div>
+                                <div class="orderItemSubtotal orderCol">
+                                    ${cartItem.getTotal()}
+                                </div>
+                            </div>
+                    </c:forEach>
+                        
+                            <!--<div class="orderItem orderRow">
                                 <div class="orderItemName orderCol">
                                     Kitten 1
                                 </div>
@@ -93,7 +112,7 @@
                                 <div class="orderItemSubtotal orderCol">
                                     $2.00
                                 </div>
-                            </div>
+                            </div>-->
                             
                         </div>
 
@@ -122,7 +141,7 @@
                             Total:
                         </div>
                         <div class="orderTotal">
-                            $2.14
+                            ${totals}
                         </div>
                         </div>    
                     </div>
