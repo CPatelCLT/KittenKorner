@@ -34,6 +34,7 @@ public class CatalogController extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         requestedProduct = request.getParameter("productCode"); //getting the value (from the url or post) that the user submits
+        
         //request.setAttribute("alert", "I got here");
         request.getSession().setAttribute("items", items); //must use this to set the attribute for el to be able to use it
         //request.getSession().setAttribute("itemList", items);
@@ -42,7 +43,7 @@ public class CatalogController extends HttpServlet {
             dispatch.forward(request, response);
         } else { //find which item and load item page
             //request.setAttribute("alert", "I got here");
-
+            
         }
     }
 

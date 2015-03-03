@@ -16,7 +16,7 @@
         <script type="text/javascript" src="main.js">
         </script>
     </head>
-    <body onload="setSizes(); updateCatalog();">
+    <body onload="setSizes();">
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
@@ -33,9 +33,7 @@
                     </form>
                 </div>
                 <div id="itemHolder">
-                    <!-- not working yet -->
                     <c:set var="count" value="0" scope="page" />
-                    
                     <c:forEach items="${items}" var="prod">
                         <c:if test="${count % 3 == 0}">
                             <div class="row">
@@ -53,15 +51,11 @@
                                 </p>
                             </div>
                             <div class="itemPreviewButtons">
-<!--                                <div class="moreInfoButton">
-                                    <a href="catalog?productCode=  el for product code here  ">Add To Cart</a>
-                                </div>-->
                                 <form method="GET" action="catalog">
                                     <button class="moreInfoButton" type="submit">More Info</button>
                                     <input type="hidden" name="buttonClicked" value="itemInfoButton">
                                     <input type="hidden" name="productCode" value="${prod.getProductCode()}">
                                 </form>
-<!--                                where dd to cart button was-->
                             </div>
                         </div>
                         <c:if test="${count % 3 == 2}">
@@ -69,7 +63,6 @@
                         </c:if>
                         <c:set var="count" value="${count + 1}" scope="page"/>
                     </c:forEach>
-                    <!-- end not working yet-->
                 </div>
             </div>
         <%@ include file="include/footer.jsp" %>

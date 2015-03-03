@@ -14,12 +14,15 @@ import javax.servlet.http.*;
  * @author Eric
  */
 public class OrderController extends HttpServlet {
-    
+    String buttonClicked;
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
+        buttonClicked = request.getParameter("buttonClicked");
+        if (buttonClicked.equals("addToCartButton")) {
+            
+        }
     }
     
 }

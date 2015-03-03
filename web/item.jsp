@@ -20,33 +20,38 @@
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
-            <div id="main">
-                <div id="itemWrapper">
-                    <div class="itemPictureDiv">
-                        <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">
-                    </div>
-                    <div class="itemInfoDiv">
-                        <h1>
-                            ${item.getProductName()}
-                        </h1>
-                        <p>
-                            ${item.getCatalogCategory()}
-                        </p>
-                        <p>
-                            Price: ${item.getPrice()} 
-                        </p>
-                    </div>
-                    <div class="itemButtonHolderDiv">
-                        <button class="addItemToCart" onclick="addToCart('${item.getProductCode()}')">Add To Cart</button>
-                        <button class="addItemToCart" onclick="parent.location = 'catalog'">Back</button>
-                    </div>
-                    <div class="itemDetailsDiv">
-                        <p>
-                            ${item.getDescription()}
-                        </p>
-                    </div>
-                </div>  
-            </div>    
+        <div id="main">
+            <div id="itemWrapper">
+                <div class="itemPictureDiv">
+                    <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">
+                </div>
+                <div class="itemInfoDiv">
+                    <h1>
+                        ${item.getProductName()}
+                    </h1>
+                    <p>
+                        ${item.getCatalogCategory()}
+                    </p>
+                    <p>
+                        Price: ${item.getPrice()} 
+                    </p>
+                </div>
+                <div class="itemButtonHolderDiv">
+                    <form method="POST" action="order">
+                        <button class="addItemToCart" tyoe="submit">Add To Cart</button>
+                        <input type="hidden" name="buttonClicked" value="addToCartButton">
+                        <input type="hidden" name="productCode" value="${item.getProductCode()}">
+                    </form>
+
+                    <button class="addItemToCart" onclick="parent.location = 'catalog'">Back</button>
+                </div>
+                <div class="itemDetailsDiv">
+                    <p>
+                        ${item.getDescription()}
+                    </p>
+                </div>
+            </div>  
+        </div>    
         <%@ include file="include/footer.jsp" %>
     </body>
 </html>
