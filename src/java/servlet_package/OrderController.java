@@ -18,11 +18,10 @@ import temp_db.*;
  */
 public class OrderController extends HttpServlet {
     String buttonClicked, pcode;
-    ProductDB PDB = new ProductDB();
-    ArrayList<Product> allItems = PDB.getProdList();
-    
-    
-    
+    ProductDB pdb = new ProductDB();
+    ArrayList<Product> allItems = pdb.getProdList();
+    Cart c;
+    Order o;
     
     @Override
     protected void doPost(HttpServletRequest request,
@@ -33,31 +32,48 @@ public class OrderController extends HttpServlet {
         
         if (buttonClicked.equals("addToCartButton")) {
             pcode=request.getParameter("productCode");
-            pcode="1";//for testing
+            //pcode="1";//for testing
             if(pcode!=null){
                 if(request.getAttribute("cart")!=null){
                     //request.setAttribute("alert", pcode+"if ran");
-                    Cart c = (Cart) request.getSession().getAttribute("cart");
-                    c.addItem(PDB.getProduct(pcode),1);
+                    c = (Cart) request.getSession().getAttribute("cart");
+                    c.addItem(pdb.getProduct(pcode),1);
                     request.getSession().setAttribute("cart", c);
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
+                    dispatch.forward(request, response);
                 }
                 else{
                     //request.setAttribute("alert", pcode+"else ran");
-                    Product p = PDB.getProduct(pcode);
+                    Product p = pdb.getProduct(pcode);
                     if(p!=null){
-                        Cart cart = new Cart();
-                        cart.addItem(p,1); 
-                        request.getSession().setAttribute("cart", cart);
+                        c = new Cart();
+                        c.addItem(p,1); 
+                        request.getSession().setAttribute("cart", c);
                     }
                     else{
                         //request.setAttribute("alert", "p is null");
                     }
                 }
-                
             }
-            RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");//change to cart
+            RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");//change to cart
             dispatch.forward(request, response);
-        }
+        } else if (buttonClicked.equals("updateCart")) {
+                c = (Cart) request.getSession().getAttribute("cart");
+                int newQty = Integer.parseInt(request.getParameter("quantity"));
+                int prodCode = Integer.parseInt(request.getParameter("prodCode"));
+                if (newQty < 0) {
+                    newQty = 1;
+                }
+                for(int i=0; i<c.getItems().size(); i++) {
+                    OrderItem currItem = c.getItems().get(i);
+                    if (currItem.getProduct().getProductCode() == prodCode) {
+                        currItem.setQuantity(newQty);
+                    }
+                }
+                request.getSession().setAttribute("cart", c);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
+                dispatch.forward(request, response);
+            }
     }
     
 }

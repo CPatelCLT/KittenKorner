@@ -425,12 +425,15 @@ li{
 .moreInfoButton:hover{
     background-color: lightgray;
 }
+
+/* Why is this an element tag and not a class/id
+   Removed because it broke the cart page UI
 form{
     height: 100%;
     width: 50%;
     margin: 0;
     float:left;
-}
+}*/
 .addToCart{
     border-radius: 10%;
     font-size: small;

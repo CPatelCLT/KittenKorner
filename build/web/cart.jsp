@@ -4,6 +4,7 @@
     Author     : Eric
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,18 +16,20 @@
         <script type="text/javascript" src="main.js">
         </script>
     </head>
-    <body onload="setSizes(); getCart();">
+    <body onload="setSizes();">
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
-            <div id="main">
-                <div id="cartWrapper">
+        <div id="main">
+            <div id="cartWrapper">
+                
                     <div id="yourCart">
                         <h1>
                             Welcome to your shopping cart!
                         </h1>
                     </div>
+                <form class="cartForm" method="POST" action="order">
                     <div id="cartItems">
                         <div id="cartItemsCategories">
                             <div id="itemCategoryLabel">
@@ -43,14 +46,35 @@
                             </div>
                         </div>
                         <div id="itemsInCart">
+                            <c:forEach items="${cart.getItems()}" var="cItem">
+                                <div id="newItemInCart">
+                                    <div class="itemCategory">
+                                        ${cItem.getProduct().getProductName()}
+                                    </div>
+                                    <div class="priceCategory">
+                                        ${cItem.getProduct().getPrice()}
+                                    </div>
+                                    <div class="quantityCategory">
+                                        <input value="${cItem.getQuantity()}" class="quantityTextBox" type="text" name="quantity">
+                                        <input type="hidden" name="prodCode" value="${cItem.getProduct().getProductCode()}">
+                                    </div>
+                                    <div class="totalCategory">
+                                        ${cItem.getTotal()}
+                                    </div>
+                                    <div class="clearBoth">
+
+                                    </div>
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                     <div id="processingButtons">
-                        <button id="checkOut" onclick="checkOut()">Check Out</button>
-                        <button id="updateCart" onclick="updateCart()">Update Cart</button>
+                        <button id="checkOut"  type="submit" name="buttonClicked" value="checkout">Check Out</button>
+                        <button id="updateCart" type="submit" name="buttonClicked" value="updateCart">Update Cart</button>
                     </div>
-                </div>
+                </form>
             </div>
+        </div>
         <%@ include file="include/footer.jsp" %>
 
         <div id="hiddenItems">
@@ -172,7 +196,7 @@
                     <button class="moreInfoButton" onclick="parent.location = 'item.jsp'">More Information</button>
                     <button class="addToCart" onclick="addToCart('product4')">Add To Cart</button>
                 </div>
-                    <div class="priceHolder">
+                <div class="priceHolder">
                     400.00
                 </div>
             </div>

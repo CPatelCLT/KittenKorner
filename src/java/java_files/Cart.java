@@ -14,10 +14,11 @@ import java.util.ArrayList;
  */
 public class Cart implements Serializable {
     
-    private ArrayList<OrderItem> itemsInCart = new ArrayList();
+    private ArrayList<OrderItem> itemsInCart;
     
     public Cart(){
-        itemsInCart=null;
+        //itemsInCart=null;
+        itemsInCart = new ArrayList<OrderItem>();
     }
     
     public void setItems(ArrayList<OrderItem> i){
