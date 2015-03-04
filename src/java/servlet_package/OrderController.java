@@ -34,7 +34,7 @@ public class OrderController extends HttpServlet {
             pcode=request.getParameter("productCode");
             //pcode="1";//for testing
             if(pcode!=null){
-                if(request.getAttribute("cart")!=null){
+                if(request.getSession().getAttribute("cart")!=null){
                     //request.setAttribute("alert", pcode+"if ran");
                     c = (Cart) request.getSession().getAttribute("cart");
                     c.addItem(pdb.getProduct(pcode),1);
@@ -76,4 +76,28 @@ public class OrderController extends HttpServlet {
             }
     }
     
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+        if(request.getParameter("id").equals("o")){ //order page
+            
+            if(request.getSession().getAttribute("cart")!=null){
+                    //request.setAttribute("alert", pcode+"if ran");
+                    Cart ca = (Cart) request.getSession().getAttribute("cart");
+                    request.getSession().setAttribute("orderItems", ca);
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                    dispatch.forward(request, response);
+            }
+            
+            else{ //nothing in cart
+                Cart ca = new Cart(); 
+                request.getSession().setAttribute("orderItems", ca);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                dispatch.forward(request, response);
+            }
+        }
+    }
+    
 }
+

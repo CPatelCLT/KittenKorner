@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div id="itemsInCart">
-                            <c:forEach items="${cart.getItems()}" var="cItem">
+                            <c:forEach items="${sessionScope.cart.getItems()}" var="cItem">
                                 <div id="newItemInCart">
                                     <div class="itemCategory">
                                         ${cItem.getProduct().getProductName()}

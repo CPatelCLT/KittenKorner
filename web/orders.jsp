@@ -23,7 +23,7 @@
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
             <div id="yourCart">
-                
+
             </div>
             <div id="cartWrapper">
                 <h1>
@@ -51,98 +51,117 @@
                         </div>
                     </div>
                     <!-- Each item will have an orderItem div -->
-                    <div id="itemsInCart" class="orderTab">
-                        <c:set var="totals" value="${0}"/>
-                    <c:forEach items="${cart}" var="cartItem">
-                        <c:set var="totals" value="${totals+cartItem.getTotal()}"/>
-                        <div class="orderItem orderRow">
-                                <div class="orderItemName orderCol">
-                                    ${cartItem.getProduct().getProductName()}
+
+                    <c:set var="totals" value="${0}"/>
+                    <c:choose>
+                        <c:when test="${sessionScope.orderItems!=null}">
+                            <c:forEach items="${sessionScope.orderItems}" var="orderItem"> 
+                                <c:set var="totals" value="${totals+orderItem.getTotal()}"/>
+                                <div class="orderItem orderRow">
+                                    <div class="orderItemName orderCol">
+                                        ${orderItem.getProduct().getProductName()}
+                                    </div>
+                                    <div class="orderItemPrice orderCol">
+                                        ${orderItem.getProduct().getPrice()}
+                                    </div>
+                                    <div class="orderItemQty orderCol">
+                                        ${orderItem.getQuantity()}
+                                    </div>
+                                    <div class="orderItemSubtotal orderCol">
+                                        ${orderItem.getTotal()}
+                                    </div>
                                 </div>
-                                <div class="orderItemPrice orderCol">
-                                    ${cartItem.getProduct().getPrice()}
-                                </div>
-                                <div class="orderItemQty orderCol">
-                                    ${cartItem.getQuantity()}
-                                </div>
-                                <div class="orderItemSubtotal orderCol">
-                                    ${cartItem.getTotal()}
-                                </div>
-                            </div>
-                    </c:forEach>
-                        
-                            <!--<div class="orderItem orderRow">
-                                <div class="orderItemName orderCol">
-                                    Kitten 1
-                                </div>
-                                <div class="orderItemPrice orderCol">
-                                    $1.00
-                                </div>
-                                <div class="orderItemQty orderCol">
-                                    2
-                                </div>
-                                <div class="orderItemSubtotal orderCol">
-                                    $2.00
-                                </div>
-                            </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
                             <div class="orderItem orderRow">
                                 <div class="orderItemName orderCol">
-                                    Kitten 1
+                                    No Items in Cart.
                                 </div>
                                 <div class="orderItemPrice orderCol">
-                                    $1.00
+                                    $0.00
                                 </div>
                                 <div class="orderItemQty orderCol">
-                                    2
+                                    0
                                 </div>
                                 <div class="orderItemSubtotal orderCol">
-                                    $2.00
+                                    $0.00
                                 </div>
                             </div>
-                            <div class="orderItem orderRow">
-                                <div class="orderItemName orderCol">
-                                    Kitten 1
-                                </div>
-                                <div class="orderItemPrice orderCol">
-                                    $1.00
-                                </div>
-                                <div class="orderItemQty orderCol">
-                                    2
-                                </div>
-                                <div class="orderItemSubtotal orderCol">
-                                    $2.00
-                                </div>
-                            </div>-->
-                            
+                        </c:otherwise>
+                    </c:choose>
+                    <!--<div class="orderItem orderRow">
+                        <div class="orderItemName orderCol">
+                            Kitten 1
                         </div>
+                        <div class="orderItemPrice orderCol">
+                            $1.00
+                        </div>
+                        <div class="orderItemQty orderCol">
+                            2
+                        </div>
+                        <div class="orderItemSubtotal orderCol">
+                            $2.00
+                        </div>
+                    </div>
+                    <div class="orderItem orderRow">
+                        <div class="orderItemName orderCol">
+                            Kitten 1
+                        </div>
+                        <div class="orderItemPrice orderCol">
+                            $1.00
+                        </div>
+                        <div class="orderItemQty orderCol">
+                            2
+                        </div>
+                        <div class="orderItemSubtotal orderCol">
+                            $2.00
+                        </div>
+                    </div>
+                    <div class="orderItem orderRow">
+                        <div class="orderItemName orderCol">
+                            Kitten 1
+                        </div>
+                        <div class="orderItemPrice orderCol">
+                            $1.00
+                        </div>
+                        <div class="orderItemQty orderCol">
+                            2
+                        </div>
+                        <div class="orderItemSubtotal orderCol">
+                            $2.00
+                        </div>
+                    </div>-->
+
+
 
                 </div>
 
                 <div id="processingButtons">
                     <div class="finalCosts">
                         <div class="subtotal">
-                        <div class="subtotalLabel">
-                            Subtotal:
-                        </div>
-                        <div class="orderSubtotal">
-                            $2.00
-                        </div>
+                            <div class="subtotalLabel">
+                                Subtotal:
+                            </div>
+                            <div class="orderSubtotal">
+                                $2.00
+                            </div>
                         </div>
                         <div class="tax">
-                        <div class="taxLabel">
-                            Tax:
-                        </div>
-                        <div class="orderTax">
-                            $0.14
-                        </div>
+                            <div class="taxLabel">
+                                Tax:
+                            </div>
+                            <div class="orderTax">
+                                $0.14
+                            </div>
                         </div>
                         <div class="total">
-                        <div class="totalLabel">
-                            Total:
-                        </div>
-                        <div class="orderTotal">
-                            ${totals}
-                        </div>
+                            <div class="totalLabel">
+                                Total:
+                            </div>
+                            <div class="orderTotal">
+                                {# ${totals}#}
+                            </div>
                         </div>    
                     </div>
                     <button id="checkOut" onclick="checkOut()">Check Out</button>

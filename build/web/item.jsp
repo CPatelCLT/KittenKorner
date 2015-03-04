@@ -38,7 +38,7 @@
                 </div>
                 <div class="itemButtonHolderDiv">
                     <form method="POST" action="order">
-                        <button class="addItemToCart" tyoe="submit">Add To Cart</button>
+                        <button class="addItemToCart" type="submit">Add To Cart</button>
                         <input type="hidden" name="buttonClicked" value="addToCartButton">
                         <input type="hidden" name="productCode" value="${item.getProductCode()}">
                     </form>
