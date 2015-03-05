@@ -187,7 +187,7 @@ function getCart() {
 }
 
 function checkOut() {
-    window.location.href = "catalog.jsp";
+    window.location.href = "catalog";
 }
 
 function updateCart() {

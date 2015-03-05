@@ -53,7 +53,7 @@
                         </div>
                         <div id="itemsInCart">
                             <c:set var="total" value="${0.00}"/>
-                            <c:forEach items="${sessionScope.cart.getItems()}" var="cItem">
+                            <c:forEach items="${sessionScope.theShoppingCart.getItems()}" var="cItem">
                                 <c:set var="total" value="${total+cItem.getTotal()}"/>
                                 <div id="newItemInCart">
                                     <div class="itemCategory">

@@ -35,12 +35,12 @@
                 <h1>
                     Invoice
                 </h1>
-                <h3>Date: ${orderItems.getDate()}</h3>
+                <h3>Date: ${currentOrder.getDate()}</h3>
                 <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
-                <p>${orderItems.getUser().getFirstName()} ${orderItems.getUser().getLastName()}<br/>
-                    ${orderItems.getUser().getAddress1()}<br/>
-                    ${orderItems.getUser().getAddress2()}<br/>
-                    ${orderItems.getUser().getCity()}, ${orderItems.getUser().getState()} ${orderItems.getUser().getPostCode()} ${orderItems.getUser().getCountry()}</p>
+                <p>${currentOrder.getUser().getFirstName()} ${currentOrder.getUser().getLastName()}<br/>
+                    ${currentOrder.getUser().getAddress1()}<br/>
+                    ${currentOrder.getUser().getAddress2()}<br/>
+                    ${currentOrder.getUser().getCity()}, ${currentOrder.getUser().getState()} ${currentOrder.getUser().getPostCode()} ${currentOrder.getUser().getCountry()}</p>
                 <div id="cartItems">
                     <div id="cartItemsCategories">
                         <div id="itemCategoryLabel">
@@ -59,8 +59,8 @@
                     <!-- Each item will have an orderItem div -->
                     <c:set var="total" value="${0.00}"/>
                     <c:choose>
-                        <c:when test="${sessionScope.orderItems!=null}">
-                            <c:forEach items="${sessionScope.orderItems.getItems()}" var="orderItem"> 
+                        <c:when test="${sessionScope.currentOrder!=null}">
+                            <c:forEach items="${sessionScope.currentOrder.getItems()}" var="orderItem"> 
                                 <c:set var="total" value="${total+orderItem.getTotal()}"/>
                                 <div class="orderItem orderRow">
                                     <div class="orderItemName orderCol">
@@ -157,7 +157,7 @@
                                 Tax:
                             </div>
                             <div class="orderTax">
-                                <c:set var="orderTax" value="${orderItems.getTaxRate()*total}"/>
+                                <c:set var="orderTax" value="${currentOrder.getTaxRate()*total}"/>
                                 <fmt:formatNumber value="${orderTax}" type="currency"/>
                             </div>
                         </div>

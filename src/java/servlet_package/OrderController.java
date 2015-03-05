@@ -36,11 +36,11 @@ public class OrderController extends HttpServlet {
             pcode = request.getParameter("productCode");
             //pcode="1";//for testing
             if (pcode != null) {
-                if (request.getSession().getAttribute("cart") != null) {
+                if (request.getSession().getAttribute("theShoppingCart") != null) {
                     //request.setAttribute("alert", pcode+"if ran");
-                    c = (Cart) request.getSession().getAttribute("cart");
+                    c = (Cart) request.getSession().getAttribute("theShoppingCart");
                     c.addItem(pdb.getProduct(pcode), 1);
-                    request.getSession().setAttribute("cart", c);
+                    request.getSession().setAttribute("theShoppingCart", c);
                     RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
                     dispatch.forward(request, response);
                 } else {
@@ -49,7 +49,7 @@ public class OrderController extends HttpServlet {
                     if (p != null) {
                         c = new Cart();
                         c.addItem(p, 1);
-                        request.getSession().setAttribute("cart", c);
+                        request.getSession().setAttribute("theShoppingCart", c);
                     } else {
                         //request.setAttribute("alert", "p is null");
                     }
@@ -58,8 +58,8 @@ public class OrderController extends HttpServlet {
             RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");//change to cart
             dispatch.forward(request, response);
         } else if (buttonClicked!=null&&buttonClicked.equals("updateCart")) {
-            c = (Cart) request.getSession().getAttribute("cart");
-            String[] newQty = request.getParameterValues("quantity");
+            c = (Cart) request.getSession().getAttribute("theShoppingCart");
+            String[] newQty = request.getParameterValues("quantity"); 
             String[] prodCode = request.getParameterValues("prodCode");
             for (int i = 0; i<newQty.length; i++) {
                 if (Integer.parseInt(newQty[i]) < 0) {
@@ -84,19 +84,19 @@ public class OrderController extends HttpServlet {
                     currItem.setQuantity(newQty);
                 }
             }*/
-            request.getSession().setAttribute("cart", c);
+            request.getSession().setAttribute("theShoppingCart", c);
             RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
             dispatch.forward(request, response);
         } else {
-            if (request.getSession().getAttribute("cart") != null) {
+            if (request.getSession().getAttribute("theShoppingCart") != null) {
                 //request.setAttribute("alert", pcode+"if ran");
-                c = (Cart) request.getSession().getAttribute("cart");
-                request.getSession().setAttribute("orderItems", convertToOrder(c));
+                c = (Cart) request.getSession().getAttribute("theShoppingCart");
+                request.getSession().setAttribute("currentOrder", convertToOrder(c));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             } else { //nothing in cart
                 c = new Cart();
-                request.getSession().setAttribute("orderItems", convertToOrder(c));
+                request.getSession().setAttribute("currentOrder", convertToOrder(c));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             }
