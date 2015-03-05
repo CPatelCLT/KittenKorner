@@ -10,6 +10,6 @@
     <ul id="userNavList">
         <li><a href="signin.jsp">Sign In</a></li>
         <li><a href="cart.jsp">Cart</a></li>
-        <li><a href="order?id=o">My Orders</a></li>        
+        <li><a href="order">My Orders</a></li>        
     </ul>
 </div>

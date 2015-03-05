@@ -88,7 +88,7 @@ public class Order implements Serializable {
     }
     
     public double getTotalCost(){
-        double subTotal = 0;
+        double subTotal = 0.00;
         for(OrderItem item : items){
             subTotal += item.getTotal();
         }

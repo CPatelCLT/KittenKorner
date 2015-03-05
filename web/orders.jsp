@@ -25,7 +25,7 @@
             <div class="breadCrumb">
                     <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="orders.jsp">Orders</a>
+                    <a class="breadCrumbLink" href="orders">Orders</a>
             </div>
             <div id="yourCart">
 
@@ -61,7 +61,7 @@
                     <c:choose>
                         <c:when test="${sessionScope.orderItems!=null}">
                             <c:forEach items="${sessionScope.orderItems.getItems()}" var="orderItem"> 
-                                <c:set var="totals" value="${totals+orderItem.getTotalCost()}"/>
+                                
                                 <div class="orderItem orderRow">
                                     <div class="orderItemName orderCol">
                                         ${orderItem.getProduct().getProductName()}
@@ -165,7 +165,7 @@
                                 Total:
                             </div>
                             <div class="orderTotal">
-                                $${totals}
+                                $${orderItems.getTotalCost()}
                             </div>
                         </div>    
                     </div>
