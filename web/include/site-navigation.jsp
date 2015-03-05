@@ -8,9 +8,9 @@
 <!DOCTYPE html>
 <div id="genNav">
     <ul id="genNavList">
-        <li id="${pageContext.request.servletPath == index.html ? 'currentPage' : 'none'}"><a href="index.jsp">Home</a></li>
-        <li><a href="catalog">Catalog</a></li>
-        <li><a href="about.jsp">About</a></li>
-        <li><a href="contact.jsp">Contact Us</a></li>
+        <li id="${pageContext.request.servletPath == '/index.jsp' ? 'currentPage' : 'none'}"><a href="index.jsp">Home</a></li>
+        <li id="${pageContext.request.servletPath == '/catalog.jsp' ? 'currentPage' : 'none'}"><a href="catalog">Catalog</a></li>
+        <li id="${pageContext.request.servletPath == '/about.jsp' ? 'currentPage' : 'none'}"><a href="about.jsp">About</a></li>
+        <li id="${pageContext.request.servletPath == '/contact.jsp' ? 'currentPage' : 'none'}"><a href="contact.jsp">Contact Us</a></li>
     </ul>
 </div>
