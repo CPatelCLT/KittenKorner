@@ -52,11 +52,11 @@
                     </div>
                     <!-- Each item will have an orderItem div -->
 
-                    <c:set var="totals" value="${0}"/>
+                    <c:set var="totals" value="${0.00}"/>
                     <c:choose>
                         <c:when test="${sessionScope.orderItems!=null}">
-                            <c:forEach items="${sessionScope.orderItems}" var="orderItem"> 
-                                <c:set var="totals" value="${totals+orderItem.getTotal()}"/>
+                            <c:forEach items="${sessionScope.orderItems.getItems()}" var="orderItem"> 
+                                <c:set var="totals" value="${totals+orderItem.getTotalCost()}"/>
                                 <div class="orderItem orderRow">
                                     <div class="orderItemName orderCol">
                                         ${orderItem.getProduct().getProductName()}
@@ -160,7 +160,7 @@
                                 Total:
                             </div>
                             <div class="orderTotal">
-                                {# ${totals}#}
+                                $${totals}
                             </div>
                         </div>    
                     </div>
