@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -51,26 +52,38 @@
                             </div>
                         </div>
                         <div id="itemsInCart">
+                            <c:set var="total" value="${0.00}"/>
                             <c:forEach items="${sessionScope.cart.getItems()}" var="cItem">
+                                <c:set var="total" value="${total+cItem.getTotal()}"/>
                                 <div id="newItemInCart">
                                     <div class="itemCategory">
                                         ${cItem.getProduct().getProductName()}
                                     </div>
                                     <div class="priceCategory">
-                                        ${cItem.getProduct().getPrice()}
+                                        <fmt:formatNumber value="${cItem.getProduct().getPrice()}" type="currency"/>
+                                        
                                     </div>
                                     <div class="quantityCategory">
                                         <input value="${cItem.getQuantity()}" class="quantityTextBox" type="text" name="quantity">
                                         <input type="hidden" name="prodCode" value="${cItem.getProduct().getProductCode()}">
                                     </div>
                                     <div class="totalCategory">
-                                        ${cItem.getTotal()}
+                                        <fmt:formatNumber value="${cItem.getTotal()}" type="currency"/>
+                                        
                                     </div>
                                     <div class="clearBoth">
 
                                     </div>
                                 </div>
                             </c:forEach>
+                        </div>
+                    </div>
+                    <div class="subtotal">
+                        <div class="subtotalLabel">
+                            Subtotal:
+                        </div>
+                        <div class="cartSubtotalValue">
+                            <fmt:formatNumber value="${total}" type="currency"/>
                         </div>
                     </div>
                     <div id="processingButtons">
@@ -81,7 +94,7 @@
             </div>
         </div>
         <%@ include file="include/footer.jsp" %>
-
+<!--
         <div id="hiddenItems">
 
             <div id="emptyCart">
@@ -253,5 +266,6 @@
             </div>
         </div>
     </div>
+-->
 </body>
 </html>
