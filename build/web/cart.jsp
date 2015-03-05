@@ -64,7 +64,7 @@
                                         
                                     </div>
                                     <div class="quantityCategory">
-                                        <input value="${cItem.getQuantity()}" class="quantityTextBox" type="text" name="quantity">
+                                        <input value="${cItem.getQuantity()}" class="quantityTextBox" type="text" name="${cItem.getProduct().getProductCode()}">
                                         <input type="hidden" name="prodCode" value="${cItem.getProduct().getProductCode()}">
                                     </div>
                                     <div class="totalCategory">
