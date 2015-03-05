@@ -35,12 +35,12 @@
                 <h1>
                     Invoice
                 </h1>
-                <p>Date: ${order.orderDate}March 2nd</p>
-                <p style="text-decoration: underline">Ship To / Bill To:</p>
-                <h4>${user.name}Chirag Patel<br/>
-                    ${user.address1}4017 Sawmill Trace Dr<br/>
-                    ${user.address2}<br/>
-                    ${user.city}Charlotte, ${user.state}NC ${user.postCode}28213 ${user.country}USA</h4>
+                <h3>Date: ${orderItems.getDate()}</h3>
+                <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
+                <p>${orderItems.getUser().getFirstName()} ${orderItems.getUser().getLastName()}<br/>
+                    ${orderItems.getUser().getAddress1()}<br/>
+                    ${orderItems.getUser().getAddress2()}<br/>
+                    ${orderItems.getUser().getCity()}, ${orderItems.getUser().getState()} ${orderItems.getUser().getPostCode()} ${orderItems.getUser().getCountry()}</p>
                 <div id="cartItems">
                     <div id="cartItemsCategories">
                         <div id="itemCategoryLabel">
