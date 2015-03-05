@@ -5,6 +5,9 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +20,7 @@
         </script>
     </head>
     <body>
+        <fmt:setLocale value="en_US"/>
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
@@ -53,24 +57,23 @@
                         </div>
                     </div>
                     <!-- Each item will have an orderItem div -->
-
-                    <c:set var="totals" value="${0.00}"/>
+                    <c:set var="total" value="${0.00}"/>
                     <c:choose>
                         <c:when test="${sessionScope.orderItems!=null}">
                             <c:forEach items="${sessionScope.orderItems.getItems()}" var="orderItem"> 
-                                
+                                <c:set var="total" value="${total+orderItem.getTotal()}"/>
                                 <div class="orderItem orderRow">
                                     <div class="orderItemName orderCol">
                                         ${orderItem.getProduct().getProductName()}
                                     </div>
                                     <div class="orderItemPrice orderCol">
-                                        ${orderItem.getProduct().getPrice()}
+                                        <fmt:formatNumber value="${orderItem.getProduct().getPrice()}" type="currency"/>
                                     </div>
                                     <div class="orderItemQuantity orderCol">
                                         ${orderItem.getQuantity()}
                                     </div>
                                     <div class="orderItemSubtotal orderCol">
-                                        ${orderItem.getTotal()}
+                                        <fmt:formatNumber value="${orderItem.getTotal()}" type="currency"/>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -146,7 +149,7 @@
                                 Subtotal:
                             </div>
                             <div class="orderSubtotal">
-                                $2.00
+                                <fmt:formatNumber value="${total}" type="currency"/>
                             </div>
                         </div>
                         <div class="tax">
@@ -154,7 +157,8 @@
                                 Tax:
                             </div>
                             <div class="orderTax">
-                                $0.14
+                                <c:set var="orderTax" value="${orderItems.getTaxRate()*total}"/>
+                                <fmt:formatNumber value="${orderTax}" type="currency"/>
                             </div>
                         </div>
                         <div class="total">
@@ -162,7 +166,8 @@
                                 Total:
                             </div>
                             <div class="orderTotal">
-                                $${orderItems.getTotalCost()}
+                                <c:set var="totalCostOfOrder" value="${orderTax+total}"/>
+                                <fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>
                             </div>
                         </div>    
                     </div>
