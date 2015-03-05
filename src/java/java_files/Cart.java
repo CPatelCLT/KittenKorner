@@ -13,39 +13,54 @@ import java.util.ArrayList;
  * @author Eric
  */
 public class Cart implements Serializable {
-    
+
     private ArrayList<OrderItem> itemsInCart;
-    
-    public Cart(){
+
+    public Cart() {
         //itemsInCart=null;
         itemsInCart = new ArrayList<OrderItem>();
     }
-    
-    public void setItems(ArrayList<OrderItem> i){
-        itemsInCart=i;
+
+    public void setItems(ArrayList<OrderItem> i) {
+        itemsInCart = i;
     }
-    
-    public ArrayList<OrderItem> getItems(){
+
+    public ArrayList<OrderItem> getItems() {
         return itemsInCart;
     }
-    
-    public void addItem(Product p, int q){
-        //this.itemsInCart.add(new OrderItem(p,q)); //commented to break down to find source of nullpointer
-        OrderItem o = new OrderItem(p,q);
-        //OrderItem o = new OrderItem(); //Only for testing
-        this.itemsInCart.add(o); //null pointer exception here when adding
+
+    public void addItem(Product p, int q) {
+        OrderItem o = new OrderItem(p, q);
+        boolean check=true;
+        for (OrderItem item : itemsInCart) {
+            if (item.getProduct().equals(p)) {
+                item.setQuantity(item.getQuantity() + 1);
+                check=false;
+            }
+        }
+        if(check){
+            this.itemsInCart.add(o);
+        }
+
     }
-    
-    public void removeItem(Product p){
-        for(OrderItem item : itemsInCart){
-            if(item.getProduct().equals(p)){
+
+    public boolean checkIfInCart(Product oi) {
+        for (OrderItem item : itemsInCart) {
+
+        }
+        return false;
+    }
+
+    public void removeItem(Product p) {
+        for (OrderItem item : itemsInCart) {
+            if (item.getProduct().equals(p)) {
                 itemsInCart.remove(item);
             }
         }
     }
-    
-    public void emptyCart(){
+
+    public void emptyCart() {
         this.itemsInCart.clear();
     }
-    
+
 }
