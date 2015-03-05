@@ -6,6 +6,7 @@
 package servlet_package;
 
 import java.io.*;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.*;
@@ -112,8 +113,9 @@ public class OrderController extends HttpServlet {
         Order ord = new Order();
         UserDB udb = new UserDB();
         Date date = new Date();
+        DateFormat df = DateFormat.getDateInstance();
         ord.setUser(udb.getUser("john.doe@gmail.com"));
-        ord.setDate(date.toString());
+        ord.setDate(df.format(date));
         ord.setOrderNumber(0);
         ord.setPaid(false);
         ord.setTaxRate(0.075);
