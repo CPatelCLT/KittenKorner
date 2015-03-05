@@ -59,6 +59,23 @@ public class OrderController extends HttpServlet {
             dispatch.forward(request, response);
         } else if (buttonClicked!=null&&buttonClicked.equals("updateCart")) {
             c = (Cart) request.getSession().getAttribute("theShoppingCart");
+            
+            for (int i = 0; i < c.getItems().size(); i++) {
+                OrderItem currItem = c.getItems().get(i);
+                int newQty = Integer.parseInt(request.getParameter(currItem.getProduct().getProductCode()+""));
+                if (newQty < 0) {
+                    //Invalid quantity gets reverted to previous value
+                    newQty = currItem.getQuantity();
+                } else if (newQty == 0) {
+                    //Zero value deletes the item
+                    c.removeItem(currItem.getProduct());
+                } else {
+                    //Quantity gets updated
+                    currItem.setQuantity(newQty);
+                }
+            }
+            
+            /* Obsolete again, doesnt meet requirements
             String[] newQty = request.getParameterValues("quantity"); 
             String[] prodCode = request.getParameterValues("prodCode");
             for (int i = 0; i<newQty.length; i++) {
@@ -71,9 +88,10 @@ public class OrderController extends HttpServlet {
                     currItem.setQuantity(Integer.parseInt(newQty[i]));
                 }
             }
-            }
+            } */
             
-            /*int newQty = Integer.parseInt(request.getParameter("quantity"));
+            /* Obsolete, doesnt work on all items in cart
+            int newQty = Integer.parseInt(request.getParameter("quantity"));
             int prodCode = Integer.parseInt(request.getParameter("prodCode"));
             if (newQty < 0) {
                 newQty = 1;
