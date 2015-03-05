@@ -714,14 +714,15 @@ form{
 
 div#itemsInCart {}
 .orderRow{
-  display:table-row;
+  position:relative;
+  /* display:table-row; */
   width: 100%;
   clear:both;
 }
 .orderCol {
   float:left;/*fix for  buggy browsers*/
   display:table-column;         
-  width: 17%;         
+  /*width: 17%;*/         
   background-color:#ccc;  
 }
 h4{
