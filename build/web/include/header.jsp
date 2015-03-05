@@ -16,8 +16,8 @@
         <div id="loggedIn">
             User's Name
         </div>
-        <div id="breadCrumb">
+<!--        <div id="breadCrumb">
             Home
-        </div>
+        </div>-->
     </div>
 </div>

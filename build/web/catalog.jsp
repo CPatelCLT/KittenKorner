@@ -22,6 +22,11 @@
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
             <div id="main">
+                <div class="breadCrumb">
+                <a class="breadCrumbLink" href="index.jsp">Home</a>
+                >
+                <a class="breadCrumbLink" href="catalog">Catalog</a>
+            </div>
                 <div id="sorter">
                     <form method="GET" action="catalog">
                     Category: <select id="categorySelector" selected="${curCategory}" name="categorySelect" size="1">

@@ -276,7 +276,7 @@ li{
     float:left;
     //left:0;
     padding-left: 5px;
-    overflow: auto;
+    /* overflow: auto; */
     height:auto;
     /*min-width: ;
     /*padding-bottom: 25px;
@@ -783,6 +783,26 @@ h1{
     width:83%;
     text-align: right;
 }
+.breadCrumb{
+    position: absolute;
+    right:0;
+    padding-right:5px;
+    top: -4.5em;
+    min-height: 5%;
+    width: 40%;
+    margin: 0;
+    z-index: 11;
+    text-align: right;
+}
+.breadCrumbLink{
+    color:white;
+    z-index: 11;
+    
+    /*float:left;*/
+}
+
+
+
 /*
 Mobile Devices
 */

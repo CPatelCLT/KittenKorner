@@ -21,6 +21,11 @@
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
             <div id="main">
+                <div class="breadCrumb">
+                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    >
+                    <a class="breadCrumbLink" href="about.jsp">About Us</a>
+                </div>
                 <p>The Kitten Korner is your number one online location to buy a live ferocious animal that you have never met before!</p>
             </div>
         <%@ include file="include/footer.jsp" %>

@@ -21,6 +21,13 @@
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
+            <div class="breadCrumb">
+                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    >
+                    <a class="breadCrumbLink" href="catalog.jsp">Catalog</a>
+                    >
+                    <a class="breadCrumbLink" href="item.jsp">${item.getProductName()}</a>
+                </div>
             <div id="itemWrapper">
                 <div class="itemPictureDiv">
                     <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">

@@ -21,6 +21,11 @@
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
             <div id="main">
+                <div class="breadCrumb">
+                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    >
+                    <a class="breadCrumbLink" href="contact.jsp">Contact Us</a>
+                </div>
                 <p>If you have any issues or concerns you can address them to Wayne Wilson at "wcwilso1@uncc.edu"!</p>
             </div>
         <%@ include file="include/footer.jsp" %>

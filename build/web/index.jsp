@@ -19,8 +19,12 @@
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
+        
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
+            <div class="breadCrumb">
+                <a class="breadCrumbLink" href="index.jsp">Home</a>
+            </div>
             <div id="welcomeMessage">
                 <p>
                     Welcome to the Kitten Korner!
