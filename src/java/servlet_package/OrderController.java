@@ -7,6 +7,7 @@ package servlet_package;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java_files.*;
@@ -57,7 +58,21 @@ public class OrderController extends HttpServlet {
             dispatch.forward(request, response);
         } else if (buttonClicked!=null&&buttonClicked.equals("updateCart")) {
             c = (Cart) request.getSession().getAttribute("cart");
-            int newQty = Integer.parseInt(request.getParameter("quantity"));
+            String[] newQty = request.getParameterValues("quantity");
+            String[] prodCode = request.getParameterValues("prodCode");
+            for (int i = 0; i<newQty.length; i++) {
+                if (Integer.parseInt(newQty[i]) < 0) {
+                newQty[i] = 1+"";
+            }
+            for (int j = 0; j < c.getItems().size(); j++) {
+                OrderItem currItem = c.getItems().get(i);
+                if (currItem.getProduct().getProductCode() == Integer.parseInt(prodCode[i])) {
+                    currItem.setQuantity(Integer.parseInt(newQty[i]));
+                }
+            }
+            }
+            
+            /*int newQty = Integer.parseInt(request.getParameter("quantity"));
             int prodCode = Integer.parseInt(request.getParameter("prodCode"));
             if (newQty < 0) {
                 newQty = 1;
@@ -67,7 +82,7 @@ public class OrderController extends HttpServlet {
                 if (currItem.getProduct().getProductCode() == prodCode) {
                     currItem.setQuantity(newQty);
                 }
-            }
+            }*/
             request.getSession().setAttribute("cart", c);
             RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
             dispatch.forward(request, response);
@@ -95,6 +110,13 @@ public class OrderController extends HttpServlet {
     }
     public Order convertToOrder(Cart c){
         Order ord = new Order();
+        UserDB udb = new UserDB();
+        Date date = new Date();
+        ord.setUser(udb.getUser("john.doe@gmail.com"));
+        ord.setDate(date.toString());
+        ord.setOrderNumber(0);
+        ord.setPaid(false);
+        ord.setTaxRate(0.075);
         ord.setItems(c.getItems());
         return ord;
     }
