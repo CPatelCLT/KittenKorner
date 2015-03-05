@@ -492,7 +492,7 @@ form{
     //background: white;
 }
 .itemPictureDiv{
-    position:relative;
+    /* position:relative; */
     left:0;
     height:28%;
     width:28%;
@@ -509,9 +509,10 @@ form{
     //float:left;
 }
 .itemInfoDiv{
-    position:relative;
+    /* position:relative; */
     height:28%;
     width:53%;
+    clear: both;
     margin:0;
 }
 .itemInfoDiv p{
@@ -527,7 +528,7 @@ form{
     //float:left;
 }
 .addItemToCart{
-    position:relative;
+    position: absolute;
     top:25%;
     left:25%;
     height: 50%;
@@ -539,6 +540,36 @@ form{
     color: white;
 }
 .addItemToCart:hover{
+    background-color:lightgray;
+}
+#addItemToCartb1{
+    position: absolute;
+    top:25%;
+    left:75%;
+    height: 50%;
+    width: 30%;
+    margin-left: 10px;
+    min-width:25px;
+    background-color: grey;
+    float: left;
+    color: white;
+}
+#addItemToCartb1:hover{
+    background-color:lightgray;
+}
+#addItemToCartb2{
+    position: absolute;
+    top:25%;
+    left:25%;
+    height: 50%;
+    width: 30%;
+    margin-left: 10px;
+    min-width:25px;
+    background-color: grey;
+    float: left;
+    color: white;
+}
+#addItemToCartb2:hover{
     background-color:lightgray;
 }
 .itemDetailsDiv{
@@ -801,7 +832,13 @@ h1{
     
     /*float:left;*/
 }
-
+.formAddToCartButton{
+    width:50%;
+    margin:0;
+    float: left;
+    height:50%;
+    
+}
 
 
 /*

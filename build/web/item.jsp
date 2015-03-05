@@ -45,12 +45,11 @@
                 </div>
                 <div class="itemButtonHolderDiv">
                     <form method="POST" action="order">
-                        <button class="addItemToCart" type="submit">Add To Cart</button>
-                        <input type="hidden" name="buttonClicked" value="addToCartButton">
+                        <button id="addItemToCartb1" type="submit" name="buttonClicked" value="addToCartButton">Add To Cart</button>
                         <input type="hidden" name="productCode" value="${item.getProductCode()}">
                     </form>
 
-                    <button class="addItemToCart" onclick="parent.location = 'catalog'">Back</button>
+                    <button id="addItemToCartb2" onclick="parent.location = 'catalog'">Back</button>
                 </div>
                 <div class="itemDetailsDiv">
                     <p>
