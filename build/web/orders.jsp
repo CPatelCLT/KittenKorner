@@ -27,9 +27,6 @@
                     >
                     <a class="breadCrumbLink" href="orders">Orders</a>
             </div>
-            <div id="yourCart">
-
-            </div>
             <div id="cartWrapper">
                 <h1>
                     Invoice
@@ -69,7 +66,7 @@
                                     <div class="orderItemPrice orderCol">
                                         ${orderItem.getProduct().getPrice()}
                                     </div>
-                                    <div class="orderItemQty orderCol">
+                                    <div class="orderItemQuantity orderCol">
                                         ${orderItem.getQuantity()}
                                     </div>
                                     <div class="orderItemSubtotal orderCol">
