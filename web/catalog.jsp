@@ -31,11 +31,11 @@
             <div id="sorter">
                 <form method="GET" action="catalog">
                     Category: <select id="categorySelector" selected="${curCategory}" name="categorySelect" size="1">
-                        <option value="all">All</option>
-                        <option value="cute">Cute</option>
-                        <option value="evil">Evil</option>
+                        <option value="all" ${curCategory == 'all' ? 'selected' : ''}>All</option>
+                        <option value="cute" ${curCategory == 'cute' ? 'selected' : ''}>Cute</option>
+                        <option value="evil" ${curCategory == 'evil' ? 'selected' : ''}>Evil</option>
                     </select>
-                    <button class="updateCatalog" onclick="parent.location = 'catalog'">Update</button>
+                    <button class="updateCatalog" type="submit">Update</button>
                 </form>
             </div>
             <div id="itemHolder">
