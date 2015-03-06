@@ -48,9 +48,8 @@
                     <form method="POST" action="order">
                         <button id="addItemToCartb1" type="submit" name="buttonClicked" value="addToCartButton">Add To Cart</button>
                         <input type="hidden" name="productCode" value="${item.getProductCode()}">
+                    <a id="addItemToCartb2" href="catalog">Back</a>
                     </form>
-
-                    <button id="addItemToCartb2" onclick="parent.location = 'catalog'">Back</button>
                 </div>
                 <div class="itemDetailsDiv">
                     <p>

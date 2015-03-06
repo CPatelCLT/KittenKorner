@@ -562,6 +562,9 @@ form{
     background-color:lightgray;
 }
 #addItemToCartb2{
+    display: block;
+    text-align: center;
+    vertical-align: middle;
     position: absolute;
     top:25%;
     left:25%;
