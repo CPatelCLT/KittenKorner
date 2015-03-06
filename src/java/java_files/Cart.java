@@ -52,9 +52,9 @@ public class Cart implements Serializable {
     }
 
     public void removeItem(Product p) {
-        for (OrderItem item : itemsInCart) {
-            if (item.getProduct().equals(p)) {
-                itemsInCart.remove(item);
+        for (int i = 0; i < itemsInCart.size(); i++) {
+            if (itemsInCart.get(i).getProduct().equals(p)){
+                itemsInCart.remove(i);
             }
         }
     }
