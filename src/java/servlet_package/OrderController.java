@@ -82,8 +82,7 @@ public class OrderController extends HttpServlet {
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             } else { //nothing in cart
-                c = new Cart();
-                request.getSession().setAttribute("currentOrder", convertToOrder(c));
+                request.getSession().setAttribute("currentOrder", null);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             }

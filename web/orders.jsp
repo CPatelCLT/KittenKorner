@@ -33,6 +33,9 @@
                 <a class="breadCrumbLink" href="orders">Orders</a>
             </div>
             <div id="cartWrapper">
+                <c:set var="total" value="${0.00}"/>
+                    <c:choose>
+                        <c:when test="${sessionScope.currentOrder!=null}">
                 <h1>
                     Invoice
                 </h1>
@@ -58,9 +61,7 @@
                         </div>
                     </div>
                     <!-- Each item will have an orderItem div -->
-                    <c:set var="total" value="${0.00}"/>
-                    <c:choose>
-                        <c:when test="${sessionScope.currentOrder!=null}">
+                    
                             <c:forEach items="${sessionScope.currentOrder.getItems()}" var="orderItem"> 
                                 <c:set var="total" value="${total+orderItem.getTotal()}"/>
                                 <div class="orderItem orderRow">
@@ -80,20 +81,10 @@
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
-                            <div class="orderItem orderRow">
-                                <div class="orderItemName orderCol">
-                                    No Items in Cart.
-                                </div>
-                                <div class="orderItemPrice orderCol">
-                                    $0.00
-                                </div>
-                                <div class="orderItemQty orderCol">
-                                    0
-                                </div>
-                                <div class="orderItemSubtotal orderCol">
-                                    $0.00
-                                </div>
-                            </div>
+                            <h1>
+                    No Order Items Found in Cart.
+                </h1>
+                            
                         </c:otherwise>
                     </c:choose>
                 </div>
