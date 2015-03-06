@@ -39,8 +39,6 @@ public class OrderController extends HttpServlet {
                     c = (Cart) request.getSession().getAttribute("theShoppingCart");
                     c.addItem(pdb.getProduct(pcode), 1);
                     request.getSession().setAttribute("theShoppingCart", c);
-                    RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
-                    dispatch.forward(request, response);
                 } else {
                     //request.setAttribute("alert", pcode+"else ran");
                     Product p = pdb.getProduct(pcode);
