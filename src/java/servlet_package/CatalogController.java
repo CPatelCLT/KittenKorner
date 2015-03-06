@@ -11,13 +11,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java_files.*;
 import temp_db.*;
-/*import javax.servlet.http.HttpServlet;
- import javax.servlet.http.HttpServletRequest;
- import javax.servlet.http.HttpServletResponse;*/
 
 /**
- *
- * looks at url,
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class CatalogController extends HttpServlet {
 
@@ -32,11 +29,8 @@ public class CatalogController extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        requestedProduct = request.getParameter("productCode"); //getting the value (from the url or post) that the user submits
-        
-        //request.setAttribute("alert", "I got here");
-        request.getSession().setAttribute("items", items); //must use this to set the attribute for el to be able to use it
-        //request.getSession().setAttribute("itemList", items);
+        requestedProduct = request.getParameter("productCode");
+        request.getSession().setAttribute("items", items);
         if (requestedProduct == null) { //load catalog page
             RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
             dispatch.forward(request, response);
@@ -69,7 +63,6 @@ public class CatalogController extends HttpServlet {
             } else {
                 doPost(request, response);
             }
-            //request.setAttribute("items", items);
 
         } else {
             doPost(request, response);

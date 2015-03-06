@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author Eric
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class Cart implements Serializable {
 

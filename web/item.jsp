@@ -1,7 +1,8 @@
 <%-- 
     Document   : item
     Created on : Feb 16, 2015, 4:05:54 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,12 +23,12 @@
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
             <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="index.jsp">Home</a>
-                    >
-                    <a class="breadCrumbLink" href="catalog.jsp">Catalog</a>
-                    >
-                    <a class="breadCrumbLink" href="item.jsp">${item.getProductName()}</a>
-                </div>
+                <a class="breadCrumbLink" href="index.jsp">Home</a>
+                >
+                <a class="breadCrumbLink" href="catalog.jsp">Catalog</a>
+                >
+                <a class="breadCrumbLink" href="item.jsp">${item.getProductName()}</a>
+            </div>
             <div id="itemWrapper">
                 <div class="itemPictureDiv">
                     <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">

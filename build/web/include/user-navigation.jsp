@@ -1,7 +1,8 @@
 <%-- 
     Document   : user-navigation
     Created on : Feb 16, 2015, 4:03:57 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

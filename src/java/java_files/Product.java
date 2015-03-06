@@ -8,8 +8,8 @@ package java_files;
 import java.io.Serializable;
 
 /**
- *
- * @author Eric
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class Product implements Serializable {
     

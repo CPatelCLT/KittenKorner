@@ -1,7 +1,8 @@
 <%-- 
     Document   : site-navigation
     Created on : Feb 16, 2015, 4:04:08 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

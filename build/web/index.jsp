@@ -1,7 +1,8 @@
 <%-- 
     Document   : index
     Created on : Feb 16, 2015, 4:04:45 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -19,7 +20,7 @@
         <%@ include file="include/header.jsp" %>
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
-        
+
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
             <div class="breadCrumb">

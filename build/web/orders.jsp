@@ -1,7 +1,8 @@
 <%-- 
     Document   : orders
     Created on : Feb 16, 2015, 4:06:02 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -27,9 +28,9 @@
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
             <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="index.jsp">Home</a>
-                    >
-                    <a class="breadCrumbLink" href="orders">Orders</a>
+                <a class="breadCrumbLink" href="index.jsp">Home</a>
+                >
+                <a class="breadCrumbLink" href="orders">Orders</a>
             </div>
             <div id="cartWrapper">
                 <h1>
@@ -95,51 +96,6 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
-                    <!--<div class="orderItem orderRow">
-                        <div class="orderItemName orderCol">
-                            Kitten 1
-                        </div>
-                        <div class="orderItemPrice orderCol">
-                            $1.00
-                        </div>
-                        <div class="orderItemQty orderCol">
-                            2
-                        </div>
-                        <div class="orderItemSubtotal orderCol">
-                            $2.00
-                        </div>
-                    </div>
-                    <div class="orderItem orderRow">
-                        <div class="orderItemName orderCol">
-                            Kitten 1
-                        </div>
-                        <div class="orderItemPrice orderCol">
-                            $1.00
-                        </div>
-                        <div class="orderItemQty orderCol">
-                            2
-                        </div>
-                        <div class="orderItemSubtotal orderCol">
-                            $2.00
-                        </div>
-                    </div>
-                    <div class="orderItem orderRow">
-                        <div class="orderItemName orderCol">
-                            Kitten 1
-                        </div>
-                        <div class="orderItemPrice orderCol">
-                            $1.00
-                        </div>
-                        <div class="orderItemQty orderCol">
-                            2
-                        </div>
-                        <div class="orderItemSubtotal orderCol">
-                            $2.00
-                        </div>
-                    </div>-->
-
-
-
                 </div>
 
                 <div id="processingButtons">
@@ -171,11 +127,9 @@
                             </div>
                         </div>    
                     </div>
-                    <button id="checkOut" onclick="checkOut()">Check Out</button>
                 </div>
             </div>
         </div>
         <%@ include file="include/footer.jsp" %>
     </body>
 </html>
-

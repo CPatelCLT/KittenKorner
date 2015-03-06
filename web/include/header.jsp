@@ -1,7 +1,8 @@
 <%-- 
     Document   : header
     Created on : Feb 16, 2015, 4:03:19 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,8 +17,5 @@
         <div id="loggedIn">
             User's Name
         </div>
-<!--        <div id="breadCrumb">
-            Home
-        </div>-->
     </div>
 </div>

@@ -9,17 +9,14 @@ import java.util.ArrayList;
 import java_files.*;
 
 /**
- *
- * @author Eric
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class UserDB {
     
     private ArrayList<User> userList;
     public UserDB() {
         userList = new ArrayList<User>();
-        populateDB();
-    }
-    private void populateDB () {
         User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 2", "Anytown", "WH", 12345, "USA");
         userList.add(usr);
     }

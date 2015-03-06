@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java_files.Product;
 
 /**
- *
- * @author Eric
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class ProductDB {
     private ArrayList<Product> productList;

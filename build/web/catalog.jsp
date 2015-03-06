@@ -1,7 +1,8 @@
 <%-- 
     Document   : catalog
     Created on : Feb 16, 2015, 4:05:33 PM
-    Author     : Eric
+    Authors    : Eric Knowles
+               : Chirag Patel
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -21,27 +22,27 @@
         <%@ include file="include/user-navigation.jsp" %>
         <div id="pageContent"></div>
         <%@ include file="include/site-navigation.jsp" %>
-            <div id="main">
-                <div class="breadCrumb">
+        <div id="main">
+            <div class="breadCrumb">
                 <a class="breadCrumbLink" href="index.jsp">Home</a>
                 >
                 <a class="breadCrumbLink" href="catalog">Catalog</a>
             </div>
-                <div id="sorter">
-                    <form method="GET" action="catalog">
+            <div id="sorter">
+                <form method="GET" action="catalog">
                     Category: <select id="categorySelector" selected="${curCategory}" name="categorySelect" size="1">
                         <option value="all">All</option>
                         <option value="cute">Cute</option>
                         <option value="evil">Evil</option>
                     </select>
                     <button class="updateCatalog" onclick="parent.location = 'catalog'">Update</button>
-                    </form>
-                </div>
-                <div id="itemHolder">
-                    <c:set var="count" value="0" scope="page" />
-                    <c:forEach items="${items}" var="prod">
-                        <c:if test="${count % 3 == 0}">
-                            <div class="row">
+                </form>
+            </div>
+            <div id="itemHolder">
+                <c:set var="count" value="0" scope="page" />
+                <c:forEach items="${items}" var="prod">
+                    <c:if test="${count % 3 == 0}">
+                        <div class="row">
                         </c:if>
                         <div class="itemContainer">
                             <div class="itemPreviewPic">
@@ -64,12 +65,12 @@
                             </div>
                         </div>
                         <c:if test="${count % 3 == 2}">
-                            </div>
-                        </c:if>
-                        <c:set var="count" value="${count + 1}" scope="page"/>
-                    </c:forEach>
-                </div>
+                        </div>
+                    </c:if>
+                    <c:set var="count" value="${count + 1}" scope="page"/>
+                </c:forEach>
             </div>
+        </div>
         <%@ include file="include/footer.jsp" %>
     </body>
 </html>

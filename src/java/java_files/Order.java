@@ -7,11 +7,10 @@ package java_files;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-//import java.util.Date;
 
 /**
- *
- * @author Eric
+ * @author    : Eric Knowles
+ * @author    : Chirag Patel
  */
 public class Order implements Serializable {
     
@@ -33,13 +32,12 @@ public class Order implements Serializable {
         paid = false;
     }
     
-    public Order(int ON, String D, User U, ArrayList<OrderItem> I, double TR, double TC, boolean P) {
+    public Order(int ON, String D, User U, ArrayList<OrderItem> I, double TR, boolean P) {
         orderNumber=ON;
         date=D;
         user=U;
         items=I;
         taxRate=TR;
-        totalCost=TC;
         paid=P;
     }
     
@@ -89,8 +87,8 @@ public class Order implements Serializable {
     
     public double getTotalCost(){
         double subTotal = 0.00;
-        for(OrderItem item : items){
-            subTotal += item.getTotal();
+        for (int i = 0; i<items.size(); i++) {
+            subTotal += items.get(i).getTotal();
         }
         totalCost = subTotal + (subTotal*taxRate);
         return totalCost;
