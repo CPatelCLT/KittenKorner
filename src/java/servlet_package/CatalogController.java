@@ -47,18 +47,21 @@ public class CatalogController extends HttpServlet {
 
         buttonClicked = request.getParameter("buttonClicked");
         sort = request.getParameter("categorySelect");
-        request.setAttribute("curCategory", sort);
+        request.getSession().setAttribute("curCategory", sort);
         if (sort != null) {
             items = pdb.getProducts(sort);
         } else {
             items = pdb.getProdList();
-        }
+        } 
         if (buttonClicked != null) {
             if (buttonClicked.equals("itemInfoButton")) {
                 requestedProduct = request.getParameter("productCode");
                 Product p = pdb.getProduct(requestedProduct);
                 request.setAttribute("item", p);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/item.jsp");
+                dispatch.forward(request, response);
+            } else if (buttonClicked.equals("backToCatalog")) {
+                RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
                 dispatch.forward(request, response);
             } else {
                 doPost(request, response);
