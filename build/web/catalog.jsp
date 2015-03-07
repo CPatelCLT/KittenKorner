@@ -51,7 +51,6 @@
                             <div class="itemDescription">
                                 <h2>
                                     ${prod.getProductName()}
-                                    ${curCategory}
                                 </h2>
                                 <p>
                                     ${prod.getDescription()}
