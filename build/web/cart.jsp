@@ -87,8 +87,8 @@
                         </div>
                     </div>
                     <div id="processingButtons">
-                        <button id="checkOut"  type="submit" name="buttonClicked" value="checkout">Check Out</button>
-                        <button id="updateCart" type="submit" name="buttonClicked" value="updateCart">Update Cart</button>
+                        <button id="checkOut"  type="submit" name="action" value="checkout">Check Out</button>
+                        <button id="updateCart" type="submit" name="action" value="updateCart">Update Cart</button>
                     </div>
                 </form>
             </div>
