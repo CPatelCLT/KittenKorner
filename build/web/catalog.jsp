@@ -51,7 +51,6 @@
                             <div class="itemDescription">
                                 <h2>
                                     ${prod.getProductName()}
-                                    ${curCategory}
                                 </h2>
                                 <p>
                                     ${prod.getDescription()}
@@ -60,7 +59,7 @@
                             <div class="itemPreviewButtons">
                                 <form method="GET" action="catalog">
                                     <button class="moreInfoButton" type="submit">More Info</button>
-                                    <input type="hidden" name="buttonClicked" value="itemInfoButton">
+                                    <input type="hidden" name="action" value="itemInfoButton">
                                     <input type="hidden" name="productCode" value="${prod.getProductCode()}">
                                 </form>
                             </div>
