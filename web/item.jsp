@@ -47,9 +47,10 @@
                 <div class="itemButtonHolderDiv">
                     <form method="POST" action="order">
                         <button id="addItemToCartb1" type="submit" name="buttonClicked" value="addToCartButton">Add To Cart</button>
-                        <input type="hidden" name="productCode" value="${item.getProductCode()}">
+                        <input type="hidden" name="productCode" value="${item.getProductCode()}"></form>
+                        <form method="GET" action="catalog">
                         <button id="addItemToCartb2" type="submit" name="buttonClicked" value="backToCatalog">Back</button>
-                    </form>
+                        </form>
                 </div>
                 <div class="itemDetailsDiv">
                     <p>
