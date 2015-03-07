@@ -76,7 +76,10 @@ public class OrderController extends HttpServlet {
         } else {
             if (request.getSession().getAttribute("theShoppingCart") != null) {
                 c = (Cart) request.getSession().getAttribute("theShoppingCart");
-                request.getSession().setAttribute("currentOrder", convertToOrder(c));
+                UserDB udb = new UserDB();
+                User usr = udb.getUser("john.doe@gmail.com");
+                request.getSession().setAttribute("theUser", usr);
+                request.getSession().setAttribute("currentOrder", convertToOrder(c, usr));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             } else { //nothing in cart
@@ -93,11 +96,10 @@ public class OrderController extends HttpServlet {
             throws ServletException, IOException {
         doPost(request, response);
     }
-    public Order convertToOrder(Cart c){
-        UserDB udb = new UserDB();
+    public Order convertToOrder(Cart c, User usr){
         Date date = new Date();
         DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(0, df.format(date), udb.getUser("john.doe@gmail.com"), c.getItems(), 0.075, false);
+        Order ord = new Order(0, df.format(date), usr, c.getItems(), 0.075, false);
         return ord;
     }
 }
