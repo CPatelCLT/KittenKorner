@@ -59,7 +59,7 @@
                             <div class="itemPreviewButtons">
                                 <form method="GET" action="catalog">
                                     <button class="moreInfoButton" type="submit">More Info</button>
-                                    <input type="hidden" name="buttonClicked" value="itemInfoButton">
+                                    <input type="hidden" name="action" value="itemInfoButton">
                                     <input type="hidden" name="productCode" value="${prod.getProductCode()}">
                                 </form>
                             </div>

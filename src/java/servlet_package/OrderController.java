@@ -30,7 +30,7 @@ public class OrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        buttonClicked = request.getParameter("buttonClicked");
+        buttonClicked = request.getParameter("action");
 
         if (buttonClicked!=null&&buttonClicked.equals("addToCartButton")) {
             pcode = request.getParameter("productCode");
