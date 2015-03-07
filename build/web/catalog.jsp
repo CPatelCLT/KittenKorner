@@ -30,7 +30,7 @@
             </div>
             <div id="sorter">
                 <form method="GET" action="catalog">
-                    Category: <select id="categorySelector" selected="${curCategory}" name="categorySelect" size="1">
+                    Category: <select id="categorySelector" name="categorySelect" size="1">
                         <option value="all" ${curCategory == 'all' ? 'selected' : ''}>All</option>
                         <option value="cute" ${curCategory == 'cute' ? 'selected' : ''}>Cute</option>
                         <option value="evil" ${curCategory == 'evil' ? 'selected' : ''}>Evil</option>
@@ -51,6 +51,7 @@
                             <div class="itemDescription">
                                 <h2>
                                     ${prod.getProductName()}
+                                    ${curCategory}
                                 </h2>
                                 <p>
                                     ${prod.getDescription()}
