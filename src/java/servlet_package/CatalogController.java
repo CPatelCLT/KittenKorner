@@ -47,7 +47,7 @@ public class CatalogController extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        buttonClicked = request.getParameter("action");
+        buttonClicked = request.getParameter("buttonClicked");
         sort = request.getParameter("categorySelect");
         request.getSession().setAttribute("curCategory", sort);
         if (sort != null) {
