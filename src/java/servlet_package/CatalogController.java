@@ -13,8 +13,8 @@ import java_files.*;
 import temp_db.*;
 
 /**
- * @author    : Eric Knowles
- * @author    : Chirag Patel
+ * @author : Eric Knowles
+ * @author : Chirag Patel
  */
 public class CatalogController extends HttpServlet {
 
@@ -23,7 +23,6 @@ public class CatalogController extends HttpServlet {
     ArrayList<Product> items = new ArrayList();
     Cart crt = new Cart();
     String requestedProduct, buttonClicked, sort;
-    
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -34,9 +33,12 @@ public class CatalogController extends HttpServlet {
         if (requestedProduct == null) { //load catalog page
             RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
             dispatch.forward(request, response);
+        } else if (buttonClicked.equals("backToCatalog")) {
+            RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
+            dispatch.forward(request, response);
         } else { //find which item and load item page
             //request.setAttribute("alert", "I got here");
-            
+
         }
     }
 
@@ -52,7 +54,7 @@ public class CatalogController extends HttpServlet {
             items = pdb.getProducts(sort);
         } else {
             items = pdb.getProdList();
-        } 
+        }
         if (buttonClicked != null) {
             if (buttonClicked.equals("itemInfoButton")) {
                 requestedProduct = request.getParameter("productCode");
