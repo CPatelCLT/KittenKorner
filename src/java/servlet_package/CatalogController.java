@@ -28,7 +28,7 @@ public class CatalogController extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        requestedProduct = request.getParameter("productCode");
+        requestedProduct = request.getParameter("productCode"); 
         request.getSession().setAttribute("items", items);
         if (requestedProduct == null) { //load catalog page
             RequestDispatcher dispatch = request.getRequestDispatcher("/catalog.jsp");
