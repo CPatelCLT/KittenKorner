@@ -704,6 +704,15 @@ form{
     /* border-top-style:solid; */
     clear:both;
 }
+#processingButtons2{
+    position:relative;
+    margin:0;
+    width:100%;
+    height:15%;
+    min-height: 50px;
+    border-top-style:solid;
+    clear:both;
+}
 .clearBoth{
     margin:0;
     clear:both;

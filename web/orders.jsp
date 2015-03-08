@@ -89,7 +89,7 @@
                     </c:choose>
                 </div>
 
-                <div id="processingButtons">
+                <div id="processingButtons2">
                     <div class="finalCosts">
                         <div class="subtotal">
                             <div class="subtotalLabel">

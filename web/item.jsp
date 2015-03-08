@@ -6,6 +6,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +42,7 @@
                         ${item.getCatalogCategory()}
                     </p>
                     <p>
-                        Price: ${item.getPrice()} 
+                        Price: <fmt:formatNumber value="${item.getPrice()}" type="currency"/>
                     </p>
                 </div>
                 <div class="itemButtonHolderDiv">
