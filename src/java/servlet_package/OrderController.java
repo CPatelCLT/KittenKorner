@@ -73,9 +73,10 @@ public class OrderController extends HttpServlet {
             request.getSession().setAttribute("theShoppingCart", c);
             RequestDispatcher dispatch = request.getRequestDispatcher("/cart.jsp");
             dispatch.forward(request, response);
-        } else {
+        } else if(buttonClicked!=null&&buttonClicked.equals("checkout")){
             if (request.getSession().getAttribute("theShoppingCart") != null) {
                 c = (Cart) request.getSession().getAttribute("theShoppingCart");
+                request.getSession().setAttribute("theShoppingCart", null);
                 UserDB udb = new UserDB();
                 User usr = udb.getUser("john.doe@gmail.com");
                 request.getSession().setAttribute("theUser", usr);
@@ -87,6 +88,29 @@ public class OrderController extends HttpServlet {
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
                 dispatch.forward(request, response);
             }
+        } else {
+            if(request.getSession().getAttribute("currentOrder")!=null){
+                RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                dispatch.forward(request, response);                
+            }else{
+                request.getSession().setAttribute("currentOrder", null);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                dispatch.forward(request, response);
+            }
+            
+            /*if (request.getSession().getAttribute("theShoppingCart") != null) {
+                c = (Cart) request.getSession().getAttribute("theShoppingCart");
+                UserDB udb = new UserDB();
+                User usr = udb.getUser("john.doe@gmail.com");
+                request.getSession().setAttribute("theUser", usr);
+                request.getSession().setAttribute("currentOrder", convertToOrder(c, usr));
+                RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                dispatch.forward(request, response);
+            } else { //nothing in cart
+                request.getSession().setAttribute("currentOrder", null);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");
+                dispatch.forward(request, response);
+            }*/
         }
     }
 

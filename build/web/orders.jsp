@@ -34,34 +34,34 @@
             </div>
             <div id="cartWrapper">
                 <c:set var="total" value="${0.00}"/>
-                    <c:choose>
-                        <c:when test="${sessionScope.currentOrder!=null}">
-                <h1>
-                    Invoice
-                </h1>
-                <h3>Date: ${currentOrder.getDate()}</h3>
-                <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
-                <p>${currentOrder.getUser().getFirstName()} ${currentOrder.getUser().getLastName()}<br/>
-                    ${currentOrder.getUser().getAddress1()}<br/>
-                    ${currentOrder.getUser().getAddress2()}<br/>
-                    ${currentOrder.getUser().getCity()}, ${currentOrder.getUser().getState()} ${currentOrder.getUser().getPostCode()} ${currentOrder.getUser().getCountry()}</p>
-                <div id="cartItems">
-                    <div id="cartItemsCategories">
-                        <div id="itemCategoryLabel">
-                            Item
-                        </div>
-                        <div id="priceCategoryLabel">
-                            Price
-                        </div>
-                        <div id="quantityCategoryLabel">
-                            Quantity
-                        </div>
-                        <div id="totalCategoryLabel">
-                            Total
-                        </div>
-                    </div>
-                    <!-- Each item will have an orderItem div -->
-                    
+                <c:choose>
+                    <c:when test="${sessionScope.currentOrder!=null}">
+                        <h1>
+                            Invoice
+                        </h1>
+                        <h3>Date: ${currentOrder.getDate()}</h3>
+                        <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
+                        <p>${currentOrder.getUser().getFirstName()} ${currentOrder.getUser().getLastName()}<br/>
+                            ${currentOrder.getUser().getAddress1()}<br/>
+                            ${currentOrder.getUser().getAddress2()}<br/>
+                            ${currentOrder.getUser().getCity()}, ${currentOrder.getUser().getState()} ${currentOrder.getUser().getPostCode()} ${currentOrder.getUser().getCountry()}</p>
+                        <div id="cartItems">
+                            <div id="cartItemsCategories">
+                                <div id="itemCategoryLabel">
+                                    Item
+                                </div>
+                                <div id="priceCategoryLabel">
+                                    Price
+                                </div>
+                                <div id="quantityCategoryLabel">
+                                    Quantity
+                                </div>
+                                <div id="totalCategoryLabel">
+                                    Total
+                                </div>
+                            </div>
+                            <!-- Each item will have an orderItem div -->
+
                             <c:forEach items="${sessionScope.currentOrder.getItems()}" var="orderItem"> 
                                 <c:set var="total" value="${total+orderItem.getTotal()}"/>
                                 <div class="orderItem orderRow">
@@ -82,9 +82,9 @@
                         </c:when>
                         <c:otherwise>
                             <h1>
-                    No Order Items Found in Cart.
-                </h1>
-                            
+                                There are currently no orders for your account. Go buy a kitten!
+                            </h1>
+
                         </c:otherwise>
                     </c:choose>
                 </div>
