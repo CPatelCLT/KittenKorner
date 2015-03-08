@@ -6,7 +6,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <div id="footer">
     <footer>Kitten Korner © 2015</footer>
 </div>

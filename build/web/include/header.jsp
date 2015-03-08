@@ -6,7 +6,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <div id="header">
     <img src="pictures/pic5.jpg" id="headerPic" alt="ferocious monster pic goes here">
     <div id="headerTitleDiv">
