@@ -9,7 +9,7 @@
 <div class="userNav" id="userNav1">
     <ul id="userNavList">
         <li class="${pageContext.request.servletPath == '/signin.jsp' ? 'currentPage' : 'none'}"><a href="signin.jsp">Sign In</a></li>
-        <li class="${pageContext.request.servletPath == '/cart.jsp' ? 'currentPage' : 'none'}"><a href="cart.jsp">Cart</a></li>
-        <li class="${pageContext.request.servletPath == '/orders.jsp' ? 'currentPage' : 'none'}"><a href="order">My Orders</a></li>        
+        <li class="${pageContext.request.servletPath == '/cart' ? 'currentPage' : 'none'}"><a href="cart.jsp">Cart</a></li>
+        <li class="${pageContext.request.servletPath == '/orders' ? 'currentPage' : 'none'}"><a href="order">My Orders</a></li>        
     </ul>
 </div>
