@@ -30,7 +30,7 @@
             <div class="breadCrumb">
                 <a class="breadCrumbLink" href="index.jsp">Home</a>
                 >
-                <a class="breadCrumbLink" href="orders">Orders</a>
+                <a class="breadCrumbLink" href="order">Orders</a>
             </div>
             <div id="cartWrapper">
                 <c:set var="total" value="${0.00}"/>

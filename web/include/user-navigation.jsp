@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : user-navigation
     Created on : Feb 16, 2015, 4:03:57 PM
     Authors    : Eric Knowles
@@ -10,6 +10,6 @@
     <ul id="userNavList">
         <li class="${pageContext.request.servletPath == '/signin.jsp' ? 'currentPage' : 'none'}"><a href="signin.jsp">Sign In</a></li>
         <li class="${pageContext.request.servletPath == '/cart.jsp' ? 'currentPage' : 'none'}"><a href="cart.jsp">Cart</a></li>
-        <li class="${pageContext.request.servletPath == '/order' ? 'currentPage' : 'none'}"><a href="order">My Orders</a></li>        
+        <li class="${pageContext.request.servletPath == '/orders.jsp' ? 'currentPage' : 'none'}"><a href="order">My Orders</a></li>
     </ul>
 </div>
