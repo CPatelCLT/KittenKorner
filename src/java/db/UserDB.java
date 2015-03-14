@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package temp_db;
+package db;
 
+import java_beans.User;
 import java.util.ArrayList;
-import java_files.*;
 
 /**
  * @author    : Eric Knowles

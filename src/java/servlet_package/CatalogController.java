@@ -5,12 +5,13 @@
  */
 package servlet_package;
 
+import db.ProductDB;
+import java_beans.Product;
+import java_beans.Cart;
 import java.io.*;
 import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java_files.*;
-import temp_db.*;
 
 /**
  * @author : Eric Knowles

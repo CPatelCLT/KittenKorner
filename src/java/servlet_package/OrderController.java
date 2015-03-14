@@ -5,14 +5,19 @@
  */
 package servlet_package;
 
+import db.UserDB;
+import db.ProductDB;
+import java_beans.Order;
+import java_beans.Product;
+import java_beans.Cart;
+import java_beans.OrderItem;
+import java_beans.User;
 import java.io.*;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java_files.*;
-import temp_db.*;
 
 /**
  * @author    : Eric Knowles

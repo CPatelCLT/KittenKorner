@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package temp_db;
+package db;
 
 import java.util.ArrayList;
-import java_files.Product;
+import java_beans.Product;
 
 /**
  * @author    : Eric Knowles
@@ -59,5 +59,9 @@ public class ProductDB {
         }
         return tmp;
     }
-
+    
+    
+    public void addProduct(String pCode, String pName, String pCat, String pDesc, double pPrice, String pURL) {
+        
+    }
 }
