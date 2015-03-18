@@ -7,8 +7,8 @@ package java_beans;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -17,35 +17,32 @@ import javax.persistence.Id;
  */
 @Entity
 public class Product implements Serializable {
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int productCode;
+    private String productCode;
     private String productName;
     private String catalogCategory;
     private String description;
     private double price;
+    private String imageUrl;
     
-    public Product(){
-        productCode = 0;
-        productName = null;
-        catalogCategory = null;
-        description = null;
-        price = 0.00;
+    public Product() {
+        
     }
-    
-    public Product(int PC, String PN, String CC, String D, double P) {
+    public Product(String PC, String PN, String CC, String D, double P, String iU) {
       productCode = PC;
       productName = PN;
       catalogCategory = CC;
       description = D;
-      price = P;      
+      price = P;  
+      imageUrl = iU;
     }
     
-    public void setProductCode(int pc){
+    public void setProductCode(String pc){
         productCode = pc;
     }
     
-    public int getProductCode(){
+    public String getProductCode(){
         return productCode;
     }
     
@@ -82,6 +79,10 @@ public class Product implements Serializable {
     }
     
     public String getImageUrl(){
-        return ("pictures/pic"+productCode+".jpg");
+        return imageUrl;
+        //return ("pictures/pic"+productCode+".jpg");
+    }
+    public void setImageUrl(String iU) {
+        imageUrl = iU;
     }
 }
