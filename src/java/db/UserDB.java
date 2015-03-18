@@ -7,6 +7,9 @@ package db;
 
 import java_beans.User;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
+import javax.persistence.TypedQuery;
 
 /**
  * @author    : Eric Knowles
@@ -14,21 +17,145 @@ import java.util.ArrayList;
  */
 public class UserDB {
     
-    private ArrayList<User> userList;
+    /*
     public UserDB() {
-        userList = new ArrayList<User>();
-        User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 2", "Anytown", "WH", 12345, "USA");
+        
+    }
+    */
+    public void setupUserDB(){
+        ArrayList<User> userList = new ArrayList<User>();
+        User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 1", "Anytown", "WH", "12345", "USA");
+        User usr2 = new User("Jane", "Doe", "jane.doe@gmail.com", "456 Nowhere Ln", "Apt 2", "Notown", "NW", "54321", "USA");
         userList.add(usr);
+        userList.add(usr2);
+        for(int i=0; i<userList.size(); i++){
+            addUser(userList.get(i));
+        }
     }
-    public ArrayList<User> getUserList () {
-        return userList;
-    }
-    public User getUser(String emailAddress) {
-        for(int i = 0; i < userList.size(); i++) {
-            if (userList.get(i).getEmailAddress().equals(emailAddress)) {
-                return userList.get(i);
+    
+    
+    public ArrayList<User> getAllUsers() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u form User u";
+        TypedQuery<User> u = em.createQuery(qString, User.class);
+        
+        List<User> users;
+        
+        try{
+            users = u.getResultList();
+            if(users == null || users.isEmpty()){
+                return null;
             }
         }
-        return null;
+        finally{
+            em.close();
+        }
+        ArrayList<User> userList = new ArrayList(users.size());
+        userList.addAll(users);
+        return userList;
     }
+    public User getUser(String userID) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u form User u"+"WHERE u.userID = :userID";
+        TypedQuery<User> u = em.createQuery(qString, User.class);
+        u.setParameter("userID", userID);
+        
+        User user = null;
+        try{
+            user = u.getSingleResult();
+        } catch(NoResultException e){
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+        return user;
+
+    }
+    public void addUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, String zipcode, String country){
+        User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country);
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.persist(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    
+    public void addUser(User user){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.persist(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    /*
+    public void updateUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, int zipcode, String country){
+        User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country);
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.merge(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    
+    public void updateUser(User user){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.merge(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    
+    public void deleteUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, int zipcode, String country){
+        User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country);
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.remove(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    
+    public void deleteUser(User user){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try{
+            trans.begin();
+            em.remove(user);
+            trans.commit();
+        }catch(Exception ex){
+            trans.rollback();
+        }finally{
+            em.close();
+        }
+    }
+    */
 }
