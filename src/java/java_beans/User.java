@@ -6,6 +6,7 @@
 package java_beans;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,11 +24,15 @@ public class User implements Serializable {
     private int userID;
     private String firstName;
     private String lastName;
+    @Column(name="emailAddr")
     private String emailAddress;
+    @Column(name="address1Field")
     private String address1;
+    @Column(name="address2Field")
     private String address2;
     private String city;
     private String state;
+    @Column(name="zipPostalCode")
     private String postCode;
     private String country;
     
