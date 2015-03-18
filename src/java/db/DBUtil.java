@@ -4,11 +4,17 @@
  * and open the template in the editor.
  */
 package db;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author chirag
  */
 public class DBUtil {
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("kittenKornerPU");
     
+    public static EntityManagerFactory getEmFactory(){
+        return emf;
+    }
 }
