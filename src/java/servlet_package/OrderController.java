@@ -27,7 +27,7 @@ public class OrderController extends HttpServlet {
 
     String buttonClicked, pcode;
     ProductDB pdb = new ProductDB();
-    ArrayList<Product> allItems = pdb.getProdList();
+    ArrayList<Product> allItems = pdb.getAllProducts();
     Cart c;
     Order o;
 
@@ -42,11 +42,11 @@ public class OrderController extends HttpServlet {
             if (pcode != null) {
                 if (request.getSession().getAttribute("theShoppingCart") != null) {
                     c = (Cart) request.getSession().getAttribute("theShoppingCart");
-                    c.addItem(pdb.getProduct(pcode), 1);
+                    c.addItem(pdb.getProduct(Integer.parseInt(pcode)), 1);
                     request.getSession().setAttribute("theShoppingCart", c);
                 } else {
                     //request.setAttribute("alert", pcode+"else ran");
-                    Product p = pdb.getProduct(pcode);
+                    Product p = pdb.getProduct(Integer.parseInt(pcode));
                     if (p != null) {
                         c = new Cart();
                         c.addItem(p, 1);

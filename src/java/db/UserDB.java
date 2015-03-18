@@ -17,11 +17,11 @@ import javax.persistence.TypedQuery;
  */
 public class UserDB {
     
-    /*
+
     public UserDB() {
         
     }
-    */
+
     public void setupUserDB(){
         ArrayList<User> userList = new ArrayList<User>();
         User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 1", "Anytown", "WH", "12345", "USA");
