@@ -83,7 +83,7 @@ public class OrderController extends HttpServlet {
                 c = (Cart) request.getSession().getAttribute("theShoppingCart");
                 request.getSession().setAttribute("theShoppingCart", null);
                 UserDB udb = new UserDB();
-                User usr = udb.getUser("john.doe@gmail.com");
+                User usr = udb.getUser("302");
                 request.getSession().setAttribute("theUser", usr);
                 request.getSession().setAttribute("currentOrder", convertToOrder(c, usr));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/orders.jsp");

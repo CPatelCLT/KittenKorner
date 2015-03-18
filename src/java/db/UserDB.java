@@ -19,7 +19,7 @@ public class UserDB {
     
 
     public UserDB() {
-        setupUserDB();
+
     }
 
     public void setupUserDB(){
@@ -56,9 +56,9 @@ public class UserDB {
     }
     public User getUser(String userID) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u from User u"+"WHERE u.userID = :userID";
+        String qString = "SELECT u from User u "+"WHERE u.userID = :userID";
         TypedQuery<User> u = em.createQuery(qString, User.class);
-        u.setParameter("userID", userID);
+        u.setParameter("userID", Integer.parseInt(userID));
         
         User user = null;
         try{
