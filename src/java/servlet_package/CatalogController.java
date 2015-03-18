@@ -20,7 +20,7 @@ import javax.servlet.http.*;
 public class CatalogController extends HttpServlet {
 
     ProductDB pdb = new ProductDB();
-    ArrayList<Product> unSortedItems = pdb.getProdList();
+    ArrayList<Product> sortedItems = new ArrayList();
     ArrayList<Product> items = new ArrayList();
     Cart crt = new Cart();
     String requestedProduct, buttonClicked, sort;
@@ -52,14 +52,14 @@ public class CatalogController extends HttpServlet {
         sort = request.getParameter("categorySelect");
         request.getSession().setAttribute("curCategory", sort);
         if (sort != null) {
-            items = pdb.getProducts(sort);
+            items = getSortedProducts(sort);
         } else {
-            items = pdb.getProdList();
+            items = pdb.getAllProducts();
         }
         if (buttonClicked != null) {
             if (buttonClicked.equals("itemInfoButton")) {
                 requestedProduct = request.getParameter("productCode");
-                Product p = pdb.getProduct(requestedProduct);
+                Product p = pdb.getProduct(Integer.parseInt(requestedProduct));
                 request.setAttribute("item", p);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/item.jsp");
                 dispatch.forward(request, response);
@@ -75,4 +75,16 @@ public class CatalogController extends HttpServlet {
         }
 
     }
+    public ArrayList<Product> getSortedProducts(String prodCat) {
+     ArrayList<Product> tmp = new ArrayList<Product>();
+     if (prodCat.equals("all")) {
+     return items;
+     }
+     for (int i = 0; i < items.size(); i++) {
+     if (items.get(i).getCatalogCategory().equals(prodCat)) {
+     tmp.add(items.get(i));
+     }
+     }
+     return tmp;
+     }
 }
