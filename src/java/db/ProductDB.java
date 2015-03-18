@@ -7,6 +7,7 @@ package db;
 
 import java.util.ArrayList;
 import java_beans.Product;
+import javax.persistence.*;
 
 /**
  * @author    : Eric Knowles
@@ -37,10 +38,19 @@ public class ProductDB {
             productList.add(p);
         }
     }
+    /* @Obsolete
     public ArrayList<Product> getProdList () {
         return productList;
+    } */
+    public static ArrayList<Product> getAllProducts() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Products p";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        ArrayList<Product> prodList = new ArrayList<Product>();
+        return null;
     }
     
+    /* @Obsolete
     public Product getProduct(String PrdCde){
         for(int x=0; x<productList.size(); x++){
             if((productList.get(x).getProductCode()+"").equals(PrdCde)){
@@ -48,6 +58,22 @@ public class ProductDB {
             }
         }
         return null;
+    }*/
+    // Gets product using the product code
+    public static Product getProduct(int pCode) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT p FROM Products p " + "WHERE p.productCode = :pCode:";
+        TypedQuery<Product> q = em.createQuery(query, Product.class);
+        q.setParameter("pcode", pCode);
+        Product p = null;
+        try {
+            p = q.getSingleResult();
+        } catch (NoResultException e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+        return p;
     }
     public ArrayList<Product> getProducts(String prodCat) {
         ArrayList<Product> tmp = new ArrayList<Product>();

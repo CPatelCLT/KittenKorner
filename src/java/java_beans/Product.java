@@ -6,13 +6,19 @@
 package java_beans;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author    : Eric Knowles
  * @author    : Chirag Patel
  */
+@Entity
 public class Product implements Serializable {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int productCode;
     private String productName;
     private String catalogCategory;
