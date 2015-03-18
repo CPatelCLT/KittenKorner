@@ -6,13 +6,21 @@
 package java_beans;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author    : Eric Knowles
  * @author    : Chirag Patel
  */
+@Entity
 public class User implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int userID;
     private String firstName;
     private String lastName;
     private String emailAddress;
@@ -20,14 +28,14 @@ public class User implements Serializable {
     private String address2;
     private String city;
     private String state;
-    private int postCode;
+    private String postCode;
     private String country;
     
     public User(){
         
     }
     
-    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, int PC, String CO){
+    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, String PC, String CO){
         firstName=FN;
         lastName=LN;
         emailAddress=EA;
@@ -95,11 +103,11 @@ public class User implements Serializable {
         return state;
     }
     
-    public void setPostCode(int pc){
+    public void setPostCode(String pc){
         postCode=pc;
     }
     
-    public int getPostCode(){
+    public String getPostCode(){
         return postCode;
     }
     
