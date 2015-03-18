@@ -47,6 +47,14 @@ public class User implements Serializable {
         country=CO;
     }
     
+    public int getUserID(){
+        return userID;
+    }
+    
+    public void setUserID(int userID){
+        this.userID=userID;
+    }
+    
     public void setFirstName(String fn){
         firstName=fn;
     }    

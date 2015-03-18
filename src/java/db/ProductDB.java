@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class ProductDB {
 
     public ProductDB() {
-        
+
     }
     public void setupDB() {
         String[] pCodes = {"0", "1", "2", "3", "4", "5"};
@@ -41,7 +41,7 @@ public class ProductDB {
     }
     public static ArrayList<Product> getAllProducts() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT p FROM Products p";
+        String query = "SELECT p FROM Product p";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
         List<Product> p;
         try {
@@ -61,9 +61,9 @@ public class ProductDB {
     // Gets product using the product code
     public static Product getProduct(int pCode) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT p FROM Products p " + "WHERE p.productCode = :pCode:";
+        String query = "SELECT p FROM Product p " + "WHERE p.productCode = :pCode";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
-        q.setParameter("pcode", pCode);
+        q.setParameter("pCode", pCode+"");
         Product p = null;
         try {
             p = q.getSingleResult();

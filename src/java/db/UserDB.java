@@ -19,7 +19,7 @@ public class UserDB {
     
 
     public UserDB() {
-        
+        setupUserDB();
     }
 
     public void setupUserDB(){
@@ -36,7 +36,7 @@ public class UserDB {
     
     public ArrayList<User> getAllUsers() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u form User u";
+        String qString = "SELECT u from User u";
         TypedQuery<User> u = em.createQuery(qString, User.class);
         
         List<User> users;
@@ -56,7 +56,7 @@ public class UserDB {
     }
     public User getUser(String userID) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u form User u"+"WHERE u.userID = :userID";
+        String qString = "SELECT u from User u"+"WHERE u.userID = :userID";
         TypedQuery<User> u = em.createQuery(qString, User.class);
         u.setParameter("userID", userID);
         
@@ -89,11 +89,12 @@ public class UserDB {
     public void addUser(User user){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        trans.begin();
         try{
-            trans.begin();
             em.persist(user);
             trans.commit();
         }catch(Exception ex){
+            System.out.println(ex);
             trans.rollback();
         }finally{
             em.close();
