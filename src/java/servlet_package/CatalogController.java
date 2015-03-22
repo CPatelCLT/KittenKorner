@@ -77,6 +77,7 @@ public class CatalogController extends HttpServlet {
     }
     public ArrayList<Product> getSortedProducts(String prodCat) {
      ArrayList<Product> tmp = new ArrayList<Product>();
+     items = pdb.getAllProducts();
      if (prodCat.equals("all")) {
      return items;
      }

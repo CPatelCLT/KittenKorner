@@ -36,6 +36,7 @@ public class ProductDB {
             }
             p.setDescription(desc[i]);
             p.setPrice(dollars[i]);
+            p.setImageUrl("pictures/pic"+pCcodes[i]+".jpg");
             addProduct(p);
         }
     }
