@@ -8,6 +8,10 @@
         <servlet-name>OrderController</servlet-name>
         <servlet-class>servlet_package.OrderController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>servlet_package.UserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CatalogController</servlet-name>
         <url-pattern>/catalog</url-pattern>
@@ -16,6 +20,10 @@
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/order</url-pattern>
         <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/UserController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
