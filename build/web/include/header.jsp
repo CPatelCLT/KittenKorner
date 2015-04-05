@@ -7,7 +7,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="header">
-    <img src="pictures/pic5.jpg" id="headerPic" alt="ferocious monster pic goes here">
+    <img src="/4166_Assignment_2/pictures/pic5.jpg" id="headerPic" alt="ferocious monster pic goes here">
     <div id="headerTitleDiv">
         <h1 id="pageTitle">Kitten Korner</h1>
         <p id="description">The ultimate place to purchase a little furry friend!</p>
@@ -19,7 +19,7 @@
                     ${sessionScope.theUser}
                 </c:when>
                 <c:otherwise>
-                    <a href="secure/checkoutChoice.jsp">Click here to sign up/in!</a>
+                    <a href="/4166_Assignment_2/secure/checkoutChoice.jsp">Click here to sign up/in!</a>
                 </c:otherwise>
             </c:choose>
         </div>

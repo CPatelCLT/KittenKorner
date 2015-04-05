@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class ProductDB {
 
     public ProductDB() {
-
+        //setupDB();
     }
     public void setupDB() {
         String[] pCodes = {"0", "1", "2", "3", "4", "5"};
