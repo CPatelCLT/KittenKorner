@@ -5,8 +5,12 @@
  */
 package servlet_package;
 
+import db.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java_beans.User;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,45 +22,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UserController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UserController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UserController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    UserDB udb = new UserDB();
+    User currUser;
+    String requestedAction, errorType;
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -70,7 +43,39 @@ public class UserController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        requestedAction = request.getParameter("requestedAction");
+        if (requestedAction.equals("createUser")) {
+            String firstName, lastName, emailAddress, address1, address2, city, state, postCode, country;
+            firstName = request.getParameter("firstName");
+            lastName = request.getParameter("lastName");
+            emailAddress = request.getParameter("emailAddress");
+            address1 = request.getParameter("address1");
+            address2 = request.getParameter("address1");
+            city = request.getParameter("city");
+            state = request.getParameter("state");
+            postCode = request.getParameter("postCode");
+            country = request.getParameter("country");
+            currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country);
+            ArrayList<User> allUsers = udb.getAllUsers();
+            for (int i = 0; i<allUsers.size(); i++) {
+                if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
+                    errorType = "User exists in Database";
+                    request.setAttribute("errorType", errorType);
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/secure/userInfo.jsp");
+                    dispatch.forward(request, response);
+                }
+                else {
+                    udb.addUser(currUser);
+                }
+            }
+        }
+        else if (requestedAction.equals("login")) {
+            String username, password;
+            username = request.getParameter("username");
+            password = request.getParameter("password");
+            
+        }
+        doGet(request, response);
     }
 
     /**
