@@ -14,7 +14,14 @@
     </div>
     <div id="headerRightInfo">
         <div id="loggedIn">
-            User's Name
+            <c:choose>
+                <c:when test="${sessionScope.theUser != null}">
+                    ${sessionScope.theUser}
+                </c:when>
+                <c:otherwise>
+                    <a href="secure/checkoutChoice.jsp">Click here to sign up/in!</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>

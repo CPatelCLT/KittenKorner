@@ -1,10 +1,11 @@
 <%-- 
-    Document   : orderlist
-    Created on : Mar 30, 2015, 6:53:07 PM
+    Document   : checkoutChoice
+    Created on : Mar 30, 2015, 6:51:48 PM
     Author     : Eric
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,9 +26,14 @@
                 <div class="breadCrumb">
                     <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="orderlist.jsp">My Orders</a>
+                    <a class="breadCrumbLink" href="checkoutChoice.jsp">Check Out</a>
                 </div>
-                order list
+                <H1>Login or Create New User</H1>
+                <p>Select one of the two options below to proceed with checkout.</p>
+                <div id="checkoutChoiceButtons">
+                    <button id="existingUserButton"  type="submit" name="action" value="existingUser">Log in as Existing User</button>
+                    <button id="createNewUserButton" type="submit" name="action" value="createNewUser">Create New User</button>
+                </div>
             </div>
         <%@ include file="include/footer.jsp" %>
     </body>

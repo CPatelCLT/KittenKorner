@@ -1,10 +1,11 @@
 <%-- 
-    Document   : userInfo
-    Created on : Mar 30, 2015, 6:52:34 PM
+    Document   : payment
+    Created on : Mar 30, 2015, 6:52:53 PM
     Author     : Eric
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,9 +26,9 @@
                 <div class="breadCrumb">
                     <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="userInfo.jsp">My Info</a>
+                    <a class="breadCrumbLink" href="payment.jsp">Payment Options</a>
                 </div>
-                userinfo
+                payment
             </div>
         <%@ include file="include/footer.jsp" %>
     </body>
