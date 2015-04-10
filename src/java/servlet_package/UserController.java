@@ -48,9 +48,9 @@ public class UserController extends HttpServlet {
             String firstName, lastName, emailAddress, address1, address2, city, state, postCode, country;
             firstName = request.getParameter("firstName");
             lastName = request.getParameter("lastName");
-            emailAddress = request.getParameter("emailAddress");
+            emailAddress = request.getParameter("emailAddr");
             address1 = request.getParameter("address1");
-            address2 = request.getParameter("address1");
+            address2 = request.getParameter("address2");
             city = request.getParameter("city");
             state = request.getParameter("state");
             postCode = request.getParameter("postCode");
@@ -58,15 +58,15 @@ public class UserController extends HttpServlet {
             currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country);
             ArrayList<User> allUsers = udb.getAllUsers();
             for (int i = 0; i<allUsers.size(); i++) {
-                if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
+                /*if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
                     errorType = "User exists in Database";
                     request.setAttribute("errorType", errorType);
                     RequestDispatcher dispatch = request.getRequestDispatcher("/secure/userInfo.jsp");
                     dispatch.forward(request, response);
                 }
-                else {
+                else {*/
                     udb.addUser(currUser);
-                }
+                //}
             }
         }
         else if (requestedAction.equals("login")) {

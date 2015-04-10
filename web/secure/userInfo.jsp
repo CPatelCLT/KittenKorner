@@ -22,7 +22,7 @@
         <%@ include file="../include/user-navigation.jsp" %>
         <div id="pageContent"></div>
         <%@ include file="../include/site-navigation.jsp" %>
-            <div id="main">
+            <div id="main" class="overflowAuto">
                 <div class="breadCrumb">
                     <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
@@ -53,7 +53,9 @@
                     <input type="text" name="state" size="2"></p>
                     <p>Please enter your postal code: 
                     <input type="text" name="postCode" size="25"></p>
-                    <button type="submit" name="submitButton" value="createUserButton">Submit</button> 
+                    <p>Please enter your country: 
+                    <input type="text" name="country" size="25"></p>
+                    <button type="submit" name="requestedAction" value="createUser">Submit</button> 
                 </form>
             </div>
         <%@ include file="../include/footer.jsp" %>

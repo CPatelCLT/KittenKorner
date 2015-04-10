@@ -285,6 +285,9 @@ li{
 #main p{
     //word-break: break-all;
 }
+.overflowAuto{
+    overflow: auto;
+}
 #footer{
     /*z-index:-1;*/
     position: relative;
@@ -406,7 +409,6 @@ li{
     width: 30%;
     position: relative;
     margin: auto;
-    
     text-align: center;
 }
 .moreInfoButton{
@@ -861,6 +863,19 @@ h1{
     float:left;
     margin:0;
 }
+.checkoutChoiceButton{
+    margin: 0;
+    margin-right: 10px;
+    background-color: grey;
+    float: left;
+    color: white;
+    font-size: small;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 10%;
+    min-width: 150px;
+}
+
 
 /*
 Mobile Devices
