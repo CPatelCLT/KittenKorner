@@ -69,11 +69,26 @@ public class UserController extends HttpServlet {
                 //}
             }
         }
-        else if (requestedAction.equals("login")) {
+        else if (requestedAction.equals("j_securitycheck")) {
             String username, password;
-            username = request.getParameter("username");
-            password = request.getParameter("password");
-            
+            username = request.getParameter("j_username");
+            password = request.getParameter("j_password");
+            ArrayList<User> allUsers = udb.getAllUsers();
+            for (int i = 0; i<allUsers.size(); i++) {
+                if (currUser.getUserID()==allUsers.get(i).getUserID()) {
+                    if(currUser.getPassword().equals(allUsers.get(i).getPassword())){
+                        request.getSession().setAttribute("theUser", allUsers.get(i));
+                        RequestDispatcher dispatch;
+                        if (request.getSession().getAttribute("theShoppingCart") != null) {
+                            dispatch = request.getRequestDispatcher("/secure/orders.jsp");
+                        }
+                        else{
+                            dispatch = request.getRequestDispatcher("/secure/index.jsp");
+                        }
+                        dispatch.forward(request, response);
+                    }
+                }
+            }
         }
         doGet(request, response);
     }

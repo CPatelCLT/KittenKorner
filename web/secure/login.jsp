@@ -28,7 +28,13 @@
                     >
                     <a class="breadCrumbLink" href="login.jsp">Log In</a>
                 </div>
-                login
+                <form action="j_security_check" method="post">
+                    <p>Please enter a username: 
+                    <input type="text" name="j_username" size="25"></p>
+                    <p>Please enter a password: 
+                    <input type="password" name="j_password" size="25"></p>
+                    <button type="submit" name="requestedAction" value="login">Submit</button> 
+                </form>
             </div>
         <%@ include file="../include/footer.jsp" %>
     </body>
