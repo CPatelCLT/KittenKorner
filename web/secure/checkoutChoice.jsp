@@ -32,10 +32,10 @@
                 <p>Select one of the two options below to proceed with checkout.</p>
                 <div id="checkoutChoiceButtons">
                     <form action="login.jsp">
-                        <button id="existingUserButton"  type="submit" name="action" value="existingUser">Log in as Existing User</button>
+                        <button class="checkoutChoiceButton" id="existingUserButton"  type="submit" name="action" value="existingUser">Log in as Existing User</button>
                     </form>
                     <form action="userInfo.jsp">
-                        <button id="createNewUserButton" type="submit" name="action" value="createNewUser">Create New User</button>
+                        <button class="checkoutChoiceButton" id="createNewUserButton" type="submit" name="action" value="createNewUser">Create New User</button>
                     </form>
                 </div>
             </div>
