@@ -35,12 +35,13 @@ public class User implements Serializable {
     @Column(name="zipPostalCode")
     private String postCode;
     private String country;
+    private String password;
     
     public User(){
         
     }
     
-    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, String PC, String CO){
+    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, String PC, String CO, String PW){
         firstName=FN;
         lastName=LN;
         emailAddress=EA;
@@ -50,6 +51,7 @@ public class User implements Serializable {
         state=S;
         postCode=PC;
         country=CO;
+        password=PW;
     }
     
     public int getUserID(){
@@ -132,5 +134,11 @@ public class User implements Serializable {
         return country;
     }
     
+    public void setPassword(String pw) {
+        password = pw;
+    }
     
+    public String getPassword() {
+        return password;
+    }
 }

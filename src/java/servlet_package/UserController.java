@@ -45,7 +45,7 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException {
         requestedAction = request.getParameter("requestedAction");
         if (requestedAction.equals("createUser")) {
-            String firstName, lastName, emailAddress, address1, address2, city, state, postCode, country;
+            String firstName, lastName, emailAddress, password, address1, address2, city, state, postCode, country;
             firstName = request.getParameter("firstName");
             lastName = request.getParameter("lastName");
             emailAddress = request.getParameter("emailAddr");
@@ -55,18 +55,28 @@ public class UserController extends HttpServlet {
             state = request.getParameter("state");
             postCode = request.getParameter("postCode");
             country = request.getParameter("country");
-            currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country);
+            password = request.getParameter("password");
+            currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
             ArrayList<User> allUsers = udb.getAllUsers();
             for (int i = 0; i<allUsers.size(); i++) {
-                /*if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
+                if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
                     errorType = "User exists in Database";
                     request.setAttribute("errorType", errorType);
                     RequestDispatcher dispatch = request.getRequestDispatcher("/secure/userInfo.jsp");
                     dispatch.forward(request, response);
                 }
-                else {*/
+                else {
                     udb.addUser(currUser);
-                //}
+                    request.getSession().setAttribute("theUser", currUser);
+                    RequestDispatcher dispatch;
+                    if(request.getSession().getAttribute("theShoppingCart") != null) {
+                        dispatch = request.getRequestDispatcher("/order");
+                    }
+                    else {
+                        dispatch = request.getRequestDispatcher("/index.jsp");
+                    }
+                    dispatch.forward(request, response);
+                }
             }
         }
         else if (requestedAction.equals("login")) {

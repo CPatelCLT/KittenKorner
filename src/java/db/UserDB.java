@@ -24,8 +24,8 @@ public class UserDB {
 
     public void setupUserDB(){
         ArrayList<User> userList = new ArrayList<User>();
-        User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 1", "Anytown", "WH", "12345", "USA");
-        User usr2 = new User("Jane", "Doe", "jane.doe@gmail.com", "456 Nowhere Ln", "Apt 2", "Notown", "NW", "54321", "USA");
+        User usr = new User("John", "Doe", "john.doe@gmail.com", "123 Anywhere Ln", "Apt 1", "Anytown", "WH", "12345", "USA", "password");
+        User usr2 = new User("Jane", "Doe", "jane.doe@gmail.com", "456 Nowhere Ln", "Apt 2", "Notown", "NW", "54321", "USA", "password");
         userList.add(usr);
         userList.add(usr2);
         for(int i=0; i<userList.size(); i++){
@@ -71,8 +71,8 @@ public class UserDB {
         return user;
 
     }
-    public void addUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, String zipcode, String country){
-        User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country);
+    public void addUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, String zipcode, String country, String password){
+        User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country, password);
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try{
