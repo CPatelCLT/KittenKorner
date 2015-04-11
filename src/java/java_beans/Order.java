@@ -12,11 +12,13 @@ import java.util.ArrayList;
  * @author    : Eric Knowles
  * @author    : Chirag Patel
  */
+
+@Entity
 public class Order implements Serializable {
     
     private int orderNumber;
     private String date;
-    private User user;
+    private int userID;
     private ArrayList<OrderItem> items;
     private double taxRate;
     private double totalCost;
@@ -25,17 +27,17 @@ public class Order implements Serializable {
     public Order(){
         orderNumber = 0;
         date = null;
-        user = null;
+        userID = 0;
         items = null;
         taxRate = 0.0;
         totalCost = 0;
         paid = false;
     }
     
-    public Order(int ON, String D, User U, ArrayList<OrderItem> I, double TR, boolean P) {
+    public Order(int ON, String D, int Uid, ArrayList<OrderItem> I, double TR, boolean P) {
         orderNumber=ON;
         date=D;
-        user=U;
+        userID=Uid;
         items=I;
         taxRate=TR;
         paid=P;
@@ -57,12 +59,12 @@ public class Order implements Serializable {
         return date;
     }
     
-    public void setUser(User u){
-        user = u;
+    public void setUserID(int uid){
+        userID = uid;
     }
     
-    public User getUser(){
-        return user;
+    public int getUserID(){
+        return userID;
     }
     
     public void setItems(ArrayList<OrderItem> i){
