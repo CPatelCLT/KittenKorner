@@ -28,7 +28,7 @@
                     >
                     <a class="breadCrumbLink" href="login.jsp">Log In</a>
                 </div>
-                <form action="j_security_check" method="post">
+                <form action="j_security_check" method="POST">
                     <p>Please enter a username: 
                     <input type="text" name="j_username" size="25"></p>
                     <p>Please enter a password: 
