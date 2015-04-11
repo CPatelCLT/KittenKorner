@@ -99,6 +99,11 @@ public class OrderController extends HttpServlet {
 //                    RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
 //                    dispatch.forward(request, response);
 //                }
+            } else if (buttonClicked.equals("makePayment")) {
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
+                dispatch.forward(request, response);
+            } else if (buttonClicked.equals("confirmOrder")) {
+                
             }
         } else {
             if (request.getSession().getAttribute("currentOrder") != null) {
@@ -123,7 +128,7 @@ public class OrderController extends HttpServlet {
     public Order convertToOrder(Cart c, User usr) {
         Date date = new Date();
         DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(0, df.format(date), usr, c.getItems(), 0.075, false);
+        Order ord = new Order(0, df.format(date), usr.getUserID(), c.getItems(), 0.075, false);
         return ord;
     }
 }

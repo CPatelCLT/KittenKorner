@@ -9,7 +9,7 @@
 <div id="genNav">
     <ul id="genNavList">
         <li class="${pageContext.request.servletPath == '/index.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/index.jsp">Home</a></li>
-        <li class="${pageContext.request.servletPath == '/catalog.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/catalog">Catalog</a></li>
+        <li class="${pageContext.request.servletPath == '/catalog.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/catalog">Cat-alog</a></li>
         <li class="${pageContext.request.servletPath == '/about.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/about.jsp">About</a></li>
         <li class="${pageContext.request.servletPath == '/contact.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/contact.jsp">Contact Us</a></li>
     </ul>

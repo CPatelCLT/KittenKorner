@@ -15,15 +15,18 @@ public class OrderItem implements Serializable {
     
     private Product product;
     private int quantity;
+    private int orderNum;
     
     public OrderItem(){
         product=null;
         quantity=0;
+        orderNum = 0;
     }
     
-    public OrderItem(Product P, int Q){
+    public OrderItem(Product P, int Q, int onum){
         product=P;
         quantity=Q;
+        orderNum = onum;
     }
     
     public void setProduct(Product p){
@@ -44,6 +47,12 @@ public class OrderItem implements Serializable {
     
     public double getTotal(){
         return product.getPrice()*quantity;
+    }
+    public void setOrderNum(int onum) {
+        orderNum = onum;
+    }
+    public int getOrderNum () {
+        return orderNum;
     }
     
 }
