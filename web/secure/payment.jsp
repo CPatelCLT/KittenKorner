@@ -28,7 +28,134 @@
                     >
                     <a class="breadCrumbLink" href="payment.jsp">Payment Options</a>
                 </div>
+                <h1>
+                    Enter Your Payment Information
+                </h1>
                 <form action="orders" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                Credit Card Type: 
+                            </td>
+                            <td>
+                                <input type="text" list="creditCardType">
+                                <datalist id="creditCardType">
+                                    <option>
+                                        Visa
+                                    </option>
+                                    <option>
+                                        Mastercard
+                                    </option>
+                                    <option>
+                                        Discover
+                                    </option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Card Number: 
+                            </td>
+                            <td>
+                                <input type="text" name="creditCardNumber">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Expiration Date (MM/YYYY): 
+                            </td>
+                            <td>
+                                <input type="text" list="monthSelect">
+                                <datalist id="monthSelect">
+                                    <option>
+                                        January
+                                    </option>
+                                    <option>
+                                        February
+                                    </option>
+                                    <option>
+                                        March
+                                    </option>
+                                    <option>
+                                        April
+                                    </option>
+                                    <option>
+                                        May
+                                    </option>
+                                    <option>
+                                        June
+                                    </option>
+                                    <option>
+                                        July
+                                    </option>
+                                    <option>
+                                        August
+                                    </option>
+                                    <option>
+                                        September
+                                    </option>
+                                    <option>
+                                        October
+                                    </option>
+                                    <option>
+                                        November
+                                    </option>
+                                    <option>
+                                        December
+                                    </option>
+                                </datalist>
+                            </td>
+                            <td>
+                                <input type="text" list="yearSelect">
+                                <datalist id="yearSelect">
+                                    <option>
+                                        2015
+                                    </option>
+                                    <option>
+                                        2016
+                                    </option>
+                                    <option>
+                                        2017
+                                    </option>
+                                    <option>
+                                        2018
+                                    </option>
+                                    <option>
+                                        2019
+                                    </option>
+                                    <option>
+                                        2020
+                                    </option>
+                                    <option>
+                                        2021
+                                    </option>
+                                    <option>
+                                        2022
+                                    </option>
+                                    <option>
+                                        2023
+                                    </option>
+                                    <option>
+                                        2024
+                                    </option>
+                                    <option>
+                                        2025
+                                    </option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                CVV (3-digit): 
+                            </td>
+                            <td>
+                                <input type="text" name="cvv">
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        Your card will be charged a total of $${order.getTotalCost}.
+                    </p>
                     <button type="submit" name="action" value="confirmOrder">Confirm Payment</button>
                 </form>
             </div>

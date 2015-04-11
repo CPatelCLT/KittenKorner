@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/4166_Assignment_2">
-    <Realm className="org.apache.catalina.realm.JDBCRealm" 
-         connectionName="root" connectionPassword="password" 
-         connectionURL="jdbc:mysql://localhost:3306/kittenkornerdb?zeroDateTimeBehavior=convertToNull" 
-         debug="99" driverName="com.mysql.jdbc.Driver" 
-         roleNameCol="rolename" userCredCol="password" userNameCol="emailAddr" 
-         userRoleTable="users_roles" userTable="user"/>
+    
+    <Realm  className="org.apache.catalina.realm.JDBCRealm"
+                    driverName="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://localhost:3306/KittenKornerDB?zeroDateTimeBehavior=convertToNull"
+                    connectionName="root"
+                    connectionPassword="password"
+                    userTable="user"
+                    userNameCol="emailAddr"
+                    userCredCol="password"
+                    userRoleTable="users_roles"
+                    roleNameCol="rolename" />
+         
 </Context>
 
