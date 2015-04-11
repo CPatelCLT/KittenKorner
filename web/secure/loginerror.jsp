@@ -1,6 +1,6 @@
 <%-- 
-    Document   : checkoutChoice
-    Created on : Mar 30, 2015, 6:51:48 PM
+    Document   : loginerror
+    Created on : Apr 10, 2015, 8:04:44 PM
     Author     : Eric
 --%>
 
@@ -24,20 +24,11 @@
         <%@ include file="../include/site-navigation.jsp" %>
             <div id="main">
                 <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="../index.jsp">Home</a>
+                    <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="checkoutChoice.jsp">Check Out</a>
+                    <a class="breadCrumbLink" href="login.jsp">Log In</a>
                 </div>
-                <H1>Login or Create New User</H1>
-                <p>Select one of the two options below to proceed with checkout.</p>
-                <div id="checkoutChoiceButtons">
-                    <form action="login.jsp">
-                        <button class="checkoutChoiceButton" id="existingUserButton"  type="submit" name="action" value="existingUser">Log in as Existing User</button>
-                    </form>
-                    <form action="userInfo.jsp">
-                        <button class="checkoutChoiceButton" id="createNewUserButton" type="submit" name="action" value="createNewUser">Create New User</button>
-                    </form>
-                </div>
+                <p>Your login attempt failed, please go back and try again!</p>
             </div>
         <%@ include file="../include/footer.jsp" %>
     </body>

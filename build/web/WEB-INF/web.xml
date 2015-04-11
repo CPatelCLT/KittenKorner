@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <security-role>
+	<role-name>user</role-name>
+    </security-role>
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Protected Area</web-resource-name>
-            <url-pattern>/secure/*</url-pattern>
-        
+            <web-resource-name>Login Area</web-resource-name>
+            <url-pattern>/login/*</url-pattern>
         </web-resource-collection>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Protected Area</web-resource-name>
+            <url-pattern>/secure/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+	</auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    
       
     <servlet>
         <servlet-name>CatalogController</servlet-name>
@@ -35,6 +52,7 @@
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
         <url-pattern>/secure/user</url-pattern>
+        <url-pattern>/login/user</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -45,7 +63,7 @@
         <auth-method>FORM</auth-method>
         <form-login-config>
             <form-login-page>/secure/login.jsp</form-login-page>
-            <form-error-page>/secure/login.jsp</form-error-page>
+            <form-error-page>/secure/loginerror.jsp</form-error-page>
         </form-login-config>
     </login-config>
     <welcome-file-list>

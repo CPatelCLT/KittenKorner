@@ -62,7 +62,7 @@ public class UserController extends HttpServlet {
                 if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
                     errorType = "User exists in Database";
                     request.setAttribute("errorType", errorType);
-                    RequestDispatcher dispatch = request.getRequestDispatcher("/secure/userInfo.jsp");
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/login/userInfo.jsp");
                     dispatch.forward(request, response);
                 }
                 else {
@@ -85,8 +85,8 @@ public class UserController extends HttpServlet {
             password = request.getParameter("j_password");
             ArrayList<User> allUsers = udb.getAllUsers();
             for (int i = 0; i<allUsers.size(); i++) {
-                if (currUser.getUserID()==allUsers.get(i).getUserID()) {
-                    if(currUser.getPassword().equals(allUsers.get(i).getPassword())){
+                if (username.equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
+                    if(password.equals(allUsers.get(i).getPassword())){
                         request.getSession().setAttribute("theUser", allUsers.get(i));
                         RequestDispatcher dispatch;
                         if (request.getSession().getAttribute("theShoppingCart") != null) {

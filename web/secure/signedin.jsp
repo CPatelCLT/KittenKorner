@@ -25,9 +25,9 @@
                 <div class="breadCrumb">
                     <a class="breadCrumbLink" href="index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="signin.jsp">Sign In</a>
+                    <a class="breadCrumbLink" href="signedin.jsp">Signed In</a>
                 </div>
-                Sign In
+                You have successfully signed in!
             </div>
         <%@ include file="../include/footer.jsp" %>
     </body>

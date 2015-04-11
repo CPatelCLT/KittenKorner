@@ -33,16 +33,14 @@
                 </div>
                 <h1>Create New User Account</h1>
                 <form action="user" method="post">
-                    <p>Please enter a username: 
-                    <input type="text" name="userName" size="25"></p>
+                    <p>Please enter your email address: 
+                    <input type="email" name="emailAddr" size="25"></p>
                     <p>Please enter a password: 
                     <input type="password" name="password" size="25"></p>
                     <p>Please enter your first name: 
                     <input type="text" name="firstName" size="25"></p>
                     <p>Please enter your last name: 
                     <input type="text" name="lastName" size="25"></p>
-                    <p>Please enter your email address: 
-                    <input type="email" name="emailAddr" size="25"></p>
                     <p>Please enter your Address: 
                     <input type="text" name="address1" size="50"></p>
                     <p>Please enter your Address (optional): 
