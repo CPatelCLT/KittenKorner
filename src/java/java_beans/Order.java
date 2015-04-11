@@ -7,6 +7,7 @@ package java_beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.persistence.*;
 
 /**
  * @author    : Eric Knowles
@@ -15,11 +16,11 @@ import java.util.ArrayList;
 
 @Entity
 public class Order implements Serializable {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
     private String date;
     private int userID;
-    private ArrayList<OrderItem> items;
     private double taxRate;
     private double totalCost;
     private boolean paid;
@@ -28,17 +29,15 @@ public class Order implements Serializable {
         orderNumber = 0;
         date = null;
         userID = 0;
-        items = null;
         taxRate = 0.0;
         totalCost = 0;
         paid = false;
     }
     
-    public Order(int ON, String D, int Uid, ArrayList<OrderItem> I, double TR, boolean P) {
+    public Order(int ON, String D, int Uid, double TR, boolean P) {
         orderNumber=ON;
         date=D;
         userID=Uid;
-        items=I;
         taxRate=TR;
         paid=P;
     }
@@ -67,14 +66,6 @@ public class Order implements Serializable {
         return userID;
     }
     
-    public void setItems(ArrayList<OrderItem> i){
-        items = i;
-    }
-    
-    public ArrayList<OrderItem> getItems(){
-        return items;
-    }
-    
     public void setTaxRate(double tr){
         taxRate = tr;
     }
@@ -88,11 +79,6 @@ public class Order implements Serializable {
     }
     
     public double getTotalCost(){
-        double subTotal = 0.00;
-        for (int i = 0; i<items.size(); i++) {
-            subTotal += items.get(i).getTotal();
-        }
-        totalCost = subTotal + (subTotal*taxRate);
         return totalCost;
     }
     

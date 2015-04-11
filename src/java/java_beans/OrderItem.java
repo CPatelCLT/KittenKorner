@@ -6,16 +6,18 @@
 package java_beans;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 /**
  * @author    : Eric Knowles
  * @author    : Chirag Patel
  */
+@Entity
 public class OrderItem implements Serializable {
     
+    private int orderNum;
     private Product product;
     private int quantity;
-    private int orderNum;
     
     public OrderItem(){
         product=null;
@@ -48,6 +50,7 @@ public class OrderItem implements Serializable {
     public double getTotal(){
         return product.getPrice()*quantity;
     }
+    
     public void setOrderNum(int onum) {
         orderNum = onum;
     }

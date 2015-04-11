@@ -30,7 +30,7 @@ public class Cart implements Serializable {
     }
 
     public void addItem(Product p, int q) {
-        OrderItem o = new OrderItem(p, q);
+        OrderItem o = new OrderItem(p, q, 0);
         boolean check=true;
         for (OrderItem item : itemsInCart) {
             if (item.getProduct().equals(p)) {
