@@ -24,9 +24,10 @@ public class Order implements Serializable {
     private double taxRate;
     private double totalCost;
     private boolean paid;
+    @Transient
+    private ArrayList<OrderItem> items;
     
     public Order(){
-        orderNumber = 0;
         date = null;
         userID = 0;
         taxRate = 0.0;
@@ -34,8 +35,7 @@ public class Order implements Serializable {
         paid = false;
     }
     
-    public Order(int ON, String D, int Uid, double TR, boolean P) {
-        orderNumber=ON;
+    public Order(String D, int Uid, double TR, boolean P) {
         date=D;
         userID=Uid;
         taxRate=TR;
@@ -90,5 +90,11 @@ public class Order implements Serializable {
         return paid;
     }
     
+    public ArrayList<OrderItem> getItems() {
+        return items;
+    }
+    public void setItems (ArrayList<OrderItem> oi) {
+        items = oi;
+    }
     
 }

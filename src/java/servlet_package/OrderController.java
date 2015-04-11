@@ -128,7 +128,7 @@ public class OrderController extends HttpServlet {
     public Order convertToOrder(Cart c, User usr) {
         Date date = new Date();
         DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(0, df.format(date), usr.getUserID(), c.getItems(), 0.075, false);
+        Order ord = new Order(df.format(date), usr.getUserID(), 0.075, false);
         return ord;
     }
 }
