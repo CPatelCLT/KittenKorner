@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -154,7 +155,7 @@
                         </tr>
                     </table>
                     <p>
-                        Your card will be charged a total of $${order.getTotalCost}.
+                        Your card will be charged a total of <fmt:formatNumber value="${sessionScope.thisOrder.getTotalCost}" type="currency"/>.
                     </p>
                     <button type="submit" name="action" value="confirmOrder">Confirm Payment</button>
                 </form>
