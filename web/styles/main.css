@@ -288,6 +288,9 @@ li{
 .overflowAuto{
     overflow: auto;
 }
+.blueLink{
+    color: blue !important;
+}
 #footer{
     /*z-index:-1;*/
     position: relative;

@@ -28,6 +28,9 @@
                     >
                     <a class="breadCrumbLink" href="login.jsp">Log In</a>
                 </div>
+                <p>
+                    Please log in or click <a class="blueLink" href="../login/userInfo.jsp">here</a> to create a new account.
+                </p>
                 <form action="j_security_check" method="POST">
                     <p>Please enter a username: 
                     <input type="text" name="j_username" size="25"></p>

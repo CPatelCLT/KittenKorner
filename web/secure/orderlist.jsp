@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,7 +29,36 @@
                     >
                     <a class="breadCrumbLink" href="orderlist.jsp">My Orders</a>
                 </div>
-                order list
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Order Number</h2>
+                        </td>
+                        <td>
+                            <h2>Customer</h2>
+                        </td>
+                        <td>
+                            <h2>Order Date</h2>
+                        </td>
+                        <td>
+                            <h2>Total</h2>
+                        </td>
+                        <c:forEach items="${sessionScope.userOrders}" var="curOrder">
+                            <td>
+                                <h2>${curOrder.getOrderNumber()}</h2>
+                            </td>
+                            <td>
+                                <h2>${curOrder.getName()}</h2>
+                            </td>
+                            <td>
+                                <h2>${curOrder.getDate()}</h2>
+                            </td>
+                            <td>
+                                <h2><fmt:formatNumber value="${curOrder.getTotal()}" type="currency"/></h2>
+                            </td>                            
+                        </c:forEach>
+                    </tr>
+                </table>
             </div>
         <%@ include file="../include/footer.jsp" %>
     </body>
