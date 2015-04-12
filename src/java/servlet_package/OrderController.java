@@ -113,7 +113,13 @@ public class OrderController extends HttpServlet {
 //                dispatch.forward(request, response);
 //            } 
             }  else if (buttonClicked.equals("confirmOrder")) {
-                
+                Order thisOrder = (Order) request.getSession().getAttribute("thisOrder");
+                odb.addOrder(thisOrder, thisOrder.getItems());
+                thisOrder = odb.getLastOrder(thisOrder.getUserID());
+                request.getSession().removeAttribute("thisOrder");
+                request.getSession().setAttribute("currentOrder", thisOrder);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
+                dispatch.forward(request, response);
             }
         } else {
             if (request.getSession().getAttribute("currentOrder") != null) {

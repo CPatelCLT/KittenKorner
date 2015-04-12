@@ -21,7 +21,7 @@ public class OrderDB {
         
     }
     
-    public static ArrayList<OrderItem> getOrderItems(int onum) {
+    public ArrayList<OrderItem> getOrderItems(int onum) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT oi FROM OrderItems oi " + "WHERE oi.orderNum = :onum";
         TypedQuery<OrderItem> q = em.createQuery(query, OrderItem.class);
@@ -39,7 +39,7 @@ public class OrderDB {
         oiNew.addAll(oi);
         return oiNew;
     }
-    public static ArrayList<Order> getOrders(int uid) {
+    public ArrayList<Order> getOrders(int uid) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT ord FROM Order ord " + "WHERE ord.userID = :uid";
         TypedQuery<Order> q = em.createQuery(query, Order.class);
@@ -57,7 +57,7 @@ public class OrderDB {
         ordNew.addAll(ord);
         return ordNew;
     }
-    public static void addOrder(Order o, ArrayList<OrderItem> oi) {
+    public void addOrder(Order o, ArrayList<OrderItem> oi) {
          EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -78,8 +78,12 @@ public class OrderDB {
             em.close();
         }
     }
-    public static int getOrdNum(int uid) {
+    public int getOrdNum(int uid) {
         ArrayList<Order> ords = getOrders(uid);
         return ords.get(ords.size()-1).getOrderNumber();
+    }
+    public Order getLastOrder(int uid) {
+        ArrayList<Order> userOrders = getOrders(uid);
+        return userOrders.get(userOrders.size()-1);
     }
 }
