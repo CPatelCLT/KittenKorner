@@ -14,8 +14,8 @@
         <title>Kitten Korner</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/main.css" type="text/css"/>
-        <script type="text/javascript" src="main.js">
+        <link rel="stylesheet" href="/4166_Assignment_2/styles/main.css" type="text/css"/>
+        <script type="text/javascript" src="/4166_Assignment_2/main.js">
         </script>
     </head>
     <body onload="setSizes();">
@@ -25,9 +25,9 @@
         <%@ include file="include/site-navigation.jsp" %>
         <div id="main">
             <div class="breadCrumb">
-                <a class="breadCrumbLink" href="index.jsp">Home</a>
+                <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
                 >
-                <a class="breadCrumbLink" href="cart.jsp">Shopping Cart</a>
+                <a class="breadCrumbLink" href="/4166_Assignment_2/cart.jsp">Shopping Cart</a>
             </div>
             <div id="cartWrapper">
 
