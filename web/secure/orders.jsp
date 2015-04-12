@@ -35,7 +35,7 @@
                 <c:choose>
                     <c:when test="${sessionScope.currentOrder!=null}">
                         <h1>
-                            Invoice
+                            Invoice #${sessionScope.currentOrder.getUserID()}
                         </h1>
                         <h3>Date: ${currentOrder.getDate()}</h3>
                         <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
