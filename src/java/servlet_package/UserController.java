@@ -25,7 +25,7 @@ public class UserController extends HttpServlet {
     UserDB udb = new UserDB();
     User currUser;
     String requestedAction, errorType;
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,26 +58,25 @@ public class UserController extends HttpServlet {
             password = request.getParameter("password");
             currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
             ArrayList<User> allUsers = udb.getAllUsers();
-            for (int i = 0; i<allUsers.size(); i++) {
+            for (int i = 0; i < allUsers.size(); i++) {
                 if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
                     errorType = "User exists in Database";
                     request.setAttribute("errorType", errorType);
                     RequestDispatcher dispatch = request.getRequestDispatcher("/login/userInfo.jsp");
                     dispatch.forward(request, response);
+                    return;
                 }
-                else {
-                    udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
-                    request.getSession().setAttribute("theUser", currUser);
-                    RequestDispatcher dispatch;
-                    if(request.getSession().getAttribute("theShoppingCart") != null) {
+            }
+            udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
+            request.getSession().setAttribute("theUser", currUser);
+            RequestDispatcher dispatch;
+            if (request.getSession().getAttribute("theShoppingCart") != null) {
 //                        response.sendRedirect("/order?buttonClicked=addToCartButton");
-                        dispatch = request.getRequestDispatcher("/cart.jsp");
-                    }
-                    else {
-                        dispatch = request.getRequestDispatcher("/index.jsp");
-                    }
-                    dispatch.forward(request, response);
-                }
+                dispatch = request.getRequestDispatcher("/cart.jsp");
+                dispatch.forward(request, response);
+            } else {
+                dispatch = request.getRequestDispatcher("/index.jsp");
+                dispatch.forward(request, response);
             }
         }
 //        else if (requestedAction.equals("j_securitycheck")) {
