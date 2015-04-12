@@ -68,6 +68,7 @@ public class UserController extends HttpServlet {
                 }
             }
             udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
+            currUser = udb.getUserByEmail(emailAddress);
             request.getSession().setAttribute("theUser", currUser);
             RequestDispatcher dispatch;
             if (request.getSession().getAttribute("theShoppingCart") != null) {

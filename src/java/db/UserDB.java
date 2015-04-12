@@ -71,6 +71,23 @@ public class UserDB {
         return user;
 
     }
+    public User getUserByEmail(String emailAddr) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT u from User u "+"WHERE u.emailAddr = :emailAddr";
+        TypedQuery<User> u = em.createQuery(qString, User.class);
+        u.setParameter("emailAddr", emailAddr);
+        
+        User user = null;
+        try{
+            user = u.getSingleResult();
+        } catch(NoResultException e){
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+        return user;
+
+    }
     public void addUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, String zipcode, String country, String password){
         User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country, password);
         addUser(user);
