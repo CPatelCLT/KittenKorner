@@ -73,17 +73,7 @@ public class UserDB {
     }
     public void addUser(String firstName, String lastName, String email, String address1, String address2, String city, String state, String zipcode, String country, String password){
         User user = new User(firstName, lastName, email, address1, address2, city, state, zipcode, country, password);
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-        try{
-            trans.begin();
-            em.persist(user);
-            trans.commit();
-        }catch(Exception ex){
-            trans.rollback();
-        }finally{
-            em.close();
-        }
+        addUser(user);
     }
     
     public void addUser(User user){
