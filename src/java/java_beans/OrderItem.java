@@ -8,6 +8,7 @@ package java_beans;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * @author    : Eric Knowles
@@ -17,27 +18,29 @@ import javax.persistence.Id;
 public class OrderItem implements Serializable {
     @Id
     private int orderNum;
-    private Product product;
+    private int productCode;
     private int quantity;
+    @Transient
+    private double total;
     
     public OrderItem(){
-        product=null;
+        productCode=0;
         quantity=0;
         orderNum = 0;
     }
     
-    public OrderItem(Product P, int Q, int onum){
-        product=P;
+    public OrderItem(int P, int Q, int onum){
+        productCode=P;
         quantity=Q;
         orderNum = onum;
     }
     
-    public void setProduct(Product p){
-        product=p;
+    public void setProduct(int p){
+        productCode=p;
     }
     
-    public Product getProduct(){
-        return product;
+    public int getProduct(){
+        return productCode;
     }
     
     public void setQuantity(int q){
@@ -49,7 +52,10 @@ public class OrderItem implements Serializable {
     }
     
     public double getTotal(){
-        return product.getPrice()*quantity;
+        return total;
+    }
+    public void setTotal(double tot) {
+        total = tot;
     }
     
     public void setOrderNum(int onum) {
