@@ -43,11 +43,15 @@ public class OrderController extends HttpServlet {
                 pcode = request.getParameter("productCode");
                 if (pcode != null) {
                     if (request.getSession().getAttribute("theShoppingCart") != null) {
+                        //Add another item to cart
                         c = (Cart) request.getSession().getAttribute("theShoppingCart");
-                        c.addItem(Integer.parseInt(pcode), 1);
+                        Product p = pdb.getProduct(Integer.parseInt(pcode));
+                        OrderItem oi = new OrderItem(Integer.parseInt(p.getProductCode()), 1, 0);
+                        oi.setProduct(p);
+                        c.addItem(oi);
                         request.getSession().setAttribute("theShoppingCart", c);
                     } else {
-                        //request.setAttribute("alert", pcode+"else ran");
+                        //Add first item to cart
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
                         OrderItem oi = new OrderItem(Integer.parseInt(p.getProductCode()), 1, 0);
                         oi.setProduct(p);
