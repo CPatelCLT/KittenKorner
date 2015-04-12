@@ -40,7 +40,7 @@ public class ProductDB {
             addProduct(p);
         }
     }
-    public static ArrayList<Product> getAllProducts() {
+    public ArrayList<Product> getAllProducts() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT p FROM Product p";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
@@ -60,7 +60,7 @@ public class ProductDB {
     }
 
     // Gets product using the product code
-    public static Product getProduct(int pCode) {
+    public Product getProduct(int pCode) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT p FROM Product p " + "WHERE p.productCode = :pCode";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
@@ -89,7 +89,7 @@ public class ProductDB {
      }
      return tmp;
      } */
-    public static void addProduct(Product prod) {
+    public void addProduct(Product prod) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -104,7 +104,7 @@ public class ProductDB {
         }
     }
 
-    public static void addProduct(String productCode, String productName, String catalogCategory, double price, String description, String imageUrl) {
+    public void addProduct(String productCode, String productName, String catalogCategory, double price, String description, String imageUrl) {
         Product prod = new Product(productCode, productName, catalogCategory, description, price, imageUrl);
         addProduct(prod);
     }

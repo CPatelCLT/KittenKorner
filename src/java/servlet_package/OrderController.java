@@ -49,9 +49,11 @@ public class OrderController extends HttpServlet {
                     } else {
                         //request.setAttribute("alert", pcode+"else ran");
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
+                        OrderItem oi = new OrderItem(Integer.parseInt(p.getProductCode()), 1, 0);
+                        oi.setProduct(p);
                         if (p != null) {
                             c = new Cart();
-                            c.addItem(p, 1);
+                            c.addItem(oi);
                             request.getSession().setAttribute("theShoppingCart", c);
                         } else {
                             //request.setAttribute("alert", "p is null");
@@ -62,10 +64,10 @@ public class OrderController extends HttpServlet {
                 dispatch.forward(request, response);
             } else if (buttonClicked.equals("updateCart")) {
                 c = (Cart) request.getSession().getAttribute("theShoppingCart");
-
+                
                 for (int i = 0; i < c.getItems().size(); i++) {
                     OrderItem currItem = c.getItems().get(i);
-                    int newQty = Integer.parseInt(request.getParameter(currItem.getProduct().getProductCode() + ""));
+                    int newQty = Integer.parseInt(request.getParameter(currItem.getProductCode() + ""));
                     if (newQty < 0) {
                         //Invalid quantity gets reverted to previous value
                         newQty = currItem.getQuantity();

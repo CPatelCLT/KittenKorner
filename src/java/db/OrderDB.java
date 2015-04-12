@@ -17,6 +17,7 @@ import javax.persistence.TypedQuery;
  * @author chirag
  */
 public class OrderDB {
+    ProductDB pdb = new ProductDB();
     public OrderDB() {
         
     }
@@ -37,6 +38,9 @@ public class OrderDB {
         }
         ArrayList<OrderItem> oiNew = new ArrayList<OrderItem>(oi.size());
         oiNew.addAll(oi);
+        for (int i = 0; i<oiNew.size(); i++) {
+            oiNew.get(i).setProduct(pdb.getProduct(oiNew.get(i).getProductCode()));
+        }
         return oiNew;
     }
     public ArrayList<Order> getOrders(int uid) {

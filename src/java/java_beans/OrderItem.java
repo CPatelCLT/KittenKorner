@@ -22,6 +22,8 @@ public class OrderItem implements Serializable {
     private int quantity;
     @Transient
     private double total;
+    @Transient
+    private Product product;
     
     public OrderItem(){
         productCode=0;
@@ -35,11 +37,11 @@ public class OrderItem implements Serializable {
         orderNum = onum;
     }
     
-    public void setProduct(int p){
+    public void setProductCode(int p){
         productCode=p;
     }
     
-    public int getProduct(){
+    public int getProductCode(){
         return productCode;
     }
     
@@ -63,6 +65,12 @@ public class OrderItem implements Serializable {
     }
     public int getOrderNum () {
         return orderNum;
+    }
+    public Product getProduct() {
+        return product;
+    }
+    public void setProduct(Product p) {
+        product = p;
     }
     
 }
