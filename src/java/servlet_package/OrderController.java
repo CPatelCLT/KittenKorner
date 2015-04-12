@@ -44,7 +44,7 @@ public class OrderController extends HttpServlet {
                 if (pcode != null) {
                     if (request.getSession().getAttribute("theShoppingCart") != null) {
                         c = (Cart) request.getSession().getAttribute("theShoppingCart");
-                        c.addItem(pdb.getProduct(Integer.parseInt(pcode)), 1);
+                        c.addItem(Integer.parseInt(pcode), 1);
                         request.getSession().setAttribute("theShoppingCart", c);
                     } else {
                         //request.setAttribute("alert", pcode+"else ran");
