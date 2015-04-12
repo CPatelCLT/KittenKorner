@@ -47,7 +47,7 @@ public class OrderDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT ord FROM Order ord " + "WHERE ord.userID = :uid";
         TypedQuery<Order> q = em.createQuery(query, Order.class);
-        q.setParameter("uid", uid+"");
+        q.setParameter("uid", uid);
         List<Order> ord;
         try {
             ord = q.getResultList();
@@ -67,14 +67,14 @@ public class OrderDB {
         trans.begin();
         try {
             em.persist(o); 
-            trans.commit(); //OrderNumber assigned here
+//            trans.commit(); //OrderNumber assigned here
             int ordnum = getOrdNum(o.getUserID());
             for (int i = 0; i<oi.size(); i++) {
                 oi.get(i).setOrderNum(ordnum);
                 em.persist(oi.get(i));
-                trans.commit();
+//                trans.commit();
             }
-            
+            trans.commit();
         } catch (Exception e) {
             System.out.println(e);
             trans.rollback();

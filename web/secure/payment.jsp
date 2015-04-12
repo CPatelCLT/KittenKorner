@@ -30,9 +30,9 @@
                     <a class="breadCrumbLink" href="payment.jsp">Payment Options</a>
                 </div>
                 <h1>
-                    Enter Your Payment Information
+                    Enter Your Payment Information ${sessionScope.theUser.getUserID()}
                 </h1>
-                <form action="orders" method="post">
+                <form action="order" method="post">
                     <table>
                         <tr>
                             <td>
