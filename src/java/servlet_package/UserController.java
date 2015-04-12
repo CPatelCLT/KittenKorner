@@ -70,7 +70,8 @@ public class UserController extends HttpServlet {
                     request.getSession().setAttribute("theUser", currUser);
                     RequestDispatcher dispatch;
                     if(request.getSession().getAttribute("theShoppingCart") != null) {
-                        dispatch = request.getRequestDispatcher("/order");
+//                        response.sendRedirect("/order?buttonClicked=addToCartButton");
+                        dispatch = request.getRequestDispatcher("/cart.jsp");
                     }
                     else {
                         dispatch = request.getRequestDispatcher("/index.jsp");
