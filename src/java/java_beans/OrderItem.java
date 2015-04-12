@@ -7,6 +7,7 @@ package java_beans;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * @author    : Eric Knowles
@@ -14,7 +15,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class OrderItem implements Serializable {
-    
+    @Id
     private int orderNum;
     private Product product;
     private int quantity;

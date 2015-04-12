@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import db.OrderDB;
 
 /**
  * @author : Eric Knowles
@@ -27,6 +28,7 @@ public class OrderController extends HttpServlet {
 
     String buttonClicked, pcode;
     ProductDB pdb = new ProductDB();
+    OrderDB odb = new OrderDB();
     ArrayList<Product> allItems = pdb.getAllProducts();
     Cart c;
     Order o;
@@ -82,9 +84,13 @@ public class OrderController extends HttpServlet {
                 c = (Cart) request.getSession().getAttribute("theShoppingCart");
                 request.getSession().setAttribute("theShoppingCart", c);
                 
-                RequestDispatcher dispatch = request.getRequestDispatcher("/user");
-                dispatch.forward(request,response);
-                
+                if (request.getSession().getAttribute("theUser") != null) {
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
+                    dispatch.forward(request,response);
+                } else {
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/login/checkoutChoice.jsp");
+                    dispatch.forward(request,response);
+                }
 //                if (request.getSession().getAttribute("theShoppingCart") != null) {
 //                    c = (Cart) request.getSession().getAttribute("theShoppingCart");
 //                    request.getSession().setAttribute("theShoppingCart", null);
@@ -131,4 +137,7 @@ public class OrderController extends HttpServlet {
         Order ord = new Order(df.format(date), usr.getUserID(), 0.075, false);
         return ord;
     }
+//    public ArrayList<Order> userOrders(int userid) {
+//        
+//    }
 }

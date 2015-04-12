@@ -17,7 +17,7 @@ import javax.persistence.TypedQuery;
  * @author chirag
  */
 public class OrderDB {
-    OrderDB() {
+    public OrderDB() {
         
     }
     
