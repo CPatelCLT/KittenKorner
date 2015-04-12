@@ -85,6 +85,9 @@ public class OrderController extends HttpServlet {
                 request.getSession().setAttribute("theShoppingCart", c);
                 
                 if (request.getSession().getAttribute("theUser") != null) {
+                    User currUser = (User) request.getSession().getAttribute("theUser");
+                    Order thisOrder = convertToOrder(c, currUser);
+                    request.getSession().setAttribute("thisOrder", thisOrder);
                     RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
                     dispatch.forward(request,response);
                 } else {
@@ -105,10 +108,11 @@ public class OrderController extends HttpServlet {
 //                    RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
 //                    dispatch.forward(request, response);
 //                }
-            } else if (buttonClicked.equals("makePayment")) {
-                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
-                dispatch.forward(request, response);
-            } else if (buttonClicked.equals("confirmOrder")) {
+//            } else if (buttonClicked.equals("makePayment")) {
+//                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
+//                dispatch.forward(request, response);
+//            } 
+            }  else if (buttonClicked.equals("confirmOrder")) {
                 
             }
         } else {
@@ -135,6 +139,12 @@ public class OrderController extends HttpServlet {
         Date date = new Date();
         DateFormat df = DateFormat.getDateInstance();
         Order ord = new Order(df.format(date), usr.getUserID(), 0.075, false);
+        ord.setItems(c.getItems());
+        double totalCost = 0.0;
+        for (int i = 0; i<c.getItems().size(); i++){
+            totalCost+=c.getItems().get(i).getTotal();
+        }
+        ord.setTotalCost(totalCost);
         return ord;
     }
 //    public ArrayList<Order> userOrders(int userid) {
