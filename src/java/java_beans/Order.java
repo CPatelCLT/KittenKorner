@@ -24,8 +24,7 @@ public class Order implements Serializable {
     private double taxRate;
     private double totalCost;
     private boolean paid;
-    @Transient
-    private ArrayList<OrderItem> items;
+    @Transient private ArrayList<OrderItem> items;
     
     public Order(){
         date = null;

@@ -30,7 +30,7 @@
                     <a class="breadCrumbLink" href="payment.jsp">Payment Options</a>
                 </div>
                 <h1>
-                    Enter Your Payment Information ${sessionScope.theUser.getUserID()}
+                    Enter Your Payment Information ${sessionScope.theUser.getUserID()}<br/>${sessionScope.thisOrder.getUserID()}<br/>${sessionScope.thisOrder.getDate()}<br/>${sessionScope.thisOrder.getTaxRate()}<br/>${sessionScope.thisOrder.getTotalCost()} 
                 </h1>
                 <form action="order" method="post">
                     <table>
@@ -105,8 +105,8 @@
                                         December
                                     </option>
                                 </datalist>
-                            </td>
-                            <td>
+<!--                            </td>
+                            <td>-->
                                 <input type="text" list="yearSelect">
                                 <datalist id="yearSelect">
                                     <option>

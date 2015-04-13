@@ -57,7 +57,7 @@ public class OrderDB {
         } finally {
             em.close();
         }
-        ArrayList<Order> ordNew = new ArrayList<Order>(ord.size());
+        ArrayList<Order> ordNew = new ArrayList(ord.size());
         ordNew.addAll(ord);
         return ordNew;
     }
@@ -67,13 +67,6 @@ public class OrderDB {
         trans.begin();
         try {
             em.persist(o); 
-//            trans.commit(); //OrderNumber assigned here
-            int ordnum = getOrdNum(o.getUserID());
-            for (int i = 0; i<oi.size(); i++) {
-                oi.get(i).setOrderNum(ordnum);
-                em.persist(oi.get(i));
-//                trans.commit();
-            }
             trans.commit();
         } catch (Exception e) {
             System.out.println(e);
@@ -93,6 +86,7 @@ public class OrderDB {
         try {
             oi.setOrderNum(ordNum);
             em.persist(oi);
+            trans.commit();
         } catch (Exception e) {
             System.out.println(e);
             trans.rollback();
