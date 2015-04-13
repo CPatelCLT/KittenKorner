@@ -46,7 +46,7 @@ public class Cart implements Serializable {
     public void addItem(OrderItem oi) {
         boolean check=true;
         for (int i = 0; i<itemsInCart.size(); i++) {
-            if (itemsInCart.get(i).equals(oi)) {
+            if (itemsInCart.get(i).getProductCode()==oi.getProductCode()) {
                 itemsInCart.get(i).setQuantity(itemsInCart.get(i).getQuantity()+1);
                 check=false;
             }
