@@ -80,6 +80,24 @@ public class OrderDB {
             trans.rollback();
         } finally {
             em.close();
+            for (int i = 0; i<oi.size(); i++) {
+                addOrderItems(o.getUserID(), oi.get(i));
+            }
+        }
+    }
+    public void addOrderItems(int uid, OrderItem oi) {
+        int ordNum = getOrdNum(uid);
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            oi.setOrderNum(ordNum);
+            em.persist(oi);
+        } catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
         }
     }
     public int getOrdNum(int uid) {
