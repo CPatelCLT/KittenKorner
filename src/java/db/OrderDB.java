@@ -62,7 +62,7 @@ public class OrderDB {
         return ordNew;
     }
     public void addOrder(Order o, ArrayList<OrderItem> oi) {
-         EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
         try {

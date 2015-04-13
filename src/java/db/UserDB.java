@@ -73,7 +73,7 @@ public class UserDB {
     }
     public User getUserByEmail(String emailAddr) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT u from User u "+"WHERE u.emailAddr = :emailAddr";
+        String qString = "SELECT u from User u "+"WHERE u.emailAddress = :emailAddr";
         TypedQuery<User> u = em.createQuery(qString, User.class);
         u.setParameter("emailAddr", emailAddr);
         
