@@ -61,6 +61,19 @@ public class OrderDB {
         ordNew.addAll(ord);
         return ordNew;
     }
+    public Order getOrderByNum(int ordNum) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String query = "SELECT ord FROM Order ord " + "WHERE ord.ordrNumber = :ordNum";
+        TypedQuery<Order> q = em.createQuery(query, Order.class);
+        q.setParameter("ordNum", ordNum);
+        Order ord;
+        try {
+            ord = q.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return ord;
+    }
     public void addOrder(Order o) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();

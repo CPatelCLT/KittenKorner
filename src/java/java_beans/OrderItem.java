@@ -15,27 +15,36 @@ import javax.persistence.*;
  */
 @Entity
 public class OrderItem implements Serializable {
-    @Id
+    @EmbeddedId
+    private OrderItemPK oiPK;
+    
+    @JoinColumn(name="orderNumber", referencedColumnName="orderNumber")
     @ManyToOne(fetch=FetchType.EAGER)
     private Order order;
+    
     private int quantity;
-    private double total;
     
     @OneToOne
-    @JoinColumn(name="productCode")
+    @JoinColumn(name="productCode", referencedColumnName="productCode")
     private Product product;
     
     public OrderItem(){
         product=null;
         quantity=0;
         order = null;
-        total=0;
     }
     
     public OrderItem(Product P, int Q, Order ord){
         product=P;
         quantity=Q;
         order = ord;
+    }
+    
+    public OrderItemPK getOiPK() {
+        return oiPK;
+    }
+    public void setOiPK(OrderItemPK oipk) {
+        oiPK = oipk;
     }
     
     public void setProduct(Product p){
@@ -57,9 +66,6 @@ public class OrderItem implements Serializable {
     public double getTotal(){
         return product.getPrice()*quantity;
     }
-    public void setTotal(double tot) {
-        total = tot;
-    }
     
     public void setOrder(Order ord) {
         order = ord;
@@ -67,5 +73,4 @@ public class OrderItem implements Serializable {
     public Order getOrder() {
         return order;
     }
-    
 }
