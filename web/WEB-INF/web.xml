@@ -36,6 +36,7 @@
     <servlet-mapping>
         <servlet-name>OrderController</servlet-name>
         <url-pattern>/secure/order</url-pattern>
+        <url-pattern>/order</url-pattern>
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

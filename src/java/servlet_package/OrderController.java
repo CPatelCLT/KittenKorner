@@ -97,7 +97,7 @@ public class OrderController extends HttpServlet {
                     RequestDispatcher dispatch = request.getRequestDispatcher("/secure/payment.jsp");
                     dispatch.forward(request,response);
                 } else {
-                    RequestDispatcher dispatch = request.getRequestDispatcher("/login/checkoutChoice.jsp");
+                    RequestDispatcher dispatch = request.getRequestDispatcher("/checkoutChoice.jsp");
                     dispatch.forward(request,response);
                 }
 //                if (request.getSession().getAttribute("theShoppingCart") != null) {
