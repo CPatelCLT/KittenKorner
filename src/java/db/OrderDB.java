@@ -39,7 +39,7 @@ public class OrderDB {
         ArrayList<OrderItem> oiNew = new ArrayList<OrderItem>(oi.size());
         oiNew.addAll(oi);
         for (int i = 0; i<oiNew.size(); i++) {
-            oiNew.get(i).setProduct(pdb.getProduct(oiNew.get(i).getProductCode()));
+            oiNew.get(i).setProduct(pdb.getProduct(Integer.parseInt(oiNew.get(i).getProduct().getProductCode())));
         }
         return oiNew;
     }
@@ -74,7 +74,7 @@ public class OrderDB {
         } finally {
             em.close();
             for (int i = 0; i<oi.size(); i++) {
-                addOrderItems(o.getUserID(), oi.get(i));
+                addOrderItems(o.getUser().getUserID(), oi.get(i));
             }
         }
     }
