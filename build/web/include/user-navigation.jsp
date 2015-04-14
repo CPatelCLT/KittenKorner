@@ -9,6 +9,6 @@
     <ul id="userNavList">
         <li class="${pageContext.request.servletPath == '/signedin.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/secure/signedin.jsp">Sign In</a></li>
         <li class="${pageContext.request.servletPath == '/cart.jsp' ? 'currentPage' : 'none'}"><a href="/4166_Assignment_2/cart.jsp">Cart</a></li>
-        <li class="${pageContext.request.servletPath == '/orders.jsp' ? 'currentPage' : 'none'}"><a href="order">My Orders</a></li>
+        <li class="${pageContext.request.servletPath == '/orders.jsp' ? 'currentPage' : 'none'}"><a href="/order?action=viewOrders">My Orders</a></li>
     </ul>
 </div>
