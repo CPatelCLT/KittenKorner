@@ -22,6 +22,7 @@ public class OrderItem implements Serializable {
     private double total;
     
     @OneToOne
+    @JoinColumn(name="productCode")
     private Product product;
     
     public OrderItem(){
