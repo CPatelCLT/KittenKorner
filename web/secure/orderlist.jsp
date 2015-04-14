@@ -45,7 +45,7 @@
                         </td>
                         <c:forEach items="${sessionScope.userOrders}" var="curOrder">
                             <td>
-                                <h2>${curOrder.getOrderNumber()}</h2>
+                                <h2><a href="/order?action=ordnum&num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a></h2> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
                             </td>
                             <td>
                                 <h2>${curOrder.getName()}</h2>
@@ -55,7 +55,7 @@
                             </td>
                             <td>
                                 <h2><fmt:formatNumber value="${curOrder.getTotal()}" type="currency"/></h2>
-                            </td>                            
+                            </td>   
                         </c:forEach>
                     </tr>
                 </table>

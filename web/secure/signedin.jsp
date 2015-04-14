@@ -28,6 +28,8 @@
                     >
                     <a class="breadCrumbLink" href="signedin.jsp">Signed In</a>
                 </div>
+                ${pageContect.request.remoteUser.getEmailAddress()}
+                <c:set var="theUser" value="${pageContect.request.remoteUser}" scope="session"/>
                 You have successfully signed in!
             </div>
         <%@ include file="../include/footer.jsp" %>

@@ -144,7 +144,24 @@ public class OrderController extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        buttonClicked = request.getParameter("action");
+        if (buttonClicked.equals("ordnum")){
+            if (request.getParameter("num")!=null){
+                String orderNumber = request.getParameter("num");
+                request.getSession().setAttribute("currentOrder", odb.getOrderByOrderNum(Integer.parseInt(orderNumber)));
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
+                dispatch.forward(request, response);
+            }
+        }
+        else if(buttonClicked.equals("viewOrders")){
+            User u = (User) request.getSession().getAttribute("theUser");
+            request.getSession().setAttribute("userOrders", odb.getOrderItems(u.getUserID()));
+            RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orderlist.jsp");
+            dispatch.forward(request, response);
+        }
+        else{
+            doPost(request, response);
+        }
     }
 
     public Order convertToOrder(Cart c, User usr) {
