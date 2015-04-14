@@ -7,7 +7,6 @@ package java_beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -22,16 +21,15 @@ public class Order implements Serializable {
     private int orderNumber;
     private String date;
     
-    @ManyToOne
-    @JoinColumn(name="userID")
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     
     private double taxRate;
     private double totalCost;
     private boolean paid;
     
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-    private List<OrderItem> items;
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="order")
+    private ArrayList<OrderItem> items;
     
     public Order(){
         date = null;
@@ -96,10 +94,10 @@ public class Order implements Serializable {
         return paid;
     }
     
-    public List<OrderItem> getItems() {
+    public ArrayList<OrderItem> getItems() {
         return items;
     }
-    public void setItems (List<OrderItem> oi) {
+    public void setItems (ArrayList<OrderItem> oi) {
         items = oi;
     }
     
