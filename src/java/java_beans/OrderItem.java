@@ -8,6 +8,7 @@ package java_beans;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 /**
@@ -22,7 +23,7 @@ public class OrderItem implements Serializable {
     private int quantity;
     @Transient
     private double total;
-    @Transient
+    @OneToOne 
     private Product product;
     
     public OrderItem(){

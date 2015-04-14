@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/4166_Assignment_2">
     
-    <Realm  className="org.apache.catalina.realm.JDBCRealm"
+<!--    <Realm  className="org.apache.catalina.realm.DataSourceRealm"
                     driverName="com.mysql.jdbc.Driver"
                     connectionURL="jdbc:mysql://localhost:3306/KittenKornerDB?zeroDateTimeBehavior=convertToNull"
                     connectionName="root"
@@ -10,7 +10,7 @@
                     userNameCol="emailAddr"
                     userCredCol="password"
                     userRoleTable="users_roles"
-                    roleNameCol="rolename" />
+                    roleNameCol="rolename" />-->
          
 </Context>
 

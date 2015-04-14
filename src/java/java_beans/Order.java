@@ -24,7 +24,8 @@ public class Order implements Serializable {
     private double taxRate;
     private double totalCost;
     private boolean paid;
-    @Transient private ArrayList<OrderItem> items;
+    @OneToMany(mappedBy="prod", fetch=FetchType.EAGER)
+    private ArrayList<OrderItem> items;
     
     public Order(){
         date = null;
