@@ -7,6 +7,7 @@ package java_beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -28,8 +29,8 @@ public class Order implements Serializable {
     private double totalCost;
     private boolean paid;
     
-    @OneToMany(mappedBy="orderitem", targetEntity=OrderItem.class, fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-    private ArrayList<OrderItem> items;
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+    private List<OrderItem> items;
     
     public Order(){
         date = null;
@@ -94,10 +95,10 @@ public class Order implements Serializable {
         return paid;
     }
     
-    public ArrayList<OrderItem> getItems() {
+    public List<OrderItem> getItems() {
         return items;
     }
-    public void setItems (ArrayList<OrderItem> oi) {
+    public void setItems (List<OrderItem> oi) {
         items = oi;
     }
     
