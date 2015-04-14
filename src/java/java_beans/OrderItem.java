@@ -18,14 +18,14 @@ public class OrderItem implements Serializable {
     @EmbeddedId
     private OrderItemPK oiPK;
     
-    @JoinColumn(name="orderNumber", referencedColumnName="orderNumber")
+    @PrimaryKeyJoinColumn(name="orderNumber", referencedColumnName="orderNumber")
     @ManyToOne(fetch=FetchType.EAGER)
     private Order order;
     
     private int quantity;
     
     @OneToOne
-    @JoinColumn(name="productCode", referencedColumnName="productCode")
+    @PrimaryKeyJoinColumn(name="productCode", referencedColumnName="productCode")
     private Product product;
     
     public OrderItem(){
