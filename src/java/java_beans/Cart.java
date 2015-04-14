@@ -29,11 +29,11 @@ public class Cart implements Serializable {
         return itemsInCart;
     }
 
-    public void addItem(int p, int q) {
+    public void addItem(Product p, int q) {
         OrderItem o = new OrderItem(p, q, 0);
         boolean check=true;
         for (OrderItem item : itemsInCart) {
-            if (item.getProductCode()==p) {
+            if (item.getProduct()==p) {
                 item.setQuantity(item.getQuantity() + 1);
                 check=false;
             }
@@ -46,7 +46,7 @@ public class Cart implements Serializable {
     public void addItem(OrderItem oi) {
         boolean check=true;
         for (int i = 0; i<itemsInCart.size(); i++) {
-            if (itemsInCart.get(i).getProductCode()==oi.getProductCode()) {
+            if (itemsInCart.get(i).getProduct().getProductCode().equals(oi.getProduct().getProductCode())) {
                 itemsInCart.get(i).setQuantity(itemsInCart.get(i).getQuantity()+1);
                 check=false;
             }

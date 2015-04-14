@@ -20,24 +20,28 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
     private String date;
-    private int userID;
+    
+    @ManyToOne
+    private User user;
+    
     private double taxRate;
     private double totalCost;
     private boolean paid;
-    @OneToMany(mappedBy="prod", fetch=FetchType.EAGER)
+    
+    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     private ArrayList<OrderItem> items;
     
     public Order(){
         date = null;
-        userID = 0;
+        user = null;
         taxRate = 0.0;
         totalCost = 0;
         paid = false;
     }
     
-    public Order(String D, int Uid, double TR, boolean P) {
+    public Order(String D, User usr, double TR, boolean P) {
         date=D;
-        userID=Uid;
+        user=usr;
         taxRate=TR;
         paid=P;
     }
@@ -58,12 +62,12 @@ public class Order implements Serializable {
         return date;
     }
     
-    public void setUserID(int uid){
-        userID = uid;
+    public void setUser(User usr){
+        user = usr;
     }
     
-    public int getUserID(){
-        return userID;
+    public User getUser(){
+        return user;
     }
     
     public void setTaxRate(double tr){

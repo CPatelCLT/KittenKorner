@@ -7,9 +7,7 @@ package java_beans;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 /**
  * @author    : Eric Knowles
@@ -18,32 +16,34 @@ import javax.persistence.Transient;
 @Entity
 public class OrderItem implements Serializable {
     @Id
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="ordrNumber")
     private int orderNum;
-    private int productCode;
     private int quantity;
-    @Transient
     private double total;
-    @OneToOne 
+    
+    @OneToOne
     private Product product;
     
     public OrderItem(){
-        productCode=0;
+        product=null;
         quantity=0;
         orderNum = 0;
+        total=0;
     }
     
-    public OrderItem(int P, int Q, int onum){
-        productCode=P;
+    public OrderItem(Product P, int Q, int onum){
+        product=P;
         quantity=Q;
         orderNum = onum;
     }
     
-    public void setProductCode(int p){
-        productCode=p;
+    public void setProduct(Product p){
+        product=p;
     }
     
-    public int getProductCode(){
-        return productCode;
+    public Product getProduct(){
+        return product;
     }
     
     public void setQuantity(int q){
@@ -66,12 +66,6 @@ public class OrderItem implements Serializable {
     }
     public int getOrderNum () {
         return orderNum;
-    }
-    public Product getProduct() {
-        return product;
-    }
-    public void setProduct(Product p) {
-        product = p;
     }
     
 }
