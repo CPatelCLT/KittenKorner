@@ -27,7 +27,7 @@
                 <div class="breadCrumb">
                     <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="payment.jsp">Payment Options</a>
+                    <a class="breadCrumbLink" href="/4166_Assignment_2/secure/payment.jsp">Payment Options</a>
                 </div>
                 <h1>
                     Enter Your Payment Information ${sessionScope.theUser.getUserID()}<br/>${sessionScope.thisOrder.getUserID()}<br/>${sessionScope.thisOrder.getDate()}<br/>${sessionScope.thisOrder.getTaxRate()}<br/>${sessionScope.thisOrder.getTotalCost()} 
