@@ -28,7 +28,7 @@ public class Order implements Serializable {
     private double totalCost;
     private boolean paid;
     
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="orderitem", targetEntity=OrderItem.class, fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
     private ArrayList<OrderItem> items;
     
     public Order(){
