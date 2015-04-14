@@ -148,7 +148,7 @@ public class OrderController extends HttpServlet {
         if (buttonClicked.equals("ordnum")){
             if (request.getParameter("num")!=null){
                 String orderNumber = request.getParameter("num");
-                request.getSession().setAttribute("currentOrder", odb.getOrderByOrderNum(Integer.parseInt(orderNumber)));
+                request.getSession().setAttribute("currentOrder", odb.getOrderByNum(Integer.parseInt(orderNumber)));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
                 dispatch.forward(request, response);
             }
