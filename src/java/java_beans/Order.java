@@ -23,6 +23,7 @@ public class Order implements Serializable {
     private String date;
     
     @ManyToOne
+    @JoinColumn(name="userID")
     private User user;
     
     private double taxRate;
