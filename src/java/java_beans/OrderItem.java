@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class OrderItem implements Serializable {
     @Id
     @ManyToOne(fetch=FetchType.EAGER)
-    private int orderNum;
+    private int orderNumber;
     private int quantity;
     private double total;
     
@@ -27,14 +27,14 @@ public class OrderItem implements Serializable {
     public OrderItem(){
         product=null;
         quantity=0;
-        orderNum = 0;
+        orderNumber = 0;
         total=0;
     }
     
     public OrderItem(Product P, int Q, int onum){
         product=P;
         quantity=Q;
-        orderNum = onum;
+        orderNumber = onum;
     }
     
     public void setProduct(Product p){
@@ -61,10 +61,10 @@ public class OrderItem implements Serializable {
     }
     
     public void setOrderNum(int onum) {
-        orderNum = onum;
+        orderNumber = onum;
     }
     public int getOrderNum () {
-        return orderNum;
+        return orderNumber;
     }
     
 }
