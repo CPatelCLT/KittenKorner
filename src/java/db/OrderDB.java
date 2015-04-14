@@ -61,7 +61,7 @@ public class OrderDB {
         ordNew.addAll(ord);
         return ordNew;
     }
-    public void addOrder(Order o, ArrayList<OrderItem> oi) {
+    public void addOrder(Order o) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         trans.begin();
@@ -73,27 +73,24 @@ public class OrderDB {
             trans.rollback();
         } finally {
             em.close();
-            for (int i = 0; i<oi.size(); i++) {
-                addOrderItems(o.getUser().getUserID(), oi.get(i));
-            }
         }
     }
-    public void addOrderItems(int uid, OrderItem oi) {
-        int ordNum = getOrdNum(uid);
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-        trans.begin();
-        try {
-            oi.setOrderNum(ordNum);
-            em.persist(oi);
-            trans.commit();
-        } catch (Exception e) {
-            System.out.println(e);
-            trans.rollback();
-        } finally {
-            em.close();
-        }
-    }
+//    public void addOrderItems(int uid, OrderItem oi) {
+//        int ordNum = getOrdNum(uid);
+//        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+//        EntityTransaction trans = em.getTransaction();
+//        trans.begin();
+//        try {
+//            oi.setOrderNum(ordNum);
+//            em.persist(oi);
+//            trans.commit();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            trans.rollback();
+//        } finally {
+//            em.close();
+//        }
+//    }
     public int getOrdNum(int uid) {
         ArrayList<Order> ords = getOrders(uid);
         return ords.get(ords.size()-1).getOrderNumber();

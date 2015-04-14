@@ -46,14 +46,14 @@ public class OrderController extends HttpServlet {
                         //Add another item to cart
                         c = (Cart) request.getSession().getAttribute("theShoppingCart");
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
-                        OrderItem oi = new OrderItem(p, 1, 0);
+                        OrderItem oi = new OrderItem(p, 1, null);
                         oi.setProduct(p);
                         c.addItem(oi);
                         request.getSession().setAttribute("theShoppingCart", c);
                     } else {
                         //Add first item to cart
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
-                        OrderItem oi = new OrderItem(p, 1, 0);
+                        OrderItem oi = new OrderItem(p, 1, null);
                         oi.setProduct(p);
                         if (p != null) {
                             c = new Cart();
@@ -120,7 +120,7 @@ public class OrderController extends HttpServlet {
 //            } 
             }  else if (buttonClicked.equals("confirmOrder")) {
                 Order thisOrder = (Order) request.getSession().getAttribute("thisOrder");
-                odb.addOrder(thisOrder, thisOrder.getItems());
+                odb.addOrder(thisOrder);
                 thisOrder = odb.getLastOrder(thisOrder.getUser().getUserID());
                 request.getSession().removeAttribute("thisOrder");
                 request.getSession().setAttribute("currentOrder", thisOrder);
