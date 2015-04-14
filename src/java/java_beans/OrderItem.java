@@ -17,7 +17,6 @@ import javax.persistence.*;
 public class OrderItem implements Serializable {
     @Id
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="ordrNumber")
     private int orderNum;
     private int quantity;
     private double total;

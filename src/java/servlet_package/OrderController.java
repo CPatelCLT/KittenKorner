@@ -46,14 +46,14 @@ public class OrderController extends HttpServlet {
                         //Add another item to cart
                         c = (Cart) request.getSession().getAttribute("theShoppingCart");
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
-                        OrderItem oi = new OrderItem(Integer.parseInt(p.getProductCode()), 1, 0);
+                        OrderItem oi = new OrderItem(p, 1, 0);
                         oi.setProduct(p);
                         c.addItem(oi);
                         request.getSession().setAttribute("theShoppingCart", c);
                     } else {
                         //Add first item to cart
                         Product p = pdb.getProduct(Integer.parseInt(pcode));
-                        OrderItem oi = new OrderItem(Integer.parseInt(p.getProductCode()), 1, 0);
+                        OrderItem oi = new OrderItem(p, 1, 0);
                         oi.setProduct(p);
                         if (p != null) {
                             c = new Cart();
@@ -71,7 +71,7 @@ public class OrderController extends HttpServlet {
                 
                 for (int i = 0; i < c.getItems().size(); i++) {
                     OrderItem currItem = c.getItems().get(i);
-                    int newQty = Integer.parseInt(request.getParameter(currItem.getProductCode() + ""));
+                    int newQty = Integer.parseInt(request.getParameter(currItem.getProduct().getProductCode() + ""));
                     if (newQty < 0) {
                         //Invalid quantity gets reverted to previous value
                         newQty = currItem.getQuantity();
@@ -121,7 +121,7 @@ public class OrderController extends HttpServlet {
             }  else if (buttonClicked.equals("confirmOrder")) {
                 Order thisOrder = (Order) request.getSession().getAttribute("thisOrder");
                 odb.addOrder(thisOrder, thisOrder.getItems());
-                thisOrder = odb.getLastOrder(thisOrder.getUserID());
+                thisOrder = odb.getLastOrder(thisOrder.getUser().getUserID());
                 request.getSession().removeAttribute("thisOrder");
                 request.getSession().setAttribute("currentOrder", thisOrder);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
@@ -151,7 +151,7 @@ public class OrderController extends HttpServlet {
         Date date = new Date();
         double taxRate = 0.075;
         DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(df.format(date), usr.getUserID(), taxRate, false);
+        Order ord = new Order(df.format(date), usr, taxRate, false);
 //        Order ord = new Order("test", usr.getUserID(), taxRate, false);
         ord.setItems(c.getItems());
         double totalCost = 0.0;
