@@ -34,7 +34,7 @@
                     <form action="/4166_Assignment_2/secure/signedin.jsp">
                         <button class="checkoutChoiceButton" id="existingUserButton"  type="submit" name="action" value="existingUser">Log in as Existing User</button>
                     </form>
-                    <form action="/4166_Assignment_2/login/userInfo.jsp">
+                    <form action="/4166_Assignment_2/userInfo.jsp">
                         <button class="checkoutChoiceButton" id="createNewUserButton" type="submit" name="action" value="createNewUser">Create New User</button>
                     </form>
                 </div>

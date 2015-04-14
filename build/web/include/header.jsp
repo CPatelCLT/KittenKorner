@@ -19,7 +19,7 @@
                     ${sessionScope.theUser.getEmailAddress()}
                 </c:when>
                 <c:otherwise>
-                    <a href="/4166_Assignment_2/login/checkoutChoice.jsp">Click here to sign up/in!</a>
+                    <a href="/4166_Assignment_2/checkoutChoice.jsp">Click here to sign up/in!</a>
                 </c:otherwise>
             </c:choose>
         </div>

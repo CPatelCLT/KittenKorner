@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/4166_Assignment_2">
-    
+      <Resource auth="Container" 
+                driverClassName="com.mysql.jdbc.Driver" 
+                logAbandoned="true" 
+                maxActive="100" 
+                maxIdle="30" 
+                maxWait="10000" 
+                name="jdbc/kittenKornerDB" 
+                password="password" 
+                removeAbandoned="true" 
+                removeAbandonedTimeout="60" 
+                type="javax.sql.DataSource" 
+                url="jdbc:mysql://localhost:3306/kittenkornerdb?autoReconnect=true" 
+                username="root"/>
+  <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+         dataSourceName="jdbc/kittenKornerDB" 
+         debug="99" 
+         localDataSource="true" 
+         roleNameCol="rolename" 
+         userCredCol="password" 
+         userNameCol="emailAddr" 
+         userRoleTable="users_roles" 
+         userTable="user"/>
 <!--    <Realm  className="org.apache.catalina.realm.DataSourceRealm"
                     driverName="com.mysql.jdbc.Driver"
                     connectionURL="jdbc:mysql://localhost:3306/KittenKornerDB?zeroDateTimeBehavior=convertToNull"
