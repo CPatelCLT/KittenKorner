@@ -15,7 +15,6 @@
                 username="root"/>
   <Realm className="org.apache.catalina.realm.DataSourceRealm" 
          dataSourceName="jdbc/kittenKornerDB" 
-         debug="99" 
          localDataSource="true" 
          roleNameCol="user_role" 
          userCredCol="password" 

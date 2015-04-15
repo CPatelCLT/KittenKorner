@@ -19,19 +19,19 @@ public class OrderItem implements Serializable {
     private OrderItemPK oiPK;
     
     @JoinColumn(name="orderNumber", referencedColumnName="orderNumber", insertable=false, updatable=false)
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     private Order order;
     
     private int quantity;
     
-    @OneToOne
+    @OneToOne(cascade=CascadeType.REFRESH)
     @JoinColumn(name="productCode", referencedColumnName="productCode", insertable=false, updatable=false)
     private Product product;
     
     public OrderItem(){
-        product=null;
-        quantity=0;
-        order = null;
+//        product=null;
+//        quantity=0;
+//        order = null;
     }
     
     public OrderItem(Product P, int Q, Order ord){
