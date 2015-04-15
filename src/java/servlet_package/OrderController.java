@@ -121,7 +121,7 @@ public class OrderController extends HttpServlet {
             }  else if (buttonClicked.equals("confirmOrder")) {
                 Order thisOrder = (Order) request.getSession().getAttribute("thisOrder");
                 odb.addOrder(thisOrder);
-                thisOrder = odb.getLastOrder(thisOrder.getUser().getUserID());
+                thisOrder = odb.getLastOrder(thisOrder.getUser());
                 request.getSession().removeAttribute("thisOrder");
                 request.getSession().setAttribute("currentOrder", thisOrder);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
@@ -165,7 +165,7 @@ public class OrderController extends HttpServlet {
             else{
 //                User u = udb.getUserByEmail(usr);
                 //request.getSession().setAttribute("theUser", u);
-                request.getSession().setAttribute("userOrders", odb.getOrders(u.getUserID()));
+                request.getSession().setAttribute("userOrders", odb.getOrders(u));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orderlist.jsp");
                 dispatch.forward(request, response);
             }
@@ -178,8 +178,7 @@ public class OrderController extends HttpServlet {
     public Order convertToOrder(Cart c, User usr) {
         Date date = new Date();
         double taxRate = 0.075;
-        DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(df.format(date), usr, taxRate, false);
+        Order ord = new Order(date, usr, taxRate, false);
 //        Order ord = new Order("test", usr.getUserID(), taxRate, false);
         ord.setItems(c.getItems());
         double totalCost = 0.0;

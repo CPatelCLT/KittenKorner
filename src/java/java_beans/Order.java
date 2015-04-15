@@ -7,6 +7,7 @@ package java_beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.persistence.*;
 
 /**
@@ -19,8 +20,11 @@ public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int orderNumber;
-    private String date;
     
+    @Column(name = "oDate")
+    private Date date;
+    
+    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     
@@ -39,7 +43,7 @@ public class Order implements Serializable {
         paid = false;
     }
     
-    public Order(String D, User usr, double TR, boolean P) {
+    public Order(Date D, User usr, double TR, boolean P) {
         date=D;
         user=usr;
         taxRate=TR;
@@ -54,11 +58,11 @@ public class Order implements Serializable {
         return orderNumber;
     }
     
-    public void setDate(String d){
+    public void setDate(Date d){
         date = d;
     }
     
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
     
