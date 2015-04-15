@@ -178,8 +178,7 @@ public class OrderController extends HttpServlet {
     public Order convertToOrder(Cart c, User usr) {
         Date date = new Date();
         double taxRate = 0.075;
-        DateFormat df = DateFormat.getDateInstance();
-        Order ord = new Order(df.format(date), usr, taxRate, false);
+        Order ord = new Order(date, usr, taxRate, false);
 //        Order ord = new Order("test", usr.getUserID(), taxRate, false);
         ord.setItems(c.getItems());
         double totalCost = 0.0;
