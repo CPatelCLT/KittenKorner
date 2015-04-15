@@ -28,10 +28,12 @@
                     >
                     <a class="breadCrumbLink" href="signedin.jsp">Signed In</a>
                 </div>
-                start using .name ${pageContect.request.userPrincipal.name} end<br/>
-                start using .getEmailAddress ${pageContect.request.userPrincipal.getEmailAddress()} end
-                <c:set var="theUser" value="${pageContect.request.userPrincipal.getUserID()}" scope="session"/>
                 You have successfully signed in!
+                <form action="user" method="POST">
+                    <input type="hidden" name="userEmail" value="<%= request.getUserPrincipal().getName() %>"/>
+                    <button name="requestedAction" value="confirm" type="submit">Continue</button>
+                </form>
+
             </div>
         <%@ include file="../include/footer.jsp" %>
     </body>
