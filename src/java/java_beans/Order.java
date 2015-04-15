@@ -16,12 +16,15 @@ import javax.persistence.*;
  */
 
 @Entity
+@Table(name = "orders")
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int orderNumber;
+    @Column(name = "orderNumber")
+    private Integer orderNumber;
     
     @Column(name = "oDate")
+    @Temporal(TemporalType.DATE)
     private Date date;
     
     @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
@@ -50,7 +53,7 @@ public class Order implements Serializable {
         paid=P;
     }
     
-    public void setOrderNumber(int on){
+    public void setOrderNumber(Integer on){
         orderNumber = on;
     }
     

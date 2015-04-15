@@ -78,6 +78,7 @@ public class OrderDB {
     public void addOrder(Order o) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
+        System.out.println(o);
         trans.begin();
         try {
             em.persist(o); 

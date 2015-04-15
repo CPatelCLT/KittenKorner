@@ -30,7 +30,7 @@
                     <a class="breadCrumbLink" href="/4166_Assignment_2/secure/payment.jsp">Payment Options</a>
                 </div>
                 <h1>
-                    Enter Your Payment Information ${sessionScope.theUser.getUserID()}<br/>${sessionScope.thisOrder.getUser().getUserID()}<br/>${sessionScope.thisOrder.getDate()}<br/>${sessionScope.thisOrder.getTaxRate()}<br/>${sessionScope.thisOrder.getTotalCost()} 
+                    Enter Your Payment Information 
                 </h1>
                 <form action="order" method="post">
                     <table>

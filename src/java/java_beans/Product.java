@@ -19,7 +19,7 @@ import javax.persistence.Id;
 public class Product implements Serializable {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private String productCode;
+    private int productCode;
     private String productName;
     private String catalogCategory;
     private String description;
@@ -29,7 +29,7 @@ public class Product implements Serializable {
     public Product() {
         
     }
-    public Product(String PC, String PN, String CC, String D, double P, String iU) {
+    public Product(int PC, String PN, String CC, String D, double P, String iU) {
       productCode = PC;
       productName = PN;
       catalogCategory = CC;
@@ -38,11 +38,11 @@ public class Product implements Serializable {
       imageUrl = iU;
     }
     
-    public void setProductCode(String pc){
+    public void setProductCode(int pc){
         productCode = pc;
     }
     
-    public String getProductCode(){
+    public int getProductCode(){
         return productCode;
     }
     

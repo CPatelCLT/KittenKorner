@@ -20,7 +20,7 @@ public class ProductDB {
         //setupDB();
     }
     public void setupDB() {
-        String[] pCodes = {"0", "1", "2", "3", "4", "5"};
+        int[] pCodes = {0, 1, 2, 3, 4, 5};
         String[] pNames = {"cat1", "cat2", "cat3", "cat4", "cat5", "cat6"};
         String[] category = {"cute", "evil"};
         String[] desc = {"Furry creature1", "Furry creature2", "Furry creature3", "Furry creature4", "Furry creature5", "Furry creature6"};
@@ -64,7 +64,7 @@ public class ProductDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT p FROM Product p " + "WHERE p.productCode = :pCode";
         TypedQuery<Product> q = em.createQuery(query, Product.class);
-        q.setParameter("pCode", pCode+"");
+        q.setParameter("pCode", pCode);
         Product p = null;
         try {
             p = q.getSingleResult();
@@ -104,7 +104,7 @@ public class ProductDB {
         }
     }
 
-    public void addProduct(String productCode, String productName, String catalogCategory, double price, String description, String imageUrl) {
+    public void addProduct(int productCode, String productName, String catalogCategory, double price, String description, String imageUrl) {
         Product prod = new Product(productCode, productName, catalogCategory, description, price, imageUrl);
         addProduct(prod);
     }
