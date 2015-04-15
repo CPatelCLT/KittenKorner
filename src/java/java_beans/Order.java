@@ -21,6 +21,7 @@ public class Order implements Serializable {
     private int orderNumber;
     private String date;
     
+    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
     

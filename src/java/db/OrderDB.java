@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java_beans.Order;
 import java_beans.OrderItem;
+import java_beans.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -43,11 +44,11 @@ public class OrderDB {
 //        }
 //        return oiNew;
 //    }
-    public ArrayList<Order> getOrders(int uid) {
+    public ArrayList<Order> getOrders(User usr) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT ord FROM Order ord " + "WHERE ord.userID = :uid";
         TypedQuery<Order> q = em.createQuery(query, Order.class);
-        q.setParameter("uid", uid);
+        q.setParameter("uid", usr);
         List<Order> ord;
         try {
             ord = q.getResultList();
@@ -104,12 +105,12 @@ public class OrderDB {
 //            em.close();
 //        }
 //    }
-    public int getOrdNum(int uid) {
-        ArrayList<Order> ords = getOrders(uid);
+    public int getOrdNum(User usr) {
+        ArrayList<Order> ords = getOrders(usr);
         return ords.get(ords.size()-1).getOrderNumber();
     }
-    public Order getLastOrder(int uid) {
-        ArrayList<Order> userOrders = getOrders(uid);
+    public Order getLastOrder(User usr) {
+        ArrayList<Order> userOrders = getOrders(usr);
         return userOrders.get(userOrders.size()-1);
     }
 }
