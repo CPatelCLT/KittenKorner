@@ -15,6 +15,7 @@ import javax.persistence.*;
  */
 @Entity
 public class OrderItem implements Serializable {
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     private OrderItemPK oiPK;
     
@@ -24,14 +25,11 @@ public class OrderItem implements Serializable {
     
     private int quantity;
     
-    @OneToOne(cascade=CascadeType.REFRESH)
+    @OneToOne
     @JoinColumn(name="productCode", referencedColumnName="productCode", insertable=false, updatable=false)
     private Product product;
     
     public OrderItem(){
-//        product=null;
-//        quantity=0;
-//        order = null;
     }
     
     public OrderItem(Product P, int Q, Order ord){
@@ -72,5 +70,23 @@ public class OrderItem implements Serializable {
     }
     public Order getOrder() {
         return order;
+    }
+     @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (oiPK != null ? oiPK.hashCode() : 0);
+        return hash;
+    }
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof OrderItem)) {
+            return false;
+        }
+        OrderItem other = (OrderItem) object;
+        if ((this.oiPK == null && other.oiPK != null) || (this.oiPK != null && !this.oiPK.equals(other.oiPK))) {
+            return false;
+        }
+        return true;
     }
 }

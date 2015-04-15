@@ -18,6 +18,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "orderNumber")
@@ -27,7 +28,7 @@ public class Order implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     
-    @JoinColumn(name="userID", referencedColumnName="userID")
+    @JoinColumn(name="ouser", referencedColumnName="userID")
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
     
@@ -107,5 +108,23 @@ public class Order implements Serializable {
     public void setItems (ArrayList<OrderItem> oi) {
         items = oi;
     }
-    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (orderNumber != null ? orderNumber.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Order)) {
+            return false;
+        }
+        Order other = (Order) object;
+        if ((this.orderNumber == null && other.orderNumber != null) || (this.orderNumber != null && !this.orderNumber.equals(other.orderNumber))) {
+            return false;
+        }
+        return true;
+    }
 }

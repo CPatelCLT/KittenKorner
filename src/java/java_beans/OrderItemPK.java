@@ -38,4 +38,12 @@ public class OrderItemPK implements Serializable {
     public void setProductCode(int prodCode) {
         productCode = prodCode;
     }
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (int) orderNumber;
+        hash += (int) productCode;
+        return hash;
+    }
+
 }
