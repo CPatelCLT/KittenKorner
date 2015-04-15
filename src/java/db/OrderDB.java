@@ -24,7 +24,7 @@ public class OrderDB {
     
     public ArrayList<OrderItem> getOrderItems(int onum) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT oi FROM OrderItems oi " + "WHERE oi.orderNumber = :onum";
+        String query = "SELECT oi FROM OrderItem oi " + "WHERE oi.orderNumber = :onum";
         TypedQuery<OrderItem> q = em.createQuery(query, OrderItem.class);
         q.setParameter("onum", onum+"");
         List<OrderItem> oi;

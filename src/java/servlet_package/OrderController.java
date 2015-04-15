@@ -154,10 +154,21 @@ public class OrderController extends HttpServlet {
             }
         }
         else if(buttonClicked.equals("viewOrders")){
-            User u = (User) request.getSession().getAttribute("theUser");
-            request.getSession().setAttribute("userOrders", odb.getOrderItems(u.getUserID()));
-            RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orderlist.jsp");
-            dispatch.forward(request, response);
+            //User u = (User) request.getSession().getAttribute("theUser");
+            UserDB udb = new UserDB();
+            String usr = request.getUserPrincipal().getName();
+            //User u = udb.getUserByEmail(usr);
+            if (usr==null){
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
+                dispatch.forward(request, response);
+            }
+            else{
+                User u = udb.getUserByEmail(usr);
+                request.getSession().setAttribute("theUser", u);
+                request.getSession().setAttribute("userOrders", odb.getOrderItems(u.getUserID()));
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orderlist.jsp");
+                dispatch.forward(request, response);
+            }
         }
         else{
             doPost(request, response);

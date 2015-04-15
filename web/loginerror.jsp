@@ -24,11 +24,11 @@
         <%@ include file="/include/site-navigation.jsp" %>
             <div id="main">
                 <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
                     >
-                    <a class="breadCrumbLink" href="login.jsp">Log In</a>
+                    <a class="breadCrumbLink" href="/4166_Assignment_2/login.jsp">Log In</a>
                 </div>
-                <p>Your login attempt failed, please go <a class="blueLink" href="login.jsp">back</a> and try again!</p>
+                <p>Your login attempt failed, please go <a class="blueLink" href="4166_Assignment_2/signedin.jsp">back</a> and try again!</p>
             </div>
         <%@ include file="/include/footer.jsp" %>
     </body>

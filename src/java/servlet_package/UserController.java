@@ -58,27 +58,31 @@ public class UserController extends HttpServlet {
             password = request.getParameter("password");
             currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
             ArrayList<User> allUsers = udb.getAllUsers();
-            for (int i = 0; i < allUsers.size(); i++) {
-                if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
-                    errorType = "User exists in Database";
-                    request.setAttribute("errorType", errorType);
-                    RequestDispatcher dispatch = request.getRequestDispatcher("/login/userInfo.jsp");
-                    dispatch.forward(request, response);
-                    return;
+            if (allUsers != null) {
+                for (int i = 0; i < allUsers.size(); i++) {
+                    if (currUser.getEmailAddress().equalsIgnoreCase(allUsers.get(i).getEmailAddress())) {
+                        errorType = "User exists in Database";
+                        request.setAttribute("errorType", errorType);
+                        RequestDispatcher dispatch = request.getRequestDispatcher("/userInfo.jsp");
+                        dispatch.forward(request, response);
+                        return;
+                    }
                 }
             }
             udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
-            currUser = udb.getUserByEmail(emailAddress);
-            request.getSession().setAttribute("theUser", currUser);
+//            currUser = udb.getUserByEmail(emailAddress);
+//            request.getSession().setAttribute("theUser", currUser);
             RequestDispatcher dispatch;
-            if (request.getSession().getAttribute("theShoppingCart") != null) {
-//                        response.sendRedirect("/order?buttonClicked=addToCartButton");
-                dispatch = request.getRequestDispatcher("/cart.jsp");
-                dispatch.forward(request, response);
-            } else {
-                dispatch = request.getRequestDispatcher("/index.jsp");
-                dispatch.forward(request, response);
-            }
+            dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
+            dispatch.forward(request, response);
+//            if (request.getSession().getAttribute("theShoppingCart") != null) {
+////                        response.sendRedirect("/order?buttonClicked=addToCartButton");
+//                dispatch = request.getRequestDispatcher("/cart.jsp");
+//                dispatch.forward(request, response);
+//            } else {
+//                dispatch = request.getRequestDispatcher("/index.jsp");
+//                dispatch.forward(request, response);
+//            }
         }
 //        else if (requestedAction.equals("j_securitycheck")) {
 //            String username, password;

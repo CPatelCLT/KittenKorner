@@ -24,12 +24,13 @@
         <%@ include file="../include/site-navigation.jsp" %>
             <div id="main">
                 <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
                     >
                     <a class="breadCrumbLink" href="signedin.jsp">Signed In</a>
                 </div>
-                ${pageContect.request.remoteUser.getEmailAddress()}
-                <c:set var="theUser" value="${pageContect.request.remoteUser}" scope="session"/>
+                start using .name ${pageContect.request.userPrincipal.name} end<br/>
+                start using .getEmailAddress ${pageContect.request.userPrincipal.getEmailAddress()} end
+                <c:set var="theUser" value="${pageContect.request.userPrincipal.getUserID()}" scope="session"/>
                 You have successfully signed in!
             </div>
         <%@ include file="../include/footer.jsp" %>
