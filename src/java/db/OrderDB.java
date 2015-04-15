@@ -22,27 +22,27 @@ public class OrderDB {
         
     }
     
-    public ArrayList<OrderItem> getOrderItems(int onum) {
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT oi FROM OrderItem oi " + "WHERE oi.orderNumber = :onum";
-        TypedQuery<OrderItem> q = em.createQuery(query, OrderItem.class);
-        q.setParameter("onum", onum+"");
-        List<OrderItem> oi;
-        try {
-            oi = q.getResultList();
-            if (oi == null || oi.isEmpty()) {
-                return null;
-            }
-        } finally {
-            em.close();
-        }
-        ArrayList<OrderItem> oiNew = new ArrayList<OrderItem>(oi.size());
-        oiNew.addAll(oi);
-        for (int i = 0; i<oiNew.size(); i++) {
-            oiNew.get(i).setProduct(pdb.getProduct(Integer.parseInt(oiNew.get(i).getProduct().getProductCode())));
-        }
-        return oiNew;
-    }
+//    public ArrayList<OrderItem> getOrderItems(int onum) {
+//        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+//        String query = "SELECT oi FROM OrderItem oi " + "WHERE oi.orderNumber = :onum";
+//        TypedQuery<OrderItem> q = em.createQuery(query, OrderItem.class);
+//        q.setParameter("onum", onum+"");
+//        List<OrderItem> oi;
+//        try {
+//            oi = q.getResultList();
+//            if (oi == null || oi.isEmpty()) {
+//                return null;
+//            }
+//        } finally {
+//            em.close();
+//        }
+//        ArrayList<OrderItem> oiNew = new ArrayList<OrderItem>(oi.size());
+//        oiNew.addAll(oi);
+//        for (int i = 0; i<oiNew.size(); i++) {
+//            oiNew.get(i).setProduct(pdb.getProduct(Integer.parseInt(oiNew.get(i).getProduct().getProductCode())));
+//        }
+//        return oiNew;
+//    }
     public ArrayList<Order> getOrders(int uid) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String query = "SELECT ord FROM Order ord " + "WHERE ord.userID = :uid";

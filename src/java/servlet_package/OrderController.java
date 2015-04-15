@@ -165,7 +165,7 @@ public class OrderController extends HttpServlet {
             else{
 //                User u = udb.getUserByEmail(usr);
                 //request.getSession().setAttribute("theUser", u);
-                request.getSession().setAttribute("userOrders", odb.getOrderItems(u.getUserID()));
+                request.getSession().setAttribute("userOrders", odb.getOrders(u.getUserID()));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orderlist.jsp");
                 dispatch.forward(request, response);
             }

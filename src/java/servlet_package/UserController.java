@@ -75,7 +75,7 @@ public class UserController extends HttpServlet {
             //RequestDispatcher dispatch;
             //dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
             //dispatch.forward(request, response);
-            response.sendRedirect("/secure/signedin.jsp");
+            response.sendRedirect("secure/signedin.jsp");
 //            if (request.getSession().getAttribute("theShoppingCart") != null) {
 ////                        response.sendRedirect("/order?buttonClicked=addToCartButton");
 //                dispatch = request.getRequestDispatcher("/cart.jsp");
@@ -85,9 +85,11 @@ public class UserController extends HttpServlet {
 //                dispatch.forward(request, response);
 //            }
         } else if (requestedAction.equals("confirm")) {
-            String emailAddr = request.getParameter("emailAddress");
+            String emailAddr = request.getParameter("userEmail");
             User usr = udb.getUserByEmail(emailAddr);
             request.getSession().setAttribute("theUser", usr);
+            RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
+            dispatch.forward(request, response);
         }
 //        else if (requestedAction.equals("j_securitycheck")) {
 //            String username, password;
