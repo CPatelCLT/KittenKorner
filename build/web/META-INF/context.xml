@@ -17,10 +17,10 @@
          dataSourceName="jdbc/kittenKornerDB" 
          debug="99" 
          localDataSource="true" 
-         roleNameCol="rolename" 
+         roleNameCol="user_role" 
          userCredCol="password" 
          userNameCol="emailAddr" 
-         userRoleTable="users_roles" 
+         userRoleTable="user" 
          userTable="user"/>
 <!--    <Realm  className="org.apache.catalina.realm.DataSourceRealm"
                     driverName="com.mysql.jdbc.Driver"
