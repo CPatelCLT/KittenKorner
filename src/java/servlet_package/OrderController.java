@@ -123,6 +123,7 @@ public class OrderController extends HttpServlet {
                 odb.addOrder(thisOrder);
                 thisOrder = odb.getLastOrder(thisOrder.getUser());
                 request.getSession().removeAttribute("thisOrder");
+                request.getSession().removeAttribute("theShoppingCart");
                 request.getSession().setAttribute("currentOrder", thisOrder);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
                 dispatch.forward(request, response);
@@ -147,10 +148,15 @@ public class OrderController extends HttpServlet {
         buttonClicked = request.getParameter("action");
         if (buttonClicked.equals("ordnum")){
             if (request.getParameter("num")!=null){
+                //System.out.println("this ran and num = "+request.getParameter("num"));
                 String orderNumber = request.getParameter("num");
                 request.getSession().setAttribute("currentOrder", odb.getOrderByNum(Integer.parseInt(orderNumber)));
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/orders.jsp");
                 dispatch.forward(request, response);
+            }
+            else{
+                //System.out.println("This did not run so num is null");
+                response.sendRedirect("/4166_Assignment_2/index.jsp");
             }
         }
         else if(buttonClicked.equals("viewOrders")){
@@ -159,7 +165,7 @@ public class OrderController extends HttpServlet {
 //            String usr = request.getUserPrincipal().getName();
 //            User u = udb.getUserByEmail(usr);
             if (u==null){
-                response.sendRedirect("secure/signedin.jsp");
+                response.sendRedirect("/4166_Assignment_2/secure/signedin.jsp");
 //                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
 //                dispatch.forward(request, response);
             }

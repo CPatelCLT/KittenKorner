@@ -29,33 +29,33 @@
                     >
                     <a class="breadCrumbLink" href="orderlist.jsp">My Orders</a>
                 </div>
-                <table>
-                    <tr>
-                        <td>
-                            <h2>Order Number</h2>
+                <table class="orderlistTable">
+                    <tr class="orderlistTable">
+                        <td class="orderlistTable">
+                            <h2>Order #</h2>
                         </td>
-                        <td>
+                        <td class="orderlistTable">
                             <h2>Customer</h2>
                         </td>
-                        <td>
+                        <td class="orderlistTable">
                             <h2>Order Date</h2>
                         </td>
-                        <td>
+                        <td class="orderlistTable">
                             <h2>Total</h2>
                         </td>
                     </tr>
                         <c:forEach items="${sessionScope.userOrders}" var="curOrder">
-                        <tr>
-                            <td>
-                                <a class="blueLink" href="/order?action=ordnum&num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
+                        <tr class="orderlistTable">
+                            <td class="orderlistTable">
+                                <a class="blueLink" href="order?action=ordnum&amp;num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
                             </td>
-                            <td>
+                            <td class="orderlistTable">
                                 ${curOrder.getUser().getEmailAddress()}
                             </td>
-                            <td>
+                            <td class="orderlistTable">
                                 ${curOrder.getDate()}
                             </td>
-                            <td>
+                            <td class="orderlistTable">
                                 <fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>
                             </td>  
                         </tr>
