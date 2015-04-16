@@ -41,8 +41,8 @@ public class User implements Serializable {
     private String country;
     private String password;
     
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="userID")
-    private List<Order> orderList;
+//    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="userID")
+//    private List<Order> orderList;
     
     public User(){
         
@@ -149,12 +149,12 @@ public class User implements Serializable {
         return password;
     }
     
-    @XmlTransient
-    public List<Order> getOrderList(){
-        return orderList;
-    }
-    
-    public void setOrderList(List<Order> OL){
-        orderList = OL;
-    }
+//    @XmlTransient
+//    public List<Order> getOrderList(){
+//        return orderList;
+//    }
+//    
+//    public void setOrderList(List<Order> OL){
+//        orderList = OL;
+//    }
 }

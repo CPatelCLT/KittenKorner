@@ -21,7 +21,7 @@ public class OrderConfirmation {
         UserDB udb = new UserDB();
         // TODO Add getOrder(int ordID) to OrderDB
         Order currOrder = new Order(); //odb.getOrder(ordId);
-        User currUser = udb.getUser(currOrder.getUserID().getUserID()+"");
+        User currUser = udb.getUser(currOrder.getUser().getUserID());
         String to = currUser.getEmailAddress();
         // TODO Change to actual email information
         String from = "kittenkorner@measurementcontrols.com";

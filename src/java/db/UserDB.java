@@ -54,11 +54,11 @@ public class UserDB {
         userList.addAll(users);
         return userList;
     }
-    public User getUser(String userID) {
+    public User getUser(int userID) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT u from User u "+"WHERE u.userID = :userID";
         TypedQuery<User> u = em.createQuery(qString, User.class);
-        u.setParameter("userID", Integer.parseInt(userID));
+        u.setParameter("userID", userID);
         
         User user = null;
         try{

@@ -46,7 +46,7 @@ public class OrderDB {
 //    }
     public ArrayList<Order> getOrders(User usr) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT ord FROM Order ord " + "WHERE ord.userID = :uid";
+        String query = "SELECT ord FROM Order ord " + "WHERE ord.user = :uid";
         TypedQuery<Order> q = em.createQuery(query, Order.class);
         q.setParameter("uid", usr);
         List<Order> ord;
@@ -64,7 +64,7 @@ public class OrderDB {
     }
     public Order getOrderByNum(int ordNum) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String query = "SELECT ord FROM Order ord " + "WHERE ord.ordrNumber = :ordNum";
+        String query = "SELECT ord FROM Order ord " + "WHERE ord.orderNumber = :ordNum";
         TypedQuery<Order> q = em.createQuery(query, Order.class);
         q.setParameter("ordNum", ordNum);
         Order ord;

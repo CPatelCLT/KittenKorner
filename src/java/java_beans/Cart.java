@@ -18,7 +18,7 @@ public class Cart implements Serializable {
 
     public Cart() {
         //itemsInCart=null;
-        itemsInCart = new ArrayList<OrderItem>();
+        itemsInCart = new ArrayList<>();
     }
 
     public void setItems(ArrayList<OrderItem> i) {
@@ -30,7 +30,9 @@ public class Cart implements Serializable {
     }
 
     public void addItem(Product p, int q) {
-        OrderItem o = new OrderItem(p, q, null);
+        OrderItem o = new OrderItem();
+        o.setProduct(p);
+        o.setQuantity(q);
         boolean check=true;
         for (OrderItem item : itemsInCart) {
             if (item.getProduct()==p) {

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.*;
+import static javax.persistence.FetchType.EAGER;
 
 /**
  * @author    : Eric Knowles
@@ -18,30 +19,50 @@ import javax.persistence.*;
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
+
+    @ManyToOne
+    private User user;
+    
+    @OneToMany(fetch=EAGER, cascade=CascadeType.PERSIST)
+    private ArrayList<OrderItem> orderItem;
+    
+    @Temporal(TemporalType.DATE)
+    private Date oDate;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "orderNumber")
     private Integer orderNumber;
     
-    @Column(name = "oDate")
-    @Temporal(TemporalType.DATE)
-    private Date date;
-    
-//    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
-    @JoinColumn(name="userID", referencedColumnName="userID")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User userID;
-    
+    private boolean paid;
     private double taxRate;
     private double totalCost;
-    private boolean paid;
-    
-    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="order")
-    private ArrayList<OrderItem> items;
+
+
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name = "orderNumber")
+//    private Integer orderNumber;
+//    
+//    @Column(name = "oDate")
+//    @Temporal(TemporalType.DATE)
+//    private Date date;
+//    
+////    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
+//    @JoinColumn(name="userID", referencedColumnName="userID")
+//    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+//    private User userID;
+//    
+//    private double taxRate;
+//    private double totalCost;
+//    private boolean paid;
+//    
+//    @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST, mappedBy="order")
+//    private ArrayList<OrderItem> items;
     
     public Order(){
-        date = null;
-        userID = null;
+        oDate = null;
+        user = null;
         taxRate = 0.0;
         totalCost = 0;
         paid = false;
@@ -52,8 +73,8 @@ public class Order implements Serializable {
     }
     
     public Order(Date D, User usr, double TR, boolean P) {
-        date=D;
-        userID=usr;
+        oDate=D;
+        user=usr;
         taxRate=TR;
         paid=P;
     }
@@ -67,19 +88,19 @@ public class Order implements Serializable {
     }
     
     public void setDate(Date d){
-        date = d;
+        oDate = d;
     }
     
     public Date getDate(){
-        return date;
+        return oDate;
     }
     
     public void setUser(User usr){
-        userID = usr;
+        user = usr;
     }
     
-    public User getUserID(){
-        return userID;
+    public User getUser(){
+        return user;
     }
     
     public void setTaxRate(double tr){
@@ -107,10 +128,10 @@ public class Order implements Serializable {
     }
     
     public ArrayList<OrderItem> getItems() {
-        return items;
+        return orderItem;
     }
     public void setItems (ArrayList<OrderItem> oi) {
-        items = oi;
+        orderItem = oi;
     }
     
 }

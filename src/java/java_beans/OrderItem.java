@@ -15,19 +15,35 @@ import javax.persistence.*;
  */
 @Entity
 public class OrderItem implements Serializable {
-    @EmbeddedId
-    protected OrderItemPK oiPK;
     
-    @JoinColumn(name="orderNumber", referencedColumnName="orderNumber", insertable=false, updatable=false)
-    @ManyToOne(optional = false, fetch=FetchType.LAZY)
-    private Order order;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int orderNumber;
     
-    private int quantity;
-    
-//    @OneToOne//(cascade=CascadeType.REFRESH)
-    @JoinColumn(name="productCode", referencedColumnName="productCode", insertable=false, updatable=false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    @OneToOne
     private Product product;
+    
+    private int quantity=1;
+    
+    
+    
+    
+    
+    
+    
+//    @EmbeddedId
+//    protected OrderItemPK oiPK;
+//    
+//    @JoinColumn(name="orderNumber", referencedColumnName="orderNumber", insertable=false, updatable=false)
+//    @ManyToOne(optional = false, fetch=FetchType.LAZY)
+//    private Order order;
+//    
+//    private int quantity;
+//    
+////    @OneToOne//(cascade=CascadeType.REFRESH)
+//    @JoinColumn(name="productCode", referencedColumnName="productCode", insertable=false, updatable=false)
+//    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+//    private Product product;
     
     public OrderItem(){
 //        product=null;
@@ -35,18 +51,18 @@ public class OrderItem implements Serializable {
 //        order = null;
     }
     
-    public OrderItem(Product P, int Q, Order ord){
-        product=P;
-        quantity=Q;
-        order = ord;
-    }
+//    public OrderItem(Product P, int Q, int OID){
+//        product=P;
+//        quantity=Q;
+//        orderItemId = OID;
+//    }
     
-    public OrderItemPK getOiPK() {
-        return oiPK;
-    }
-    public void setOiPK(OrderItemPK oipk) {
-        oiPK = oipk;
-    }
+//    public OrderItemPK getOiPK() {
+//        return oiPK;
+//    }
+//    public void setOiPK(OrderItemPK oipk) {
+//        oiPK = oipk;
+//    }
     
     public void setProduct(Product p){
         product=p;
@@ -68,10 +84,18 @@ public class OrderItem implements Serializable {
         return product.getPrice()*quantity;
     }
     
-    public void setOrder(Order ord) {
-        order = ord;
+//    public void setOrder(int OID) {
+//        orderNumber = OID;
+//    }
+//    public int getOrder() {
+//        return orderNumber;
+//    }
+    
+    public void setOrderNumber(int ON){
+        ON=orderNumber;
     }
-    public Order getOrder() {
-        return order;
+    
+    public int getOrderNumber(){
+        return orderNumber;
     }
 }
