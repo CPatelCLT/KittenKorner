@@ -35,14 +35,14 @@
                 <c:choose>
                     <c:when test="${sessionScope.currentOrder!=null}">
                         <h1>
-                            Invoice #${sessionScope.currentOrder.getUserID()}
+                            Invoice #${sessionScope.currentOrder.getOrderNumber()}
                         </h1>
                         <h3>Date: ${currentOrder.getDate()}</h3>
                         <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
-                        <p>${currentOrder.getUserID().getFirstName()} ${currentOrder.getUserID().getLastName()}<br/>
-                            ${currentOrder.getUserID().getAddress1()}<br/>
-                            ${currentOrder.getUserID().getAddress2()}<br/>
-                            ${currentOrder.getUserID().getCity()}, ${currentOrder.getUserID().getState()} ${currentOrder.getUserID().getPostCode()} ${currentOrder.getUserID().getCountry()}</p>
+                        <p>${currentOrder.getUser().getFirstName()} ${currentOrder.getUser().getLastName()}<br/>
+                            ${currentOrder.getUser().getAddress1()}<br/>
+                            ${currentOrder.getUser().getAddress2()}<br/>
+                            ${currentOrder.getUser().getCity()}, ${currentOrder.getUser().getState()} ${currentOrder.getUser().getPostCode()} ${currentOrder.getUser().getCountry()}</p>
                         <div id="cartItems">
                             <div id="cartItemsCategories">
                                 <div id="itemCategoryLabel">

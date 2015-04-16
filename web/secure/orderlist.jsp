@@ -14,8 +14,8 @@
         <title>Kitten Korner</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../styles/main.css" type="text/css"/>
-        <script type="text/javascript" src="../main.js">
+        <link rel="stylesheet" href="/4166_Assignment_2/styles/main.css" type="text/css"/>
+        <script type="text/javascript" src="/4166_Assignment_2/main.js">
         </script>
     </head>
     <body>
@@ -25,7 +25,7 @@
         <%@ include file="../include/site-navigation.jsp" %>
             <div id="main">
                 <div class="breadCrumb">
-                    <a class="breadCrumbLink" href="index.jsp">Home</a>
+                    <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
                     >
                     <a class="breadCrumbLink" href="orderlist.jsp">My Orders</a>
                 </div>
@@ -43,21 +43,23 @@
                         <td>
                             <h2>Total</h2>
                         </td>
-                        <c:forEach items="${sessionScope.userOrders}" var="curOrder">
-                            <td>
-                                <h2><a href="/order?action=ordnum&num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a></h2> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
-                            </td>
-                            <td>
-                                <h2>${curOrder.getName()}</h2>
-                            </td>
-                            <td>
-                                <h2>${curOrder.getDate()}</h2>
-                            </td>
-                            <td>
-                                <h2><fmt:formatNumber value="${curOrder.getTotal()}" type="currency"/></h2>
-                            </td>   
-                        </c:forEach>
                     </tr>
+                        <c:forEach items="${sessionScope.userOrders}" var="curOrder">
+                        <tr>
+                            <td>
+                                <a class="blueLink" href="/order?action=ordnum&num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
+                            </td>
+                            <td>
+                                ${curOrder.getUser().getEmailAddress()}
+                            </td>
+                            <td>
+                                ${curOrder.getDate()}
+                            </td>
+                            <td>
+                                <fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>
+                            </td>  
+                        </tr>
+                        </c:forEach>
                 </table>
             </div>
         <%@ include file="../include/footer.jsp" %>
