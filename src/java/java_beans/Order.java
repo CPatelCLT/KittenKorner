@@ -27,9 +27,10 @@ public class Order implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     
-    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
-    @ManyToOne(fetch = FetchType.EAGER)
-    private User user;
+//    @JoinColumn(name="userID", referencedColumnName="userID", insertable=false, updatable=false)
+    @JoinColumn(name="userID", referencedColumnName="userID")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private User userID;
     
     private double taxRate;
     private double totalCost;
@@ -40,15 +41,19 @@ public class Order implements Serializable {
     
     public Order(){
         date = null;
-        user = null;
+        userID = null;
         taxRate = 0.0;
         totalCost = 0;
         paid = false;
     }
     
+    public Order(Integer ON){
+        orderNumber= ON;
+    }
+    
     public Order(Date D, User usr, double TR, boolean P) {
         date=D;
-        user=usr;
+        userID=usr;
         taxRate=TR;
         paid=P;
     }
@@ -70,11 +75,11 @@ public class Order implements Serializable {
     }
     
     public void setUser(User usr){
-        user = usr;
+        userID = usr;
     }
     
-    public User getUser(){
-        return user;
+    public User getUserID(){
+        return userID;
     }
     
     public void setTaxRate(double tr){

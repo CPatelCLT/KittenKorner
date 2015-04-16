@@ -6,11 +6,15 @@
 package java_beans;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author    : Eric Knowles
@@ -36,6 +40,9 @@ public class User implements Serializable {
     private String postCode;
     private String country;
     private String password;
+    
+    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="userID")
+    private List<Order> orderList;
     
     public User(){
         
@@ -140,5 +147,14 @@ public class User implements Serializable {
     
     public String getPassword() {
         return password;
+    }
+    
+    @XmlTransient
+    public List<Order> getOrderList(){
+        return orderList;
+    }
+    
+    public void setOrderList(List<Order> OL){
+        orderList = OL;
     }
 }

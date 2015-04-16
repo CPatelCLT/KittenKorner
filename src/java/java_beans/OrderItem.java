@@ -16,16 +16,17 @@ import javax.persistence.*;
 @Entity
 public class OrderItem implements Serializable {
     @EmbeddedId
-    private OrderItemPK oiPK;
+    protected OrderItemPK oiPK;
     
     @JoinColumn(name="orderNumber", referencedColumnName="orderNumber", insertable=false, updatable=false)
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(optional = false, fetch=FetchType.LAZY)
     private Order order;
     
     private int quantity;
     
-    @OneToOne(cascade=CascadeType.REFRESH)
+//    @OneToOne//(cascade=CascadeType.REFRESH)
     @JoinColumn(name="productCode", referencedColumnName="productCode", insertable=false, updatable=false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private Product product;
     
     public OrderItem(){

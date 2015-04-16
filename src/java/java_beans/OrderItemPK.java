@@ -6,6 +6,7 @@
 package java_beans;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Embeddable;
 
 /**
@@ -14,7 +15,9 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class OrderItemPK implements Serializable {
+    @Basic(optional = false)
     private int orderNumber;
+    @Basic(optional = false)
     private int productCode;
     
     public OrderItemPK() {

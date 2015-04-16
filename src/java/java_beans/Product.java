@@ -6,10 +6,15 @@
 package java_beans;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @author    : Eric Knowles
@@ -25,6 +30,9 @@ public class Product implements Serializable {
     private String description;
     private double price;
     private String imageUrl;
+    
+//    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="product")
+//    public List<OrderItem> orderItem;
     
     public Product() {
         
@@ -85,4 +93,13 @@ public class Product implements Serializable {
     public void setImageUrl(String iU) {
         imageUrl = iU;
     }
+    
+//    @XmlTransient
+//    public List<OrderItem> getOrderItem(){
+//        return orderItem;
+//    }
+//    
+//    public void setOrderList(List<OrderItem> OI){
+//        orderItem = OI;
+//    }
 }
