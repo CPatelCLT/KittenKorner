@@ -86,10 +86,16 @@ public class UserController extends HttpServlet {
 //            }
         } else if (requestedAction.equals("confirm")) {
             String emailAddr = request.getParameter("userEmail");
+            if (emailAddr.equals("")) {
+                request.setAttribute("error", "Error processing login, please try again.");
+                RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
+                dispatch.forward(request, response);
+            } else {
             User usr = udb.getUserByEmail(emailAddr);
             request.getSession().setAttribute("theUser", usr);
             RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
             dispatch.forward(request, response);
+            }
         }
 //        else if (requestedAction.equals("j_securitycheck")) {
 //            String username, password;

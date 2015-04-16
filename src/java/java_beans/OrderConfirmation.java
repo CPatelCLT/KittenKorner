@@ -37,7 +37,15 @@ public class OrderConfirmation {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Order Confirmation");
-            message.setText("Just letting you know the order " + currOrder.getOrderNumber() + " has been recieved.");
+            message.setText("Just letting you know the order " + currOrder.getOrderNumber() + " has been recieved.\n");
+            message.setText("The items in the order are:");
+            double temp = 0;
+            for (int i = 0; i<currOrder.getItems().size(); i++) {
+                OrderItem oi = currOrder.getItems().get(i);
+                message.setText(oi.getProduct().getProductName() + "     " + oi.getQuantity() + "       $" + oi.getTotal());
+                temp += oi.getTotal();
+            }
+            message.setText("Your total is: $" + temp);
             Transport.send(message);
             System.out.println("Message Sent");
         } catch (MessagingException mex) {
