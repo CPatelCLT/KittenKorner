@@ -159,8 +159,9 @@ public class OrderController extends HttpServlet {
 //            String usr = request.getUserPrincipal().getName();
 //            User u = udb.getUserByEmail(usr);
             if (u==null){
-                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
-                dispatch.forward(request, response);
+                response.sendRedirect("secure/signedin.jsp");
+//                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
+//                dispatch.forward(request, response);
             }
             else{
 //                User u = udb.getUserByEmail(usr);
