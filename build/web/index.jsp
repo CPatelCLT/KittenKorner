@@ -28,9 +28,6 @@
                 <a class="breadCrumbLink" href="/4166_Assignment_2/index.jsp">Home</a>
             </div>
             <div id="welcomeMessage">
-                <div class="errorMsg">
-                    ${error}
-                </div>
                 <p>
                     Welcome to the Kitten Korner!
                 </p>

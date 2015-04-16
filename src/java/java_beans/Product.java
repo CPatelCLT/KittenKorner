@@ -14,6 +14,7 @@ import javax.persistence.FetchType;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -31,6 +32,8 @@ public class Product implements Serializable {
     private double price;
     private String imageUrl;
     
+    //@OneToOne
+//    private OrderItem orderItem;
 //    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="product")
 //    public List<OrderItem> orderItem;
     
@@ -95,11 +98,11 @@ public class Product implements Serializable {
     }
     
 //    @XmlTransient
-//    public List<OrderItem> getOrderItem(){
+//    public OrderItem orderItem(){
 //        return orderItem;
 //    }
 //    
-//    public void setOrderList(List<OrderItem> OI){
+//    public void setOrderItem(OrderItem OI){
 //        orderItem = OI;
 //    }
 }
