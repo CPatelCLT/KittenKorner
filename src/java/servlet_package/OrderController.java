@@ -19,6 +19,7 @@ import java.util.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import db.OrderDB;
+import java_beans.OrderConfirmation;
 
 /**
  * @author : Eric Knowles
@@ -122,6 +123,8 @@ public class OrderController extends HttpServlet {
                 Order thisOrder = (Order) request.getSession().getAttribute("thisOrder");
                 odb.addOrder(thisOrder);
                 thisOrder = odb.getLastOrder(thisOrder.getUser());
+                OrderConfirmation ordConf = new OrderConfirmation();
+                ordConf.sendConfirmation(thisOrder);
                 request.getSession().removeAttribute("thisOrder");
                 request.getSession().removeAttribute("theShoppingCart");
                 request.getSession().setAttribute("currentOrder", thisOrder);

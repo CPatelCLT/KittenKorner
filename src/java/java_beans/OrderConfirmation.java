@@ -16,14 +16,11 @@ import javax.mail.internet.*;
  * @author chirag
  */
 public class OrderConfirmation {
-    public void sendConfirmation(int ordId) {
-        OrderDB odb = new OrderDB();
+    public void sendConfirmation(Order ord) {
         UserDB udb = new UserDB();
-        // TODO Add getOrder(int ordID) to OrderDB
-        Order currOrder = new Order(); //odb.getOrder(ordId);
-        User currUser = udb.getUser(currOrder.getUser().getUserID());
+        Order currOrder = ord;
+        User currUser = ord.getUser();
         String to = currUser.getEmailAddress();
-        // TODO Change to actual email information
         String from = "kittenkorner@measurementcontrols.com";
         String host = "mail.measurementcontrols.com";
         Properties properties = System.getProperties();
@@ -45,7 +42,9 @@ public class OrderConfirmation {
                 message.setText(oi.getProduct().getProductName() + "     " + oi.getQuantity() + "       $" + oi.getTotal());
                 temp += oi.getTotal();
             }
-            message.setText("Your total is: $" + temp);
+            message.setText("Your total is: $" + temp + "\n\n");
+            
+            message.setText("Your cat will be sent to: \n"+currUser.getFirstName()+" "+currUser.getLastName()+"\n"+currUser.getAddress1()+"\n"+currUser.getAddress2()+"\n"+currUser.getCity()+", "+currUser.getState()+" "+currUser.getPostCode());
             Transport.send(message);
             System.out.println("Message Sent");
         } catch (MessagingException mex) {
