@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/4166_Assignment_2">
     <!--Openshift-->
-    <!--<Resource auth="Container" 
+<!--    <Resource auth="Container" 
                 driverClassName="com.mysql.jdbc.Driver" 
                 logAbandoned="true" 
                 maxActive="100" 

@@ -16,11 +16,25 @@ import javax.mail.internet.*;
  * @author chirag
  */
 public class OrderConfirmation {
+    
+    UserDB udb;
+    String to;
+    public OrderConfirmation(){
+        
+    }
+    
     public void sendConfirmation(Order ord) {
-        UserDB udb = new UserDB();
+        udb = new UserDB();
         Order currOrder = ord;
         User currUser = ord.getUser();
-        String to = currUser.getEmailAddress();
+        if(currUser!=null){
+            to = currUser.getEmailAddress();
+            //System.out.println("Email address = "+to);
+        }
+        else{
+            //System.out.println("no current order");
+            return;
+        }
         String from = "kittenkorner@measurementcontrols.com";
         String host = "mail.measurementcontrols.com";
         Properties properties = System.getProperties();
