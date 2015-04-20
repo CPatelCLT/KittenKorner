@@ -24,10 +24,16 @@ public class OrderConfirmation {
         String from = "kittenkorner@measurementcontrols.com";
         String host = "mail.measurementcontrols.com";
         Properties properties = System.getProperties();
-        properties.setProperty("mail.user", "kittenkorner@measurementcontrols.com");
-        properties.setProperty("mail.password", "vCs-G6g-FmS-rWg");
+        properties.put("mail.smtp.auth", "true");
         properties.setProperty("mail.smtp.host", host);
-        Session session = Session.getDefaultInstance(properties);
+        Session session = Session.getInstance(properties,
+         new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+               return new PasswordAuthentication(
+                  "kittenkorner@measurementcontrols.com", "vCs-G6g-FmS-rWg");
+            }
+         });
         
         try {
             MimeMessage message = new MimeMessage(session);
