@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/4166_Assignment_2">
     <!--Openshift-->
-<!--    <Resource auth="Container" 
+    <Resource auth="Container" 
                 driverClassName="com.mysql.jdbc.Driver" 
                 logAbandoned="true" 
                 maxActive="100" 
                 maxIdle="30" 
                 maxWait="10000" 
                 name="jdbc/kittenKornerDB" 
-                password="password" 
+                password="ZvR_YTk_1HPs" 
                 removeAbandoned="true" 
                 removeAbandonedTimeout="60" 
                 type="javax.sql.DataSource" 
                 url="jdbc:mysql://127.9.32.130:3306/kittenkornerdb?autoReconnect=true" 
-                username="root"/>-->
+                username="adminEhdPvcv"/>
             <!--Local Version-->
-        <Resource auth="Container" 
+<!--        <Resource auth="Container" 
                 driverClassName="com.mysql.jdbc.Driver" 
                 logAbandoned="true" 
                 maxActive="100" 
@@ -27,15 +27,15 @@
                 removeAbandonedTimeout="60" 
                 type="javax.sql.DataSource" 
                 url="jdbc:mysql://localhost:3306/kittenkornerdb?autoReconnect=true" 
-                username="root"/>
+                username="root"/>-->
   <Realm className="org.apache.catalina.realm.DataSourceRealm" 
          dataSourceName="jdbc/kittenKornerDB" 
          localDataSource="true" 
          roleNameCol="user_role" 
          userCredCol="password" 
          userNameCol="emailAddr" 
-         userRoleTable="user" 
-         userTable="user"/>
+         userRoleTable="USER" 
+         userTable="USER"/>
 <!--    <Realm  className="org.apache.catalina.realm.DataSourceRealm"
                     driverName="com.mysql.jdbc.Driver"
                     connectionURL="jdbc:mysql://localhost:3306/KittenKornerDB?zeroDateTimeBehavior=convertToNull"
