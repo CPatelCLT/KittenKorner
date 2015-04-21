@@ -53,17 +53,20 @@ public class OrderConfirmation {
             message.setFrom(new InternetAddress(from));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Order Confirmation");
-            message.setText("Just letting you know the order " + currOrder.getOrderNumber() + " has been recieved.\n");
-            message.setText("The items in the order are:");
+            StringBuilder sb = new StringBuilder();
+            
+            sb.append("\nJust letting you know the order " + currOrder.getOrderNumber() + " has been recieved.\n");
+            sb.append("\nThe items in the order are:");
             double temp = 0;
             for (int i = 0; i<currOrder.getItems().size(); i++) {
                 OrderItem oi = currOrder.getItems().get(i);
-                message.setText(oi.getProduct().getProductName() + "     " + oi.getQuantity() + "       $" + oi.getTotal());
+                sb.append("\n" + oi.getProduct().getProductName() + "     " + oi.getQuantity() + "       $" + oi.getTotal());
                 temp += oi.getTotal();
             }
-            message.setText("Your total is: $" + temp + "\n\n");
+            sb.append("\nYour total is: $" + temp + "\n\n");
             
-            message.setText("Your cat will be sent to: \n"+currUser.getFirstName()+" "+currUser.getLastName()+"\n"+currUser.getAddress1()+"\n"+currUser.getAddress2()+"\n"+currUser.getCity()+", "+currUser.getState()+" "+currUser.getPostCode());
+            sb.append("\nYour cat will be sent to: \n"+currUser.getFirstName()+" "+currUser.getLastName()+"\n"+currUser.getAddress1()+"\n"+currUser.getAddress2()+"\n"+currUser.getCity()+", "+currUser.getState()+" "+currUser.getPostCode());
+            message.setText(sb.toString());
             Transport.send(message);
             System.out.println("Message Sent");
         } catch (MessagingException mex) {
