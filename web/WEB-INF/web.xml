@@ -11,12 +11,16 @@
                 
         <auth-constraint>
             <role-name>user</role-name>
-	</auth-constraint>
+        </auth-constraint>
         
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/j_security_check</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>CatalogController</servlet-name>
         <servlet-class>servlet_package.CatalogController</servlet-class>

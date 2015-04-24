@@ -49,7 +49,7 @@ public class PWUtil {
         return hashPassword(pw + salt);
     }
     
-    public static String hashAndSaltPassword(String salt, String pw) throws NoSuchAlgorithmException{
+    public String hashAndSaltPassword(String salt, String pw) throws NoSuchAlgorithmException{
         return hashPassword(pw + salt);
     }
     

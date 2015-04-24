@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java_beans.User;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -61,7 +63,7 @@ public class UserController extends HttpServlet {
             password = request.getParameter("password");
             salt = pwu.getSalt();
             try {
-                String hashedPassword = PWUtil.hashAndSaltPassword(salt, password);
+                String hashedPassword = pwu.hashAndSaltPassword(salt, password);
                 password = hashedPassword;
             } catch (NoSuchAlgorithmException e){
                 System.out.println(e);
@@ -107,6 +109,23 @@ public class UserController extends HttpServlet {
             dispatch.forward(request, response);
             }
         }
+//        } else if (requestedAction.equals("login")) {
+//            String username = request.getParameter("username");
+//            String password = request.getParameter("password");
+//            User temp = udb.getUserByEmail(username);
+//            PWUtil pw = new PWUtil();
+//            try {
+//                password = pw.hashAndSaltPassword(temp.getSalt(), password);
+//            } catch (NoSuchAlgorithmException ex) {
+//                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            
+//            request.setAttribute("j_username", username);
+//            request.setAttribute("j_password", password);
+//            RequestDispatcher dispatch = request.getRequestDispatcher("j_security_check");
+//            dispatch.forward(request, response);
+//            
+//        }
 //        else if (requestedAction.equals("j_securitycheck")) {
 //            String username, password;
 //            username = request.getParameter("j_username");
