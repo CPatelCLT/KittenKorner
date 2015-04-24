@@ -5,9 +5,11 @@
  */
 package servlet_package;
 
+import db.PWUtil;
 import db.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java_beans.User;
 import javax.servlet.RequestDispatcher;
@@ -45,7 +47,8 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException {
         requestedAction = request.getParameter("requestedAction");
         if (requestedAction.equals("createUser")) {
-            String firstName, lastName, emailAddress, password, address1, address2, city, state, postCode, country;
+            PWUtil pwu = new PWUtil();
+            String firstName, lastName, emailAddress, password, address1, address2, city, state, postCode, country, salt;
             firstName = request.getParameter("firstName");
             lastName = request.getParameter("lastName");
             emailAddress = request.getParameter("emailAddr");
@@ -56,7 +59,14 @@ public class UserController extends HttpServlet {
             postCode = request.getParameter("postCode");
             country = request.getParameter("country");
             password = request.getParameter("password");
-            currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
+            salt = pwu.getSalt();
+            try {
+                String hashedPassword = PWUtil.hashAndSaltPassword(salt, password);
+                password = hashedPassword;
+            } catch (NoSuchAlgorithmException e){
+                System.out.println(e);
+            }
+            currUser = new User(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password, salt);
             ArrayList<User> allUsers = udb.getAllUsers();
             if (allUsers != null) {
                 for (int i = 0; i < allUsers.size(); i++) {
@@ -69,7 +79,7 @@ public class UserController extends HttpServlet {
                     }
                 }
             }
-            udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password);
+            udb.addUser(firstName, lastName, emailAddress, address1, address2, city, state, postCode, country, password, salt);
 //            currUser = udb.getUserByEmail(emailAddress);
 //            request.getSession().setAttribute("theUser", currUser);
             //RequestDispatcher dispatch;
@@ -130,5 +140,5 @@ public class UserController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }
