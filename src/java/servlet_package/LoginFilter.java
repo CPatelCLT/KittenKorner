@@ -50,6 +50,7 @@ public class LoginFilter implements Filter {
   */
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {
+      this.filterConfig = filterConfig;
   }
 
 
@@ -68,15 +69,16 @@ public class LoginFilter implements Filter {
                        ServletResponse response,
                        FilterChain chain)
    throws java.io.IOException, ServletException {
-
+      System.out.println("got to filter");
      HttpServletRequest req = (HttpServletRequest)request;
      HttpServletResponse res = (HttpServletResponse)response;
 
      // pre login action
       UserDB udb = new UserDB();
-     String username = request.getParameter("username");
-            String password = request.getParameter("password");
+     String username = request.getParameter("j_username");
+            String password = request.getParameter("j_password");
             User temp = udb.getUserByEmail(username);
+            System.out.println("From form: " + password);
             PWUtil pw = new PWUtil();
             try {
                 password = pw.hashAndSaltPassword(temp.getSalt(), password);
@@ -86,7 +88,7 @@ public class LoginFilter implements Filter {
             
             request.setAttribute("j_username", username);
             request.setAttribute("j_password", password);
-
+            System.out.println("Hashed&salted: " + password);
             
      // call next filter in the chain : let j_security_check authenticate user
      chain.doFilter(request, response);
@@ -96,7 +98,7 @@ public class LoginFilter implements Filter {
 
     @Override
     public void destroy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.filterConfig = null;
     }
 
 }
