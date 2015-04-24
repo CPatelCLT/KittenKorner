@@ -40,6 +40,7 @@ public class User implements Serializable {
     private String postCode;
     private String country;
     private String password;
+    private String salt;
     
 //    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy="userID")
 //    private List<Order> orderList;
@@ -48,7 +49,7 @@ public class User implements Serializable {
         
     }
     
-    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, String PC, String CO, String PW){
+    public User(String FN, String LN, String EA, String A1, String A2, String C, String S, String PC, String CO, String PW, String s){
         firstName=FN;
         lastName=LN;
         emailAddress=EA;
@@ -59,6 +60,7 @@ public class User implements Serializable {
         postCode=PC;
         country=CO;
         password=PW;
+        salt = s;
     }
     
     public int getUserID(){
@@ -147,6 +149,14 @@ public class User implements Serializable {
     
     public String getPassword() {
         return password;
+    }
+    
+    public void setSalt(String s){
+        salt = s;
+    }
+    
+    public String getSalt(){
+        return salt;
     }
     
 //    @XmlTransient
