@@ -29,7 +29,7 @@
                     <a class="breadCrumbLink" href="userInfo.jsp">My Info</a>
                 </div>
                 <div class="errorMsg">
-                    ${errorType}
+                    <c:out value="${errorType}"/>
                 </div>
                 <h1>Create New User Account</h1>
                 <form action="user" method="post">

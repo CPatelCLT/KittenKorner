@@ -47,16 +47,16 @@
                         <c:forEach items="${sessionScope.userOrders}" var="curOrder">
                         <tr class="orderlistTable">
                             <td class="orderlistTable">
-                                <a class="blueLink" href="order?action=ordnum&amp;num=${curOrder.getOrderNumber()}">${curOrder.getOrderNumber()}</a> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
+                                <a class="blueLink" href="order?action=ordnum&amp;num=<c:out value="${curOrder.getOrderNumber()}"/>"><c:out value="${curOrder.getOrderNumber()}"/></a> <!--This needs to be a link to the or the orders page for the item, same as catalog-->
                             </td>
                             <td class="orderlistTable">
-                                ${curOrder.getUser().getEmailAddress()}
+                                <c:out value="${curOrder.getUser().getEmailAddress()}"/>
                             </td>
                             <td class="orderlistTable">
-                                ${curOrder.getDate()}
+                                <c:out value="${curOrder.getDate()}"/>
                             </td>
                             <td class="orderlistTable">
-                                <fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>
+                                <c:out value='<fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>'/>
                             </td>  
                         </tr>
                         </c:forEach>

@@ -7,6 +7,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,34 +29,34 @@
                 >
                 <a class="breadCrumbLink" href="catalog.jsp">Catalog</a>
                 >
-                <a class="breadCrumbLink" href="item.jsp">${item.getProductName()}</a>
+                <a class="breadCrumbLink" href="item.jsp"><c:out value="${item.getProductName()}"/></a>
             </div>
             <div id="itemWrapper">
                 <div class="itemPictureDiv">
-                    <img class="itemPicture" src="${item.getImageUrl()}" alt="item 1 picture">
+                    <img class="itemPicture" src="<c:out value="${item.getImageUrl()}"/>" alt="item 1 picture">
                 </div>
                 <div class="itemInfoDiv">
                     <h1>
-                        ${item.getProductName()}
+                        <c:out value="${item.getProductName()}"/>
                     </h1>
                     <p>
-                        ${item.getCatalogCategory()}
+                        <c:out value="${item.getCatalogCategory()}"/>
                     </p>
                     <p>
-                        Price: <fmt:formatNumber value="${item.getPrice()}" type="currency"/>
+                        Price: <c:out value='<fmt:formatNumber value="${item.getPrice()}" type="currency"/>'/>
                     </p>
                 </div>
                 <div class="itemButtonHolderDiv">
                     <form method="POST" action="order">
                         <button id="addItemToCartb1" type="submit" name="action" value="addToCartButton">Add To Cart</button>
-                        <input type="hidden" name="productCode" value="${item.getProductCode()}"></form>
+                        <input type="hidden" name="productCode" value="<c:out value="${item.getProductCode()}"/>"></form>
                         <form method="GET" action="catalog">
                         <button id="addItemToCartb2" type="submit" name="action" value="backToCatalog">Back</button>
                         </form>
                 </div>
                 <div class="itemDetailsDiv">
                     <p>
-                        ${item.getDescription()}
+                        <c:out value="${item.getDescription()}"/>
                     </p>
                 </div>
             </div>  

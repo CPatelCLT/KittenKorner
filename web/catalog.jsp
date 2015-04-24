@@ -46,21 +46,21 @@
                         </c:if>
                         <div class="itemContainer">
                             <div class="itemPreviewPic">
-                                <img class="previewPicFormat" src="${prod.getImageUrl()}" alt="product photo">
+                                <img class="previewPicFormat" src="<c:out value='${prod.getImageUrl()}'/>" alt="product photo">
                             </div>
                             <div class="itemDescription">
                                 <h2>
-                                    ${prod.getProductName()}
+                                    <c:out value="${prod.getProductName()}"/>
                                 </h2>
                                 <p>
-                                    ${prod.getDescription()}
+                                    <c:out value="${prod.getDescription()}"/>
                                 </p>
                             </div>
                             <div class="itemPreviewButtons">
                                 <form method="GET" action="catalog">
                                     <button class="moreInfoButton" type="submit">More Info</button>
                                     <input type="hidden" name="action" value="itemInfoButton">
-                                    <input type="hidden" name="productCode" value="${prod.getProductCode()}">
+                                    <input type="hidden" name="productCode" value="<c:out value="${prod.getProductCode()}"/>">
                                 </form>
                             </div>
                         </div>

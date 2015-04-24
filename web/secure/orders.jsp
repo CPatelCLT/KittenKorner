@@ -35,14 +35,14 @@
                 <c:choose>
                     <c:when test="${sessionScope.currentOrder!=null}">
                         <h1>
-                            Invoice #${sessionScope.currentOrder.getOrderNumber()}
+                            Invoice #<c:out value="${sessionScope.currentOrder.getOrderNumber()}"/>
                         </h1>
-                        <h3>Date: ${currentOrder.getDate()}</h3>
+                        <h3>Date: <c:out value="${currentOrder.getDate()}"/></h3>
                         <h4 style="text-decoration: underline">Ship To / Bill To:</h4>
-                        <p>${currentOrder.getUser().getFirstName()} ${currentOrder.getUser().getLastName()}<br/>
-                            ${currentOrder.getUser().getAddress1()}<br/>
-                            ${currentOrder.getUser().getAddress2()}<br/>
-                            ${currentOrder.getUser().getCity()}, ${currentOrder.getUser().getState()} ${currentOrder.getUser().getPostCode()} ${currentOrder.getUser().getCountry()}</p>
+                        <p><c:out value="${currentOrder.getUser().getFirstName()}"/> <c:out value="${currentOrder.getUser().getLastName()}"/><br/>
+                            <c:out value="${currentOrder.getUser().getAddress1()}"/><br/>
+                            <c:out value="${currentOrder.getUser().getAddress2()}"/><br/>
+                            <c:out value="${currentOrder.getUser().getCity()}"/>, <c:out value="${currentOrder.getUser().getState()}"/> <c:out value="${currentOrder.getUser().getPostCode()}"/> <c:out value="${currentOrder.getUser().getCountry()}"/></p>
                         <div id="cartItems">
                             <div id="cartItemsCategories">
                                 <div id="itemCategoryLabel">
@@ -64,16 +64,16 @@
                                 <c:set var="total" value="${total+orderItem.getTotal()}"/>
                                 <div class="orderItem orderRow">
                                     <div class="orderItemName orderCol">
-                                        ${orderItem.getProduct().getProductName()}
+                                        <c:out value="${orderItem.getProduct().getProductName()}"/>
                                     </div>
                                     <div class="orderItemPrice orderCol">
-                                        <fmt:formatNumber value="${orderItem.getProduct().getPrice()}" type="currency"/>
+                                        <c:out value='<fmt:formatNumber value="${orderItem.getProduct().getPrice()}" type="currency"/>'/>
                                     </div>
                                     <div class="orderItemQuantity orderCol">
-                                        ${orderItem.getQuantity()}
+                                        <c:out value="${orderItem.getQuantity()}"/>
                                     </div>
                                     <div class="orderItemSubtotal orderCol">
-                                        <fmt:formatNumber value="${orderItem.getTotal()}" type="currency"/>
+                                        <c:out value='<fmt:formatNumber value="${orderItem.getTotal()}" type="currency"/>'/>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -94,7 +94,7 @@
                                 Subtotal:
                             </div>
                             <div class="orderSubtotal">
-                                <fmt:formatNumber value="${total}" type="currency"/>
+                                <c:out value='<fmt:formatNumber value="${total}" type="currency"/>'/>
                             </div>
                         </div>
                         <div class="tax">
@@ -112,7 +112,7 @@
                             </div>
                             <div class="orderTotal">
                                 <c:set var="totalCostOfOrder" value="${orderTax+total}"/>
-                                <fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>
+                                <c:out value='<fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>'/>
                             </div>
                         </div>    
                     </div>

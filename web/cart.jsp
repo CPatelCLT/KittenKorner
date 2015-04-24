@@ -58,17 +58,17 @@
                                 <c:set var="total" value="${total+cItem.getTotal()}"/>
                                 <div id="newItemInCart">
                                     <div class="itemCategory">
-                                        ${cItem.getProduct().getProductName()}
+                                        <c:out value="${cItem.getProduct().getProductName()}"/>
                                     </div>
                                     <div class="priceCategory">
-                                        <fmt:formatNumber value="${cItem.getProduct().getPrice()}" type="currency"/>
+                                        <c:out value = '<fmt:formatNumber value="${cItem.getProduct().getPrice()}" type="currency"/>'/>
 
                                     </div>
                                     <div class="quantityCategory">
-                                        <input value="${cItem.getQuantity()}" class="quantityTextBox" type="text" name="${cItem.getProduct().getProductCode()}">
+                                        <input value="<c:out value="${cItem.getQuantity()}"/>" class="quantityTextBox" type="text" name="${cItem.getProduct().getProductCode()}">
                                     </div>
                                     <div class="totalCategory">
-                                        <fmt:formatNumber value="${cItem.getTotal()}" type="currency"/>
+                                        <c:out value='<fmt:formatNumber value="${cItem.getTotal()}" type="currency"/>'/>
 
                                     </div>
                                     <div class="clearBoth">
@@ -83,7 +83,7 @@
                             Subtotal:
                         </div>
                         <div class="cartSubtotalValue">
-                            <fmt:formatNumber value="${total}" type="currency"/>
+                            <c:out value='<fmt:formatNumber value="${total}" type="currency"/>'/>
                         </div>
                     </div>
                     <div id="processingButtons">

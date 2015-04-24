@@ -16,7 +16,7 @@
         <div id="loggedIn">
             <c:choose>
                 <c:when test="${sessionScope.theUser != null}">
-                    ${sessionScope.theUser.getEmailAddress()}
+                    <c:out value="${sessionScope.theUser.getEmailAddress()}"/>
                 </c:when>
                 <c:otherwise>
                     <a href="/4166_Assignment_2/checkoutChoice.jsp">Click here to sign up/in!</a>
