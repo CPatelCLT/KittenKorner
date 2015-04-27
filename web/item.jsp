@@ -43,7 +43,7 @@
                         <c:out value="${item.getCatalogCategory()}"/>
                     </p>
                     <p>
-                        Price: <c:out value='<fmt:formatNumber value="${item.getPrice()}" type="currency"/>'/>
+                        Price: <fmt:formatNumber value="${item.getPrice()}" type="currency"/>
                     </p>
                 </div>
                 <div class="itemButtonHolderDiv">

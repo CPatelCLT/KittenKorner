@@ -155,7 +155,7 @@
                         </tr>
                     </table>
                     <p>
-                        Your card will be charged a total of <c:out value='<fmt:formatNumber value="${sessionScope.thisOrder.getTotalCost()}" type="currency"/>'/>.
+                        Your card will be charged a total of <fmt:formatNumber value="${sessionScope.thisOrder.getTotalCost()}" type="currency"/>.
                     </p>
                     <button type="submit" name="action" value="confirmOrder">Confirm Payment</button>
                 </form>

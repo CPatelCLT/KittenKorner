@@ -56,7 +56,7 @@
                                 <c:out value="${curOrder.getDate()}"/>
                             </td>
                             <td class="orderlistTable">
-                                <c:out value='<fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>'/>
+                                <fmt:formatNumber value="${curOrder.getTotalCost()}" type="currency"/>
                             </td>  
                         </tr>
                         </c:forEach>

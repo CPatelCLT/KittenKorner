@@ -61,14 +61,15 @@
                                         <c:out value="${cItem.getProduct().getProductName()}"/>
                                     </div>
                                     <div class="priceCategory">
-                                        <c:out value = '<fmt:formatNumber value="${cItem.getProduct().getPrice()}" type="currency"/>'/>
+                                        <c:set var="price" value = ""/>
+                                        <fmt:formatNumber value = price  type="currency"/>
 
                                     </div>
                                     <div class="quantityCategory">
                                         <input value="<c:out value="${cItem.getQuantity()}"/>" class="quantityTextBox" type="text" name="${cItem.getProduct().getProductCode()}">
                                     </div>
                                     <div class="totalCategory">
-                                        <c:out value='<fmt:formatNumber value="${cItem.getTotal()}" type="currency"/>'/>
+                                        <fmt:formatNumber value="${cItem.getTotal()}" type="currency"/>
 
                                     </div>
                                     <div class="clearBoth">
@@ -83,7 +84,7 @@
                             Subtotal:
                         </div>
                         <div class="cartSubtotalValue">
-                            <c:out value='<fmt:formatNumber value="${total}" type="currency"/>'/>
+                            <fmt:formatNumber value="${total}" type="currency"/>
                         </div>
                     </div>
                     <div id="processingButtons">

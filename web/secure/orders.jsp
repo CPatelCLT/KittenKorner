@@ -67,13 +67,13 @@
                                         <c:out value="${orderItem.getProduct().getProductName()}"/>
                                     </div>
                                     <div class="orderItemPrice orderCol">
-                                        <c:out value='<fmt:formatNumber value="${orderItem.getProduct().getPrice()}" type="currency"/>'/>
+                                        <fmt:formatNumber value="${orderItem.getProduct().getPrice()}" type="currency"/>
                                     </div>
                                     <div class="orderItemQuantity orderCol">
                                         <c:out value="${orderItem.getQuantity()}"/>
                                     </div>
                                     <div class="orderItemSubtotal orderCol">
-                                        <c:out value='<fmt:formatNumber value="${orderItem.getTotal()}" type="currency"/>'/>
+                                        <fmt:formatNumber value="${orderItem.getTotal()}" type="currency"/>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -94,7 +94,7 @@
                                 Subtotal:
                             </div>
                             <div class="orderSubtotal">
-                                <c:out value='<fmt:formatNumber value="${total}" type="currency"/>'/>
+                                <fmt:formatNumber value="${total}" type="currency"/>
                             </div>
                         </div>
                         <div class="tax">
@@ -112,7 +112,7 @@
                             </div>
                             <div class="orderTotal">
                                 <c:set var="totalCostOfOrder" value="${orderTax+total}"/>
-                                <c:out value='<fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>'/>
+                                <fmt:formatNumber value="${totalCostOfOrder}" type="currency"/>
                             </div>
                         </div>    
                     </div>
