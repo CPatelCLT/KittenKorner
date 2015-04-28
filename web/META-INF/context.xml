@@ -28,15 +28,26 @@
                 type="javax.sql.DataSource" 
                 url="jdbc:mysql://localhost:3306/kittenkornerdb?autoReconnect=true" 
                 username="root"/>
-<!-- local info -->
-    <Realm className="org.apache.catalina.realm.DataSourceRealm" 
+<!-- local info DataSourceRealm-->
+<!--    <Realm className="org.apache.catalina.realm.DataSourceRealm" 
          dataSourceName="jdbc/kittenKornerDB" 
          localDataSource="true" 
          roleNameCol="user_role" 
          userCredCol="password" 
          userNameCol="emailAddr" 
          userRoleTable="user" 
-         userTable="user"/>
+         userTable="user"/>-->
+  <!-- openshift version -->
+  <!-- local info SaltedDataSourceRealm> -->
+    <Realm className="db.SaltedDataSourceRealm" 
+         dataSourceName="jdbc/kittenKornerDB" 
+         localDataSource="true" 
+         roleNameCol="user_role" 
+         userCredCol="password" 
+         userNameCol="emailAddr" 
+         userRoleTable="user" 
+         userTable="user"
+         userSaltCol = "salt"/>
   <!-- openshift version -->
 <!--    <Realm className="org.apache.catalina.realm.DataSourceRealm" 
          dataSourceName="jdbc/kittenKornerDB" 
