@@ -8,8 +8,10 @@ package db;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Base64;
+//import java.util.Base64;
+//import com.openshift.client.utils.Base64Coder;
 import java.util.Random;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -41,7 +43,8 @@ public class PWUtil {
         Random r = new SecureRandom();
         byte[] saltBytes = new byte[32];
         r.nextBytes(saltBytes);
-        return Base64.getEncoder().encodeToString(saltBytes);
+        return DatatypeConverter.printBase64Binary(saltBytes);
+//        return Base64.getEncoder().encodeToString(saltBytes);
     }
     
     public String hashAndSaltPassword(String pw) throws NoSuchAlgorithmException{

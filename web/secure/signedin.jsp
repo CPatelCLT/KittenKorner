@@ -31,7 +31,7 @@
                 You have successfully signed in!
                 <form action="user" method="POST">
 <!--                    <input type="hidden" name="userEmail" value="<c:out value=''/>"/>-->
-                    <button name="requestedAction" value="confirm" type="submit">Continue</button>
+<!--                    <button name="requestedAction" value="confirm" type="submit">Continue</button>-->
                     <a class="blueLink" href="/4166_Assignment_2/index.jsp">Continue</a>
                 </form>
 
