@@ -17,14 +17,14 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
-    <filter>
+<!--    <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>servlet_package.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/j_security_check</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
     <servlet>
         <servlet-name>CatalogController</servlet-name>
         <servlet-class>servlet_package.CatalogController</servlet-class>

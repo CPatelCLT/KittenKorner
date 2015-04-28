@@ -30,7 +30,7 @@
                 </div>
                 You have successfully signed in!
                 <form action="user" method="POST">
-                    <input type="hidden" name="userEmail" value="<c:out value='${pageContext.request.getUserPrincipal() != null ? pageContext.request.getUserPrincipal().getName() : ""}'/>"/>
+<!--                    <input type="hidden" name="userEmail" value="<c:out value=''/>"/>-->
                     <button name="requestedAction" value="confirm" type="submit">Continue</button>
                 </form>
 

@@ -31,11 +31,11 @@
                 <p>
                     Please log in or click <a class="blueLink" href="/4166_Assignment_2/userInfo.jsp">here</a> to create a new account.
                 </p>
-                <form action="j_security_check" method="POST">
+                <form action="user" method="POST">
                     <p>Please enter a username: 
-                    <input type="text" name="j_username" size="25"></p>
+                    <input type="text" name="username" size="25"></p>
                     <p>Please enter a password: 
-                    <input type="password" name="j_password" size="25"></p>
+                    <input type="password" name="password" size="25"></p>
                     <button type="submit" name="requestedAction" value="login">Submit</button> 
                 </form>
             </div>
