@@ -87,7 +87,7 @@ public class UserController extends HttpServlet {
             //RequestDispatcher dispatch;
             //dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
             //dispatch.forward(request, response);
-            response.sendRedirect("secure/signedin.jsp");
+            response.sendRedirect("login.jsp");
 //            if (request.getSession().getAttribute("theShoppingCart") != null) {
 ////                        response.sendRedirect("/order?buttonClicked=addToCartButton");
 //                dispatch = request.getRequestDispatcher("/cart.jsp");
@@ -122,7 +122,9 @@ public class UserController extends HttpServlet {
             if (temp.getPassword().equals(password)) {
                 request.getSession().setAttribute("theUser", temp);
                 RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
-                dispatch.forward(request, response);
+                response.sendRedirect("secure/signedin.jsp");
+                //dispatch.forward(request, response);
+                
             }
             else {
                 RequestDispatcher dispatch = request.getRequestDispatcher("/login.jsp");
