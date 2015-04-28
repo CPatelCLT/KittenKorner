@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="priceCategory">
                                         <c:set var="price" value = ""/>
-                                        <fmt:formatNumber value = price  type="currency"/>
+                                        <fmt:formatNumber value = "${cItem.getProduct().getPrice()}"  type="currency"/>
 
                                     </div>
                                     <div class="quantityCategory">
