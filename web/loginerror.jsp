@@ -28,7 +28,7 @@
                     >
                     <a class="breadCrumbLink" href="/4166_Assignment_2/login.jsp">Log In</a>
                 </div>
-                <p>Your login attempt failed, please go <a class="blueLink" href="/4166_Assignment_2/secure/signedin.jsp">back</a> and try again!</p>
+                <p>Your login attempt failed, please go <a class="blueLink" href="/login.jsp">back</a> and try again!</p>
             </div>
         <%@ include file="/include/footer.jsp" %>
     </body>

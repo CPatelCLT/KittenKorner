@@ -108,24 +108,33 @@ public class UserController extends HttpServlet {
             RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
             dispatch.forward(request, response);
             }
-        }
-//        } else if (requestedAction.equals("login")) {
-//            String username = request.getParameter("username");
-//            String password = request.getParameter("password");
-//            User temp = udb.getUserByEmail(username);
-//            PWUtil pw = new PWUtil();
-//            try {
-//                password = pw.hashAndSaltPassword(temp.getSalt(), password);
-//            } catch (NoSuchAlgorithmException ex) {
-//                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            
+        } else if (requestedAction.equals("login")) {
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            User temp = udb.getUserByEmail(username);
+            PWUtil pw = new PWUtil();
+            try {
+                password = pw.hashAndSaltPassword(temp.getSalt(), password);
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //Compare password stored in db with hashedandsalted local password
+            if (temp.getPassword().equals(password)) {
+                request.getSession().setAttribute("theUser", temp);
+                RequestDispatcher dispatch = request.getRequestDispatcher("/secure/signedin.jsp");
+                dispatch.forward(request, response);
+            }
+            else {
+                RequestDispatcher dispatch = request.getRequestDispatcher("/login.jsp");
+                dispatch.forward(request, response);
+            }
+            
 //            request.setAttribute("j_username", username);
 //            request.setAttribute("j_password", password);
 //            RequestDispatcher dispatch = request.getRequestDispatcher("j_security_check");
 //            dispatch.forward(request, response);
-//            
-//        }
+            
+        }
 //        else if (requestedAction.equals("j_securitycheck")) {
 //            String username, password;
 //            username = request.getParameter("j_username");
